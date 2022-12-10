@@ -15,42 +15,12 @@
 
         }
 
-        public override void ShowYourOwnMonthlyTimetable()
-        {
-
-        }
-
-        public override void ShowFullMonthlyTimetablee()
-        {
-
-        }
-
-        public override void ShowFullTimetableForTheDate()
-        {
-
-        }
-
         public override void AddOvertimeHoursForApprove()
         {
 
         }
 
         public override void SwapShifts()
-        {
-
-        }
-
-        public override void ShowOwnPersonalCard()
-        {
-
-        }
-
-        public override void ShowHoursWorkedSinceBegOfMonth()
-        {
-
-        }
-
-        public override void ShowHoursOverworkedSinceBegOfMonth()
         {
 
         }
