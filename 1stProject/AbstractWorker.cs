@@ -6,7 +6,7 @@
         public string Name { get; protected set; }
         public string TelephoneNumber { get; protected set; }
         public string TypeOfTimeTable { get; protected set; }
-
+    
         public abstract void ChooseYourShiftsAndSendForApprove();
 
         public abstract void AddOvertimeHoursForApprove();
@@ -42,6 +42,5 @@
         {
 
         }
-
     }
 }
