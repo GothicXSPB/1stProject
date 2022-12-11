@@ -1,4 +1,6 @@
-﻿namespace _1stProject
+﻿using System.Text.Json;
+
+namespace _1stProject
 {
     public abstract class AbstractWorker
     {
@@ -6,6 +8,7 @@
         public string Name { get; protected set; }
         public string TelephoneNumber { get; protected set; }
         public string TypeOfTimeTable { get; protected set; }
+        private string _path = @".../calendar.txt";
     
         public abstract void ChooseYourShiftsAndSendForApprove();
 
@@ -40,6 +43,16 @@
 
         public void ShowHoursOverworkedSinceBegOfMonth()
         {
+
+        }
+
+        public void SaveAll()
+        {
+            using (StreamWriter sw = new StreamWriter(_path))
+            {
+                string jsn = JsonSerializer.Serialize(Timetable);
+                sw.WriteLine(jsn);
+            }
 
         }
     }
