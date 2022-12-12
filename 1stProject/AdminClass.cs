@@ -30,9 +30,9 @@
             Database.Employees.Add(employee);
         }
 
-        public void DeleteEmployee ()
+        public void DeleteEmployee(int id)
         {
-
+            Database.Employees.RemoveAll(employee => employee.Id == id);
         }
 
         public void ApproveTimeTableForEmployee ()
