@@ -3,15 +3,17 @@
     static class MathForSalary
     {
         const int MaxHoursInMonth = 164;
+        static int HowManyWorkingHours { get; set; }
+        static int HowManyOvertimeHours { get; set; }
 
         public static int CalculateWorkingHours()
         {
-            return 1;
+            return HowManyWorkingHours = 1;
         }
 
         public static int CalculateOvertimeHours()
         {
-            return 1;
+            return HowManyOvertimeHours = 1;
         }
 
         public static int CheckingHolidayShifts()
