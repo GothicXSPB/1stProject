@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _1stProject
+﻿namespace _1stProject
 {
     public class AdminClass: AbstractWorker
     {
@@ -31,9 +25,9 @@ namespace _1stProject
 
         }
 
-        public void AddEmployee()
+        public void AddEmployee(Employee employee)
         {
-
+            Database.Employees.Add(employee);
         }
 
         public void DeleteEmployee ()

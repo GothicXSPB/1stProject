@@ -1,11 +1,11 @@
 ﻿namespace _1stProject
 {
-    static class Database
+     static class Database
     {
-        static List<AdminClass> Admins { get; set; }
+        public static List<AdminClass> Admins { get; set; } = new List<AdminClass>();
 
-        static List<Employee> Employees { get; set; }
-
+        public static List<Employee> Employees { get; set; } = new List<Employee>();
+        
         static List<int> Calendar { get; set; }
 
     }
