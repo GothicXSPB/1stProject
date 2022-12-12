@@ -16,14 +16,14 @@
             return HowManyOvertimeHours = 1;
         }
 
-        public static int CheckingHolidayShifts()
+        public static void CheckingHolidayShifts()
         {
-            return 1;
+
         }
 
-        public static int CheckThatOvertimesLessThanMaxByTheLaw()
+        public static void CheckThatOvertimesLessThanMaxByTheLaw()
         {
-            return 1;
+
         }
     }
 }
