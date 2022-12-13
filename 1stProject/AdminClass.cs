@@ -11,11 +11,6 @@ namespace _1stProject
             TypeOfTimeTable = typeOfTimeTable;
         }
 
-        public override void ChooseYourShiftsAndSendForApprove()
-        {
-
-        }
-
         public override void AddOvertimeHoursForApprove()
         {
 
