@@ -1,8 +1,9 @@
-﻿namespace _1stProject
+﻿using _1stProject.Options;
+namespace _1stProject
 {
     public class AdminClass: AbstractWorker
     {
-        public AdminClass(int id, string name, string telephoneNumber, string typeOfTimeTable)
+        public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
         {
             Id = id;
             Name = name;
