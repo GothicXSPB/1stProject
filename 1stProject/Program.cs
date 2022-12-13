@@ -1,4 +1,5 @@
 ﻿using _1stProject;
+using _1stProject.Options;
 
 Employee employee1 = new Employee(1, "Andrey1", "88005553535", "5/2");
 Employee employee2 = new Employee(2, "Andrey2", "88005553535", "4/2");
