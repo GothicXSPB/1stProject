@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using _1stProject.Options;
 namespace _1stProject
 {
     public class AdminClass: AbstractWorker
     {
-        public AdminClass(int id, string name, string telephoneNumber, string typeOfTimeTable)
+        public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
         {
             Id = id;
             Name = name;
