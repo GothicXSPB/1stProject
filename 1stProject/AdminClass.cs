@@ -26,9 +26,9 @@ namespace _1stProject
 
         }
 
-        public void AddEmployee()
+        public void AddEmployee(Employee employee)
         {
-
+            Database.Employees.Add(employee);
         }
 
         public void DeleteEmployee ()
