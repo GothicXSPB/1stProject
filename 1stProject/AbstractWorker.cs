@@ -3,12 +3,12 @@ namespace _1stProject
 {
     public abstract class AbstractWorker
     {
+
+
         public int Id { get; protected set; }
         public string Name { get; protected set; }
-        public TimeTable TypeOfTimeTable { get; protected set; }
+        public TimeTable TypeOfTimeTable { get; set; }
         public string TelephoneNumber { get; protected set; }
-        
-        public abstract void ChooseYourShiftsAndSendForApprove();
 
         public abstract void AddOvertimeHoursForApprove();
 
@@ -42,6 +42,15 @@ namespace _1stProject
         public void ShowHoursOverworkedSinceBegOfMonth()
         {
 
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is AbstractWorker worker &&
+                   Id == worker.Id &&
+                   Name == worker.Name &&
+                   TypeOfTimeTable == worker.TypeOfTimeTable &&
+                   TelephoneNumber == worker.TelephoneNumber;
         }
     }
 }
