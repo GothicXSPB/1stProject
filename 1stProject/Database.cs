@@ -8,7 +8,7 @@ namespace _1stProject
         private static string _pathEmployees = @"../employees.txt";
         private static string _pathCalendar = @"../calendar.txt";
 
-        static List<AdminClass> Admins { get; set; } = new List<AdminClass>();
+        public static List<AdminClass> Admins { get; set; } = new List<AdminClass>();
 
         public static List<Employee> Employees { get; set; } = new List<Employee>();
 
