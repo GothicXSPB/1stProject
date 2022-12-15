@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-
+using _1stProject.Options;
 namespace _1stProject
 {
     public static class Database
@@ -16,7 +16,6 @@ namespace _1stProject
 
         public static void SaveAllAdmins()
         {
-
             using (StreamWriter sw = new StreamWriter(_pathAdmins))
             {
                 string jsn = JsonSerializer.Serialize(Admins);
@@ -27,7 +26,6 @@ namespace _1stProject
 
         public static void SaveAllEmployees()
         {
-
             using (StreamWriter sw = new StreamWriter(_pathEmployees))
             {
                 string jsn = JsonSerializer.Serialize(Employees);
@@ -38,13 +36,11 @@ namespace _1stProject
         
         public static void SaveAllCalendar()
         {
-
             using (StreamWriter sw = new StreamWriter(_pathCalendar))
             {
                 string jsn = JsonSerializer.Serialize(Calendar);
                 sw.WriteLine(jsn);
             }
-
         }
     }
 }
