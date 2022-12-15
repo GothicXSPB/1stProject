@@ -4,11 +4,11 @@ namespace _1stProject
 {
     public static class Database
     {
-        private static string _pathAdmins = @".../admins.txt";
-        private static string _pathEmployees = @".../employees.txt";
-        private static string _pathCalendar = @".../calendar.txt";
+        private static string _pathAdmins = @"../admins.txt";
+        private static string _pathEmployees = @"../employees.txt";
+        private static string _pathCalendar = @"../calendar.txt";
 
-        static List<AdminClass> Admins { get; set; } = new List<AdminClass>();
+        public static List<AdminClass> Admins { get; set; } = new List<AdminClass>();
 
         public static List<Employee> Employees { get; set; } = new List<Employee>();
 
