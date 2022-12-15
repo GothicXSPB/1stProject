@@ -38,7 +38,7 @@ namespace _1stProject
 
         public void AddAdmin(AdminClass admin)
         {
-            Database.Employees.Add(admin);
+            Database.Admins.Add(admin);
         }
 
         public void ApproveTimeTableForEmployee ()
