@@ -43,5 +43,14 @@ namespace _1stProject
         {
 
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is AbstractWorker worker &&
+                   Id == worker.Id &&
+                   Name == worker.Name &&
+                   TypeOfTimeTable == worker.TypeOfTimeTable &&
+                   TelephoneNumber == worker.TelephoneNumber;
+        }
     }
 }
