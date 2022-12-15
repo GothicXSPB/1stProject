@@ -36,6 +36,11 @@ namespace _1stProject
             Database.Employees.RemoveAll(employee => employee.Id == id);
         }
 
+        public void AddAdmin(AdminClass admin)
+        {
+            Database.Employees.Add(admin);
+        }
+
         public void ApproveTimeTableForEmployee ()
         {
 
