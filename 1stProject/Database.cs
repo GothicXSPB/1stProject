@@ -12,7 +12,7 @@ namespace _1stProject
 
         public static List<Employee> Employees { get; set; } = new List<Employee>();
 
-        static List<int> Calendar { get; set; }
+        static List<int> Calendar { get; set; } 
 
         public static void SaveAllAdmins()
         {
@@ -40,6 +40,24 @@ namespace _1stProject
             {
                 string jsn = JsonSerializer.Serialize(Calendar);
                 sw.WriteLine(jsn);
+            }
+        }
+
+        public static void LoadAllAdmins()
+        {
+            using (StreamReader sr = new StreamReader(_pathAdmins))
+            {
+                string jsn = sr.ReadLine()!;
+                Admins = JsonSerializer.Deserialize<List<AdminClass>>(jsn)!;
+            }
+        }
+
+        public static void LoadAllEmployees()
+        {
+            using (StreamReader sr = new StreamReader(_pathEmployees))
+            {
+                string jsn = sr.ReadLine()!;
+                Admins = JsonSerializer.Deserialize<List<AdminClass>>(jsn)!;
             }
         }
     }
