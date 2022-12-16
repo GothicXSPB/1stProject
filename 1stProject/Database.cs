@@ -42,5 +42,23 @@ namespace _1stProject
                 sw.WriteLine(jsn);
             }
         }
+
+        public static void LoadAllAdmins()
+        {
+            using (StreamReader sr = new StreamReader(_pathAdmins))
+            {
+                string jsn = sr.ReadLine()!;
+                Admins = JsonSerializer.Deserialize<List<AdminClass>>(jsn)!;
+            }
+        }
+
+        public static void LoadAllEmployees()
+        {
+            using (StreamReader sr = new StreamReader(_pathEmployees))
+            {
+                string jsn = sr.ReadLine()!;
+                Admins = JsonSerializer.Deserialize<List<AdminClass>>(jsn)!;
+            }
+        }
     }
 }
