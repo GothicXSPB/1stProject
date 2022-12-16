@@ -12,7 +12,7 @@ namespace _1stProject
 
         public static List<Employee> Employees { get; set; } = new List<Employee>();
 
-        static List<int> Calendar { get; set; } 
+        static Dictionary<int, int[]> Calendar { get; set; } = new Dictionary<int, int[]>();
 
         public static void SaveAllAdmins()
         {
