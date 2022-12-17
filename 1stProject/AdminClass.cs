@@ -31,9 +31,17 @@ namespace _1stProject
             Database.Employees.RemoveAll(employee => employee.Id == id);
         }
 
-        public void AddAdmin(AdminClass admin)
+        public void AddAdmin(int idEmployee)
         {
-            Database.Admins.Add(admin);
+            foreach (var objAdmin in Database.Employees)
+            {
+                if (objAdmin.Id == idEmployee)
+                {
+                    var admin = new AdminClass(objAdmin.Id, objAdmin.Name, objAdmin.TelephoneNumber, objAdmin.TypeOfTimeTable);
+                    Database.Admins.Add(admin);
+                }
+            }
+            DeleteEmployee(idEmployee);
         }
 
         public void ApproveTimeTableForEmployee ()
