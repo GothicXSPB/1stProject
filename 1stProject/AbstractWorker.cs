@@ -3,12 +3,12 @@ namespace _1stProject
 {
     public abstract class AbstractWorker
     {
+
+
         public int Id { get; protected set; }
         public string Name { get; protected set; }
-        public TimeTable TypeOfTimeTable { get; protected set; }
+        public TimeTable TypeOfTimeTable { get; set; }
         public string TelephoneNumber { get; protected set; }
-        
-        public abstract void ChooseYourShiftsAndSendForApprove();
 
         public abstract void AddOvertimeHoursForApprove();
 
