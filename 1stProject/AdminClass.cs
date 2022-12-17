@@ -31,6 +31,7 @@ namespace _1stProject
         public void DeleteEmployee(int id)
         {
             Database.Employees.RemoveAll(employee => employee.Id == id);
+            Database.SaveAllEmployees();
         }
 
         public void AddAdmin(int idEmployee)

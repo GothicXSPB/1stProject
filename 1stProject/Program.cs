@@ -12,11 +12,10 @@ Employee employee5 = new Employee(5, "Artem Titov", "89024569432", TimeTable.Shi
 AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shift5x2);
 
 admin.AddEmployee(employee1);
-
-Database.SaveAllEmployees();
-
 admin.AddEmployee(employee2);
 admin.AddEmployee(employee3);
+admin.AddEmployee(employee4);
+admin.AddEmployee(employee5);
 
 
 admin.DeleteEmployee(2);
