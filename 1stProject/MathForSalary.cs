@@ -1,4 +1,5 @@
-﻿namespace _1stProject
+﻿using _1stProject.Options;
+namespace _1stProject
 {
     static class MathForSalary
     {
