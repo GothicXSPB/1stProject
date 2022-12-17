@@ -20,14 +20,5 @@ namespace _1stProject
         {
 
         }
-        public override bool Equals(object? obj)
-        {
-            return obj is Employee employee &&
-                   base.Equals(obj) &&
-                   Id == employee.Id &&
-                   Name == employee.Name &&
-                   TypeOfTimeTable == employee.TypeOfTimeTable &&
-                   TelephoneNumber == employee.TelephoneNumber;
-        }
     }
 }
