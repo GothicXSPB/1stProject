@@ -1,4 +1,5 @@
-﻿using _1stProject.Options;
+﻿using System.Xml.Linq;
+using _1stProject.Options;
 namespace _1stProject
 {
     public class AdminClass: AbstractWorker
@@ -24,6 +25,7 @@ namespace _1stProject
         public void AddEmployee(Employee employee)
         {
             Database.Employees.Add(employee);
+            Database.SaveAllEmployees();
         }
 
         public void DeleteEmployee(int id)
