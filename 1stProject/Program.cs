@@ -17,5 +17,7 @@ admin.AddEmployee(employee3);
 admin.AddEmployee(employee4);
 admin.AddEmployee(employee5);
 
-
 admin.DeleteEmployee(2);
+
+admin.AddAdmin(1);
+admin.AddAdmin(5);

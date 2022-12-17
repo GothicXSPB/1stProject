@@ -45,6 +45,8 @@ namespace _1stProject
                 }
             }
             DeleteEmployee(idEmployee);
+            Database.SaveAllEmployees();
+            Database.SaveAllAdmins();
         }
 
         public void ApproveTimeTableForEmployee ()
