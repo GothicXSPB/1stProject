@@ -2,19 +2,26 @@
 using _1stProject.Options;
 namespace _1stProject
 {
-    public static class Database
+    public class Company
     {
-        private static string _pathAdmins = @"../admins.txt";
-        private static string _pathEmployees = @"../employees.txt";
-        private static string _pathCalendar = @"../calendar.txt";
+        public string _pathAdmins;
+        public string _pathEmployees;
+        public string _pathCalendar;
+        public List<AdminClass> Admins { get; set; }
+        public List<Employee> Employees { get; set; }
+        public Dictionary<int, int[]> Calendar { get; set; }
 
-        public static List<AdminClass> Admins { get; set; } = new List<AdminClass>();
+        public Company()
+        {
+            Admins = new List<AdminClass>();
+            Employees = new List<Employee>();
+            Calendar = new Dictionary<int, int[]>();
+            _pathAdmins = @"../admins.txt";
+            _pathEmployees = @"../employees.txt";
+            _pathCalendar = @"../calendar.txt";
+        }
 
-        public static List<Employee> Employees { get; set; } = new List<Employee>();
-
-        static Dictionary<int, int[]> Calendar { get; set; } = new Dictionary<int, int[]>();
-
-        public static void SaveAllAdmins()
+        public void SaveAllAdmins()
         {
             using (StreamWriter sw = new StreamWriter(_pathAdmins))
             {
@@ -24,7 +31,7 @@ namespace _1stProject
 
         }
 
-        public static void SaveAllEmployees()
+        public void SaveAllEmployees()
         {
             using (StreamWriter sw = new StreamWriter(_pathEmployees))
             {
@@ -33,8 +40,8 @@ namespace _1stProject
             }
 
         }
-        
-        public static void SaveAllCalendar()
+
+        public void SaveAllCalendar()
         {
             using (StreamWriter sw = new StreamWriter(_pathCalendar))
             {
@@ -43,7 +50,7 @@ namespace _1stProject
             }
         }
 
-        public static void LoadAllAdmins()
+        public void LoadAllAdmins()
         {
             using (StreamReader sr = new StreamReader(_pathAdmins))
             {
@@ -52,12 +59,21 @@ namespace _1stProject
             }
         }
 
-        public static void LoadAllEmployees()
+        public void LoadAllEmployees()
         {
             using (StreamReader sr = new StreamReader(_pathEmployees))
             {
                 string jsn = sr.ReadLine()!;
                 Admins = JsonSerializer.Deserialize<List<AdminClass>>(jsn)!;
+            }
+        }
+
+        public void LoadAllCalendar()
+        {
+            using (StreamReader sr = new StreamReader(_pathCalendar))
+            {
+                string jsn = sr.ReadLine()!;
+                Calendar = JsonSerializer.Deserialize<Dictionary<int, int[]>>(jsn)!;
             }
         }
     }

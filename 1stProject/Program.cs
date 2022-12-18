@@ -1,6 +1,6 @@
 ﻿using _1stProject;
 using _1stProject.Options;
-using static _1stProject.Database;
+using static _1stProject.Company;
 
 
 Employee employee1 = new Employee(1, "Andrey Kokorin", "89032346789", TimeTable.Shift2x2);
