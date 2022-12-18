@@ -9,24 +9,33 @@ namespace _1stProject.Tests
 {
     public class AdminClassTests
     {
-        private Company _company;
+        public Company _company;
+        
+        [SetUp]
+        public void SetUp()
+        {
+            _company = new Company();
+        }
 
         [TestCaseSource(typeof(AddEmployeeTestsCaseSources))]
         public void AddEmployeeTest(List<Employee> expectedEmployees, Employee employee, AdminClass admin)
         {
             admin.AddEmployee(employee);
-
             List<Employee> actualEmployees = _company.Employees;
+            //List<Employee> actualEmployees = admin.AddEmployee(employee);
+
             CollectionAssert.AreEqual(expectedEmployees, actualEmployees);
         }
 
         [TestCaseSource(typeof(DeleteEmployeeTestsCaseSources))]
-        public void DeleteEmployeeTest(List<Employee> expectedEmployees, List<Employee> employees, AdminClass admin)
+        public void DeleteEmployeeTest(List<Employee> expectedEmployees, List<Employee> employees, AdminClass admin, int id)
         {
-            _company.Employees = employees;
-            admin.DeleteEmployee(2);
-            
-            List<Employee> actualEmployees = _company.Employees;
+            admin.AddEmployee(employees[0]);                                    //гдеяэ бнопня!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            admin.AddEmployee(employees[1]);
+            //_company.Employees=employees;
+
+            List<Employee> actualEmployees = admin.DeleteEmployee(id);
+
             CollectionAssert.AreEqual(expectedEmployees, actualEmployees);
         }
 

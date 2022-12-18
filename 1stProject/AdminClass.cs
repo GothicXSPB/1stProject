@@ -25,19 +25,23 @@ namespace _1stProject
 
         }
 
-        public void AddEmployee(Employee employee)
+        public List<Employee> AddEmployee(Employee employee)
         {
             _company.Employees.Add(employee);
             _company.SaveAllEmployees();
+
+            return _company.Employees;
         }
 
-        public void DeleteEmployee(int id)
+        public List<Employee> DeleteEmployee(int id)
         {
             _company.Employees.RemoveAll(employee => employee.Id == id);
             _company.SaveAllEmployees();
+
+            return _company.Employees;
         }
 
-        public void AddAdmin(int idEmployee)
+        public List<AdminClass> AddAdmin(int idEmployee)
         {
             foreach (var objAdmin in _company.Employees)
             {
@@ -50,6 +54,8 @@ namespace _1stProject
             DeleteEmployee(idEmployee);
             _company.SaveAllEmployees();
             _company.SaveAllAdmins();
+
+            return _company.Admins;
         }
 
         public void ApproveTimeTableForEmployee ()
