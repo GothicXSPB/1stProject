@@ -22,7 +22,7 @@ namespace _1stProject.Tests
             admin.AddEmployee(employee1);
 
             List<Employee> expectedEmployees = employees;
-            List<Employee> actualEmployees = Database.Employees;
+            List<Employee> actualEmployees = Company.Employees;
             CollectionAssert.AreEqual(expectedEmployees, actualEmployees);
         }
         [Test]
@@ -33,7 +33,7 @@ namespace _1stProject.Tests
                 new Employee(1, "Andrey", "88005553535", TimeTable.Shift5x2),
             };
 
-            Database.Employees = new List<Employee>()
+            Company.Employees = new List<Employee>()
             {
               new Employee(1, "Andrey", "88005553535", TimeTable.Shift5x2),
               new Employee(2, "Stepan", "88005553535", TimeTable.Shift2x2),
@@ -44,7 +44,7 @@ namespace _1stProject.Tests
             admin.DeleteEmployee(2);
 
             List<Employee> expectedEmployees = employees1;
-            List<Employee> actualEmployees = Database.Employees;
+            List<Employee> actualEmployees = Company.Employees;
             CollectionAssert.AreEqual(expectedEmployees, actualEmployees);
         }
     }
