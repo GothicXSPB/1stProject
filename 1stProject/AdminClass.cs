@@ -3,6 +3,8 @@ namespace _1stProject
 {
     public class AdminClass: AbstractWorker
     {
+        private Company _company;
+
         public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
         {
             Id = id;
