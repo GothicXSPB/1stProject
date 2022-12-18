@@ -34,6 +34,11 @@ namespace _1stProject
             }
         }
 
+        public void DateToNumberDay(DateTime thisdate)
+        {
+            int numberperday = thisdate.DayOfYear;
+        }
+
         public static void SaveAllAdmins()
         {
             using (StreamWriter sw = new StreamWriter(_pathAdmins))
