@@ -3,12 +3,15 @@ namespace _1stProject
 {
     public class AdminClass: AbstractWorker
     {
+        private Company _company;
+
         public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
         {
             Id = id;
             Name = name;
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
+            _company = new Company();
         }
 
         public override void AddOvertimeHoursForApprove()
@@ -23,17 +26,17 @@ namespace _1stProject
 
         public void AddEmployee(Employee employee)
         {
-            Database.Employees.Add(employee);
+            Company.Employees.Add(employee);
         }
 
         public void DeleteEmployee(int id)
         {
-            Database.Employees.RemoveAll(employee => employee.Id == id);
+            Company.Employees.RemoveAll(employee => employee.Id == id);
         }
 
         public void AddAdmin(AdminClass admin)
         {
-            Database.Admins.Add(admin);
+            Company.Admins.Add(admin);
         }
 
         public void ApproveTimeTableForEmployee ()
@@ -84,6 +87,6 @@ namespace _1stProject
         public void MarkWorkersAbsence ()
         {
 
-        }
+        }       
     }
 }
