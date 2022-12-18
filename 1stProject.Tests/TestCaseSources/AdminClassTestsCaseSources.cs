@@ -16,7 +16,11 @@ namespace _1stProject.Tests.TestCaseSourse
 
             AdminClass admin = new AdminClass(4, "Darya", "89301654545", TimeTable.Shift1x3);
 
-            yield return new Object[] { expectedEmployees, employee, admin};
+            var database = new List<Employee>()
+            {
+
+            };
+            yield return new Object[] { expectedEmployees, employee, admin, database};
         }
     }
 

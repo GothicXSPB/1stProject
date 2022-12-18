@@ -9,8 +9,9 @@ namespace _1stProject.Tests
     public class AdminClassTests
     {
         [TestCaseSource(typeof(AddEmployeeTestsCaseSources))]
-        public void AddEmployeeTest(List<Employee> expectedEmployees, Employee employee, AdminClass admin)
+        public void AddEmployeeTest(List<Employee> expectedEmployees, Employee employee, AdminClass admin, List<Employee> database)
         {
+            Database.Employees = database;
             admin.AddEmployee(employee);
 
             List<Employee> actualEmployees = Database.Employees;
