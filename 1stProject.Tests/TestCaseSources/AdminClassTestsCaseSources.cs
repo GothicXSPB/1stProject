@@ -50,20 +50,18 @@ namespace _1stProject.Tests.TestCaseSourse
         {
             List<Employee> expectedEmployees = new List<Employee>()
             {
-                new Employee(2, "Stepan", "88005553535", TimeTable.Shift2x2),
+              new Employee(1, "Andrey", "88005553535", TimeTable.Shift5x2),
             };
 
             List<Employee>  employees = new List<Employee>()
             {
               new Employee(1, "Andrey", "88005553535", TimeTable.Shift5x2),
               new Employee(2, "Stepan", "88005553535", TimeTable.Shift2x2),
-              new Employee(3, "Irina", "88005553535", TimeTable.Shift1x3)
             };
 
-            List<Employee> expectedAdmins = new List<Employee>()
+            List<AdminClass> expectedAdmins = new List<AdminClass>()
             {
-              new Employee(1, "Andrey", "88005553535", TimeTable.Shift5x2),
-              new Employee(3, "Irina", "88005553535", TimeTable.Shift1x3)
+              new AdminClass(2, "Stepan", "88005553535", TimeTable.Shift2x2),
             };
 
 

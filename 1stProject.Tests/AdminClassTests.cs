@@ -9,20 +9,18 @@ namespace _1stProject.Tests
 {
     public class AdminClassTests
     {
-        public Company _company;
+        private Company _companyTest;
         
         [SetUp]
         public void SetUp()
         {
-            _company = new Company();
+            _companyTest = new Company();
         }
 
         [TestCaseSource(typeof(AddEmployeeTestsCaseSources))]
         public void AddEmployeeTest(List<Employee> expectedEmployees, Employee employee, AdminClass admin)
         {
-            admin.AddEmployee(employee);
-            List<Employee> actualEmployees = _company.Employees;
-            //List<Employee> actualEmployees = admin.AddEmployee(employee);
+            List<Employee> actualEmployees = admin.AddEmployee(employee);
 
             CollectionAssert.AreEqual(expectedEmployees, actualEmployees);
         }
@@ -32,7 +30,6 @@ namespace _1stProject.Tests
         {
             admin.AddEmployee(employees[0]);                                    //гдеяэ бнопня!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             admin.AddEmployee(employees[1]);
-            //_company.Employees=employees;
 
             List<Employee> actualEmployees = admin.DeleteEmployee(id);
 
@@ -40,15 +37,14 @@ namespace _1stProject.Tests
         }
 
         [TestCaseSource(typeof(AddAdminTestsCaseSources))]
-        public void AddAdminTest(List<Employee> expectedEmployees, List<Employee> employees, List<Employee> expectedAdmins, AdminClass admin)
+        public void AddAdminTest(List<Employee> expectedEmployees, List<Employee> employees, List<AdminClass> expectedAdmins, AdminClass admin)
         {
-            _company.Employees = employees;
-            admin.AddAdmin(1);
-            admin.AddAdmin(3);
+            admin.AddEmployee(employees[0]);                                    //гдеяэ бнопня!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            admin.AddEmployee(employees[1]);
 
-            List<Employee> actualEmployees = _company.Employees;
-            List<AdminClass> actualAdmins = _company.Admins;
-            CollectionAssert.AreEqual(expectedEmployees, actualEmployees);
+            //List<Employee> actualEmployees = _companyTest.Employees;
+            List<AdminClass> actualAdmins = admin.AddAdmin(2);
+            //CollectionAssert.AreEqual(expectedEmployees, actualEmployees);
 
             CollectionAssert.AreEqual(expectedAdmins, actualAdmins);
         }
