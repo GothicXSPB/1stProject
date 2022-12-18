@@ -5,16 +5,20 @@ namespace _1stProject
 {
     public class Company
     {
+        public string NameCompany { get; set; }
+        public int IDCompany { get; set; }
         public string _pathAdmins;
         public string _pathEmployees;
         public string _pathCalendar;
         public List<AdminClass> Admins { get; set; }
         public List<Employee> Employees { get; set; }
         public Dictionary<int, List<int>> Calendar { get; set; }
-        List<int> SpisokSotrydnikovVSmene = new List<int>() { 0, 0, 0 };
+        List<int> SpisokSotrydnikovVSmene = new List<int>();
 
-        public Company()
+        public Company(string nameCompany, int idCompany)
         {
+            NameCompany = nameCompany;
+            IDCompany = idCompany;
             Admins = new List<AdminClass>();
             Employees = new List<Employee>();
             Calendar = new Dictionary<int, List<int>>();
