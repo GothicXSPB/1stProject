@@ -20,3 +20,7 @@ admin.AddEmployee(employee3);
 
 
 admin.DeleteEmployee(2);
+
+TelegramBotManager telegramBot = new TelegramBotManager();
+
+Console.ReadLine();
