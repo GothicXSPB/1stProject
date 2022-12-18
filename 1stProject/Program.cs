@@ -1,6 +1,6 @@
 ﻿using _1stProject;
 using _1stProject.Options;
-using static _1stProject.Database;
+using static _1stProject.Company;
 
 
 Employee employee1 = new Employee(1, "Andrey Kokorin", "89032346789", TimeTable.Shift2x2);
@@ -13,7 +13,7 @@ AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shi
 
 admin.AddEmployee(employee1);
 
-Database.SaveAllEmployees();
+Company.SaveAllEmployees();
 
 admin.AddEmployee(employee2);
 admin.AddEmployee(employee3);

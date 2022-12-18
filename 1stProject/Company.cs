@@ -2,7 +2,7 @@
 using _1stProject.Options;
 namespace _1stProject
 {
-    public static class Database
+    public class Company
     {
         private static string _pathAdmins = @"../admins.txt";
         private static string _pathEmployees = @"../employees.txt";

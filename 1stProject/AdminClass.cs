@@ -23,17 +23,17 @@ namespace _1stProject
 
         public void AddEmployee(Employee employee)
         {
-            Database.Employees.Add(employee);
+            Company.Employees.Add(employee);
         }
 
         public void DeleteEmployee(int id)
         {
-            Database.Employees.RemoveAll(employee => employee.Id == id);
+            Company.Employees.RemoveAll(employee => employee.Id == id);
         }
 
         public void AddAdmin(AdminClass admin)
         {
-            Database.Admins.Add(admin);
+            Company.Admins.Add(admin);
         }
 
         public void ApproveTimeTableForEmployee ()
@@ -84,6 +84,6 @@ namespace _1stProject
         public void MarkWorkersAbsence ()
         {
 
-        }
+        }       
     }
 }
