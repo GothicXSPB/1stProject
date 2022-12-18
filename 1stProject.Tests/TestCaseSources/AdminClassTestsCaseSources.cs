@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using _1stProject.Options;
+using static _1stProject.Company;
 
 namespace _1stProject.Tests.TestCaseSourse
 {
@@ -16,11 +17,7 @@ namespace _1stProject.Tests.TestCaseSourse
 
             AdminClass admin = new AdminClass(4, "Darya", "89301654545", TimeTable.Shift1x3);
 
-            var database = new List<Employee>()
-            {
-
-            };
-            yield return new Object[] { expectedEmployees, employee, admin, database};
+            yield return new Object[] { expectedEmployees, employee, admin};
         }
     }
 

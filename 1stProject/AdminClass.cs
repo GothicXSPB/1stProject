@@ -27,29 +27,29 @@ namespace _1stProject
 
         public void AddEmployee(Employee employee)
         {
-            Database.Employees.Add(employee);
-            Database.SaveAllEmployees();
+            _company.Employees.Add(employee);
+
         }
 
         public void DeleteEmployee(int id)
         {
-            Database.Employees.RemoveAll(employee => employee.Id == id);
-            Database.SaveAllEmployees();
+            _company.Employees.RemoveAll(employee => employee.Id == id);
+            _company.SaveAllEmployees();
         }
 
         public void AddAdmin(int idEmployee)
         {
-            foreach (var objAdmin in Database.Employees)
+            foreach (var objAdmin in _company.Employees)
             {
                 if (objAdmin.Id == idEmployee)
                 {
                     var admin = new AdminClass(objAdmin.Id, objAdmin.Name, objAdmin.TelephoneNumber, objAdmin.TypeOfTimeTable);
-                    Database.Admins.Add(admin);
+                    _company.Admins.Add(admin);
                 }
             }
             DeleteEmployee(idEmployee);
-            Database.SaveAllEmployees();
-            Database.SaveAllAdmins();
+            _company.SaveAllEmployees();
+            _company.SaveAllAdmins();
         }
 
         public void ApproveTimeTableForEmployee ()
