@@ -16,7 +16,7 @@ namespace _1stProject
 
         List<int> SpisokSotrydnikovVSmene = new List<int>() { 0, 0, 0 };
 
-        void CreateTimetable(int a)
+        public void CreateTimetable(int a)
         {
             if (a % 4 == 0)
             {

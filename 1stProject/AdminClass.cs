@@ -3,6 +3,8 @@ namespace _1stProject
 {
     public class AdminClass: AbstractWorker
     {
+        private Database _database;
+
         public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
         {
             Id = id;
@@ -19,6 +21,11 @@ namespace _1stProject
         public override void SwapShifts()
         {
 
+        }
+
+        public void CreateNullTimeTable(int year)
+        {
+            _database.CreateTimetable(year);
         }
 
         public void AddEmployee(Employee employee)
