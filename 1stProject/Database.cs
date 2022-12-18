@@ -2,7 +2,7 @@
 using _1stProject.Options;
 namespace _1stProject
 {
-    public static class Database
+    public class Database
     {
         private static string _pathAdmins = @"../admins.txt";
         private static string _pathEmployees = @"../employees.txt";
@@ -13,6 +13,32 @@ namespace _1stProject
         public static List<Employee> Employees { get; set; } = new List<Employee>();
 
         static Dictionary<int, int[]> Calendar { get; set; } = new Dictionary<int, int[]>();
+
+        List<int> SpisokSotrydnikovVSmene = new List<int>() { 0, 0, 0 };
+
+        void CreateTimetable(int a)
+        {
+            if (a % 4 == 0)
+            {
+                Dictionary<int, List<int>> Calendar = new Dictionary<int, List<int>>();
+
+                for (int i = 1; i <= 366; i++)
+                {
+                    Calendar.Add(i, SpisokSotrydnikovVSmene);
+
+                }
+            }
+            else
+            {
+                Dictionary<int, List<int>> Calendar = new Dictionary<int, List<int>>();
+
+                for (int i = 1; i <= 365; i++)
+                {
+                    Calendar.Add(i, SpisokSotrydnikovVSmene);
+
+                }
+            }
+        }
 
         public static void SaveAllAdmins()
         {
