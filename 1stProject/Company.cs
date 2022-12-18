@@ -3,27 +3,29 @@ using _1stProject.Options;
 
 namespace _1stProject
 {
-<<<<<<< HEAD:1stProject/Database.cs
-    public class Database
-=======
     public class Company
->>>>>>> master:1stProject/Company.cs
     {
+        public string NameCompany { get; set; }
+        public int IDCompany { get; set; }
         public string _pathAdmins;
         public string _pathEmployees;
         public string _pathCalendar;
         public List<AdminClass> Admins { get; set; }
         public List<Employee> Employees { get; set; }
-        public Dictionary<int, int[]> Calendar { get; set; }
+        public Dictionary<int, List<int>> Calendar { get; set; }
+        List<int> SpisokSotrydnikovVSmene = new List<int>();
 
-<<<<<<< HEAD:1stProject/Database.cs
-        public static List<AdminClass> Admins { get; set; } = new List<AdminClass>();
-
-        public static List<Employee> Employees { get; set; } = new List<Employee>();
-
-        static Dictionary<int, List<int>> Calendar { get; set; } = new Dictionary<int, List<int>>();
-
-        List<int> SpisokSotrydnikovVSmene = new List<int>() { 0, 0, 0 };
+        public Company(string nameCompany, int idCompany)
+        {
+            NameCompany = nameCompany;
+            IDCompany = idCompany;
+            Admins = new List<AdminClass>();
+            Employees = new List<Employee>();
+            Calendar = new Dictionary<int, List<int>>();
+            _pathAdmins = @"../admins.txt";
+            _pathEmployees = @"../employees.txt";
+            _pathCalendar = @"../calendar.txt";
+        }
 
         public void CreateTimetable(int a)
         {
@@ -46,16 +48,6 @@ namespace _1stProject
         public void DateToNumberDay(DateTime thisdate)
         {
             int numberperday = thisdate.DayOfYear;
-=======
-        public Company()
-        {
-            Admins = new List<AdminClass>();
-            Employees = new List<Employee>();
-            Calendar = new Dictionary<int, int[]>();
-            _pathAdmins = @"../admins.txt";
-            _pathEmployees = @"../employees.txt";
-            _pathCalendar = @"../calendar.txt";
->>>>>>> master:1stProject/Company.cs
         }
 
         public void SaveAllAdmins()
@@ -110,7 +102,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathCalendar))
             {
                 string jsn = sr.ReadLine()!;
-                Calendar = JsonSerializer.Deserialize<Dictionary<int, int[]>>(jsn)!;
+                Calendar = JsonSerializer.Deserialize< Dictionary<int, List<int>>> (jsn)!;
             }
         }
     }
