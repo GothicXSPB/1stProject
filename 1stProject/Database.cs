@@ -60,5 +60,14 @@ namespace _1stProject
                 Admins = JsonSerializer.Deserialize<List<AdminClass>>(jsn)!;
             }
         }
+
+        public static void LoadAllCalendar()
+        {
+            using (StreamReader sr = new StreamReader(_pathCalendar))
+            {
+                string jsn = sr.ReadLine()!;
+                Calendar = JsonSerializer.Deserialize<Dictionary<int, int[]>>(jsn)!;
+            }
+        }
     }
 }
