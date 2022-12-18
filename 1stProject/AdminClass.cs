@@ -28,7 +28,7 @@ namespace _1stProject
         public void AddEmployee(Employee employee)
         {
             _company.Employees.Add(employee);
-
+            _company.SaveAllEmployees();
         }
 
         public void DeleteEmployee(int id)
