@@ -57,7 +57,6 @@ namespace _1stProject
                 string jsn = JsonSerializer.Serialize(Admins);
                 sw.WriteLine(jsn);
             }
-
         }
 
         public void SaveAllEmployees()
@@ -67,7 +66,6 @@ namespace _1stProject
                 string jsn = JsonSerializer.Serialize(Employees);
                 sw.WriteLine(jsn);
             }
-
         }
 
         public void SaveAllCalendar()
