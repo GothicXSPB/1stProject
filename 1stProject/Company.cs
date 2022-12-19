@@ -33,14 +33,14 @@ namespace _1stProject
             {
                 for (int i = 1; i <= 366; i++)
                 {
-                    Calendar.Add(i, SpisokSotrydnikovVSmene);
+                    Calendar.Add(i, new List<int>());
                 }
             }
             else
             {
                 for (int i = 1; i <= 365; i++)
                 {
-                    Calendar.Add(i, SpisokSotrydnikovVSmene);
+                    Calendar.Add(i, new List<int>());
                 }
             }
         }
