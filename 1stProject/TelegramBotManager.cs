@@ -9,9 +9,10 @@ using Telegram.Bot;
 
 namespace _1stProject
 {
-    internal class TelegramBotManager
+    public class TelegramBotManager
     {
         ITelegramBotClient _bot;
+        public long id;
 
         public TelegramBotManager()
         {
@@ -38,6 +39,7 @@ namespace _1stProject
         public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
            _bot.SendTextMessageAsync(update.Message.Chat.Id, $"Привет, " + update.Message.Chat.FirstName);
+            id = update.Message.Chat.Id;
         }
 
         public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
