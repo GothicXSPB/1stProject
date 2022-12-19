@@ -10,8 +10,8 @@ namespace _1stProject
         public string _pathAdmins;
         public string _pathEmployees;
         public string _pathCalendar;
-        public List<AdminClass> Admins { get; set; }
-        public List<Employee> Employees { get; set; }
+        public List<int> Admins { get; set; }
+        public List<int> Employees { get; set; }
         public Dictionary<int, List<int>> Calendar { get; set; }
         List<int> SpisokSotrydnikovVSmene = new List<int>();
 
