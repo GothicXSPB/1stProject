@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Globalization;
+using System.Text.Json;
 using _1stProject.Options;
 
 namespace _1stProject
@@ -45,6 +46,29 @@ namespace _1stProject
                 string jsn = sr.ReadLine()!;
                 allWorker = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(jsn)!;
             }
+        }
+
+        public void AddNewCompany(int idCompany, string nameCompany)
+        {
+            LoadAllCompany();
+            allCompany.Add(idCompany, nameCompany);
+            SaveAllCompany();
+        }
+
+        public void AddNewWorker(int idWorker, int[] idCompany)
+        {
+            LoadAllWorker();
+
+            List<int> whatsCompany = new List<int>();
+
+            for (int i = 0; i < idCompany.Length; i++)
+            {
+                whatsCompany.Add(idCompany[i]);
+            }
+
+            allWorker.Add(idWorker, whatsCompany);
+
+            SaveAllWorker();
         }
     }
 }
