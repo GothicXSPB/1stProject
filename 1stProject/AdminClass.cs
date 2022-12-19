@@ -5,7 +5,7 @@ namespace _1stProject
     {
         private Company _company;
 
-        public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
+        public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable )
         {
             Id = id;
             Name = name;
@@ -26,27 +26,28 @@ namespace _1stProject
 
         public void CreateNullTimeTable(int year)
         {
-            _database.CreateTimetable(year);
+            _company.CreateTimetable(year);
         }
 
         public void AddEmployee(Employee employee)
         {
-            Company.Employees.Add(employee);
+            _company.Employees.Add(employee);
         }
 
         public void DeleteEmployee(int id)
         {
-            Company.Employees.RemoveAll(employee => employee.Id == id);
+            _company.Employees.RemoveAll(employee => employee.Id == id);
         }
 
         public void AddAdmin(AdminClass admin)
         {
-            Company.Admins.Add(admin);
+            _company.Admins.Add(admin);
         }
 
         public void ApproveTimeTableForEmployee ()
         {
 
+            
         }
 
         public void ApproveOvertime ()

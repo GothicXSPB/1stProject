@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using _1stProject.Options;
+using System.Collections.Generic;
 
 namespace _1stProject
 {
@@ -32,6 +33,16 @@ namespace _1stProject
                 {
                     Calendar.Add(i, SpisokSotrydnikovVSmene);
                 }
+            }
+        }
+
+        public void ApproveTimeTableForEmployee(int id, int firstday)
+        {
+
+            for (int i = 0; i <= Calendar.Count; i++)
+            {
+                SpisokSotrydnikovVSmene.Add(id);
+                Calendar.Add(i, SpisokSotrydnikovVSmene);
             }
         }
 
@@ -92,7 +103,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathCalendar))
             {
                 string jsn = sr.ReadLine()!;
-                Calendar = JsonSerializer.Deserialize<Dictionary<int, int[]>>(jsn)!;
+                Calendar = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(jsn)!;
             }
         }
     }

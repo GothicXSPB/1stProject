@@ -45,6 +45,8 @@ namespace _1stProject
             }
         }
 
+
+
         public void DateToNumberDay(DateTime thisdate)
         {
             int numberperday = thisdate.DayOfYear;
