@@ -92,7 +92,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathCalendar))
             {
                 string jsn = sr.ReadLine()!;
-                Calendar = JsonSerializer.Deserialize<Dictionary<int, int[]>>(jsn)!;
+                Calendar = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(jsn)!;
             }
         }
     }
