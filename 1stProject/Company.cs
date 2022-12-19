@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using _1stProject.Options;
 
 namespace _1stProject
 {
@@ -10,10 +9,9 @@ namespace _1stProject
         public string _pathAdmins;
         public string _pathEmployees;
         public string _pathCalendar;
-        public List<AdminClass> Admins { get; set; }
-        public List<Employee> Employees { get; set; }
+        public List<int> Admins { get; set; }
+        public List<int> Employees { get; set; }
         public Dictionary<int, List<int>> Calendar { get; set; }
-        List<int> SpisokSotrydnikovVSmene = new List<int>();
 
         public Company(string nameCompany, int idCompany)
         {
@@ -22,9 +20,9 @@ namespace _1stProject
             Admins = new List<AdminClass>();
             Employees = new List<Employee>();
             Calendar = new Dictionary<int, List<int>>();
-            _pathAdmins = @"../admins.txt";
-            _pathEmployees = @"../employees.txt";
-            _pathCalendar = @"../calendar.txt";
+            _pathAdmins = $@"../{nameCompany}Admins.txt";
+            _pathEmployees = $@"../{nameCompany}Employees.txt";
+            _pathCalendar = $@"../{nameCompany}Calendar.txt";
         }
 
         public void CreateTimetable(int a)
@@ -33,14 +31,14 @@ namespace _1stProject
             {
                 for (int i = 1; i <= 366; i++)
                 {
-                    Calendar.Add(i, SpisokSotrydnikovVSmene);
+                    Calendar.Add(i, new List<int>());
                 }
             }
             else
             {
                 for (int i = 1; i <= 365; i++)
                 {
-                    Calendar.Add(i, SpisokSotrydnikovVSmene);
+                    Calendar.Add(i, new List<int>());
                 }
             }
         }
@@ -57,7 +55,6 @@ namespace _1stProject
                 string jsn = JsonSerializer.Serialize(Admins);
                 sw.WriteLine(jsn);
             }
-
         }
 
         public void SaveAllEmployees()
@@ -67,7 +64,6 @@ namespace _1stProject
                 string jsn = JsonSerializer.Serialize(Employees);
                 sw.WriteLine(jsn);
             }
-
         }
 
         public void SaveAllCalendar()
@@ -84,7 +80,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathAdmins))
             {
                 string jsn = sr.ReadLine()!;
-                Admins = JsonSerializer.Deserialize<List<AdminClass>>(jsn)!;
+                Admins = JsonSerializer.Deserialize<List<int>>(jsn)!;
             }
         }
 
@@ -93,7 +89,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathEmployees))
             {
                 string jsn = sr.ReadLine()!;
-                Admins = JsonSerializer.Deserialize<List<AdminClass>>(jsn)!;
+                Admins = JsonSerializer.Deserialize<List<int>>(jsn)!;
             }
         }
 
@@ -102,7 +98,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathCalendar))
             {
                 string jsn = sr.ReadLine()!;
-                Calendar = JsonSerializer.Deserialize< Dictionary<int, List<int>>> (jsn)!;
+                Calendar = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(jsn)!;
             }
         }
     }
