@@ -2,7 +2,7 @@
 using _1stProject.Options;
 using static _1stProject.Company;
 
-
+Company company = new Company("1", 2);
 Employee employee1 = new Employee(1, "Andrey Kokorin", "89032346789", TimeTable.Shift2x2);
 Employee employee2 = new Employee(2, "Maxim Ivanov", "88001039456", TimeTable.Shift5x2);
 Employee employee3 = new Employee(3, "Irina Popova", "89152745869", TimeTable.Shift2x2);
@@ -13,7 +13,7 @@ AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shi
 
 admin.AddEmployee(employee1);
 
-Company.SaveAllEmployees();
+company.SaveAllEmployees();
 
 admin.AddEmployee(employee2);
 admin.AddEmployee(employee3);
