@@ -5,7 +5,7 @@ namespace _1stProject
     {
         private Company _company;
 
-        public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
+        public AdminClass(long id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
         {
             Id = id;
             Name = name;
@@ -92,6 +92,22 @@ namespace _1stProject
         public void MarkWorkersAbsence ()
         {
 
-        }       
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is AdminClass @class &&
+                   base.Equals(obj) &&
+                   Id == @class.Id &&
+                   Name == @class.Name &&
+                   TypeOfTimeTable == @class.TypeOfTimeTable &&
+                   TelephoneNumber == @class.TelephoneNumber &&
+                   EqualityComparer<Company>.Default.Equals(_company, @class._company);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, TypeOfTimeTable, TelephoneNumber, _company);
+        }
     }
 }

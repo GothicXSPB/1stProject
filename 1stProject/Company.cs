@@ -9,17 +9,17 @@ namespace _1stProject
         public string _pathAdmins;
         public string _pathEmployees;
         public string _pathCalendar;
-        public List<int> IdAdmins { get; set; }
-        public List<int> IdEmployees { get; set; }
-        public Dictionary<int, List<int>> Calendar { get; set; }
+        public List<long> IdAdmins { get; set; }
+        public List<long> IdEmployees { get; set; }
+        public Dictionary<int, List<long>> Calendar { get; set; }
 
         public Company(string nameCompany, int idCompany)
         {
             NameCompany = nameCompany;
             IDCompany = idCompany;
-            IdAdmins = new List<int>();
-            IdEmployees = new List<int>();
-            Calendar = new Dictionary<int, List<int>>();
+            IdAdmins = new List<long>();
+            IdEmployees = new List<long>();
+            Calendar = new Dictionary<int, List<long>>();
             _pathAdmins = $@"../{nameCompany}Admins.txt";
             _pathEmployees = $@"../{nameCompany}Employees.txt";
             _pathCalendar = $@"../{nameCompany}Calendar.txt";
@@ -31,14 +31,14 @@ namespace _1stProject
             {
                 for (int i = 1; i <= 366; i++)
                 {
-                    Calendar.Add(i, new List<int>());
+                    Calendar.Add(i, new List<long>());
                 }
             }
             else
             {
                 for (int i = 1; i <= 365; i++)
                 {
-                    Calendar.Add(i, new List<int>());
+                    Calendar.Add(i, new List<long>());
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathAdmins))
             {
                 string jsn = sr.ReadLine()!;
-                IdAdmins = JsonSerializer.Deserialize<List<int>>(jsn)!;
+                IdAdmins = JsonSerializer.Deserialize<List<long>>(jsn)!;
             }
         }
 
@@ -89,7 +89,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathEmployees))
             {
                 string jsn = sr.ReadLine()!;
-                IdAdmins = JsonSerializer.Deserialize<List<int>>(jsn)!;
+                IdAdmins = JsonSerializer.Deserialize<List<long>>(jsn)!;
             }
         }
 
@@ -98,7 +98,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathCalendar))
             {
                 string jsn = sr.ReadLine()!;
-                Calendar = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(jsn)!;
+                Calendar = JsonSerializer.Deserialize<Dictionary<int, List<long>>>(jsn)!;
             }
         }
     }
