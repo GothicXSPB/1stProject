@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using _1stProject.Options;
 
 namespace _1stProject
 {
@@ -13,7 +12,6 @@ namespace _1stProject
         public List<int> Admins { get; set; }
         public List<int> Employees { get; set; }
         public Dictionary<int, List<int>> Calendar { get; set; }
-        List<int> SpisokSotrydnikovVSmene = new List<int>();
 
         public Company(string nameCompany, int idCompany)
         {
@@ -82,7 +80,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathAdmins))
             {
                 string jsn = sr.ReadLine()!;
-                Admins = JsonSerializer.Deserialize<List<AdminClass>>(jsn)!;
+                Admins = JsonSerializer.Deserialize<List<int>>(jsn)!;
             }
         }
 
@@ -91,7 +89,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathEmployees))
             {
                 string jsn = sr.ReadLine()!;
-                Admins = JsonSerializer.Deserialize<List<AdminClass>>(jsn)!;
+                Admins = JsonSerializer.Deserialize<List<int>>(jsn)!;
             }
         }
 
@@ -100,7 +98,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathCalendar))
             {
                 string jsn = sr.ReadLine()!;
-                Calendar = JsonSerializer.Deserialize< Dictionary<int, List<int>>> (jsn)!;
+                Calendar = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(jsn)!;
             }
         }
     }
