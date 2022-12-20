@@ -17,8 +17,8 @@ namespace _1stProject
         {
             NameCompany = nameCompany;
             IDCompany = idCompany;
-            Admins = new List<AdminClass>();
-            Employees = new List<Employee>();
+            Admins = new List<int>();
+            Employees = new List<int>();
             Calendar = new Dictionary<int, List<int>>();
             _pathAdmins = $@"../{nameCompany}Admins.txt";
             _pathEmployees = $@"../{nameCompany}Employees.txt";
