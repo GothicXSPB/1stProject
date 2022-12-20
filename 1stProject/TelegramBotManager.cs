@@ -41,11 +41,25 @@ namespace _1stProject
         public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             Console.WriteLine(update.Message.Chat.FirstName + " " + update.Message.Chat.Id);
+            if (update.Message.Text == "/keyboard")
+            {
+                ReplyKeyboardMarkup keyboard = new(new[]
+                {
+            new KeyboardButton[] {"Меню"},
+            new KeyboardButton[] {"1", "2"}
+        })
+                {
+                    ResizeKeyboard = true
+                };
+                await botClient.SendTextMessageAsync(update.Message.Chat.Id, "Выбирай:", replyMarkup: keyboard);
+                return;
+            }
 
             if (update.Message.Text == "/start")
             {
                 _bot.SendTextMessageAsync(update.Message.Chat.Id, $"Привет, я телеграмм бот менеджер,напиши" + "\r\n" + "/keyboard" + "\r\n" +
                     $"1-Создать новую компанию" + "\r\n" + $"2-Зайти в существующую компанию");
+                return;
             }
             if (update.Message.Text == "Меню")
             {
@@ -53,21 +67,26 @@ namespace _1stProject
                     "/keyboard" + "\r\n" +
                     $"1-Создать новую компанию" + "\r\n" +
                     $"2-Зайти в существующую компанию");
+                return;
             }
             if (update.Message.Text == "1")
             {
                 _bot.SendTextMessageAsync(update.Message.Chat.Id, $"Введи имя компании");
+                return;
             }
             if (update.Message.Text != null)
             {
-                Company company1 = new Company(update.Message.Text, 11234);
+                Company company1 = new Company(update.Message.Text, 11234); //(long)Convert.ToDouble(update.Message.Text)
                 AdminClass admin = new AdminClass(update.Message.Chat.Id, update.Message.Chat.FirstName, "123", 0);
+                admin.AddAdmin(admin);
                 Console.WriteLine(update.Message.Chat.FirstName + "Создал компанию " + company1.NameCompany + " " + company1.IDCompany);
 
                 _bot.SendTextMessageAsync(update.Message.Chat.Id, $"Твоя комания:" + "\r\n" +
                         "Name:" + company1.NameCompany + "\r\n" + "Id" + company1.IDCompany);
+                return;
             }
         }
+
 
         public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
