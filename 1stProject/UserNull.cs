@@ -7,11 +7,11 @@ namespace _1stProject
     {
         Storage storage = new Storage();
 
-        public void WhoThisUser(TelegramBotManager id)
+        public void CheckIsThisUserExistsInAllTgBase (TelegramBotManager id)
         {
-            bool a = storage.allWorker.ContainsKey(id);
+            bool workerIsExists = storage.allWorker.ContainsKey(id);
 
-            if (a is true)
+            if (workerIsExists is true)
             {
                 ///по логике, тут кнопки с выбором компании
             }
