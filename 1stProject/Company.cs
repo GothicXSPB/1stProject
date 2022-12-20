@@ -4,6 +4,7 @@ namespace _1stProject
 {
     public class Company
     {
+        private Storage _storage;
         public string NameCompany { get; set; }
         public int IDCompany { get; set; }
         public string _pathAdmins;
@@ -23,6 +24,7 @@ namespace _1stProject
             _pathAdmins = $@"../{nameCompany}Admins.txt";
             _pathEmployees = $@"../{nameCompany}Employees.txt";
             _pathCalendar = $@"../{nameCompany}Calendar.txt";
+            _storage = Storage.GetInstance();
         }
 
         public void CreateTimetable(int a)
