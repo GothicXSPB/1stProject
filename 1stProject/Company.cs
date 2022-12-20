@@ -43,6 +43,30 @@ namespace _1stProject
             }
         }
 
+        public void ApproveTimeTableForEmployee(int firstDay, Employee employee)
+        {
+            if (employee.TypeOfTimeTable == Options.TimeTable.Shift2x2)
+            {
+                for (int i = firstDay; i <= Calendar.Count - 2; i += 4)
+                {
+                    Calendar[i].Add(employee.Id);
+                    Calendar[i + 1].Add(employee.Id);
+                }
+            }
+            if (employee.TypeOfTimeTable == Options.TimeTable.Shift1x3)
+            {
+
+                for (int i = firstDay; i <= Calendar.Count - 2; i += 4)
+                {
+                    Calendar[i].Add(employee.Id);                    
+                }
+            }
+            if (employee.TypeOfTimeTable == Options.TimeTable.Shift5x2)
+            {
+
+            }
+        }
+
         public void DateToNumberDay(DateTime thisdate)
         {
             int numberperday = thisdate.DayOfYear;
