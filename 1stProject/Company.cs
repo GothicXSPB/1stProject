@@ -43,11 +43,13 @@ namespace _1stProject
             }
         }
 
-        public void ApproveTimeTableForEmployee(int firstDay, Employee employee)
+        public void ApproveTimeTableForEmployee(int day, int month, int year, Employee employee)
         {
+            DateTime dt = new DateTime(year, month, day);
+
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift2x2)
             {
-                for (int i = firstDay; i <= Calendar.Count - 2; i += 4)
+                for (int i = day; i <= Calendar.Count - 2; i += 4)
                 {
                     Calendar[i].Add(employee.Id);
                     Calendar[i + 1].Add(employee.Id);
@@ -55,17 +57,30 @@ namespace _1stProject
             }
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift1x3)
             {
-
-                for (int i = firstDay; i <= Calendar.Count - 2; i += 4)
+                for (int i = day; i <= Calendar.Count - 2; i += 4)
                 {
-                    Calendar[i].Add(employee.Id);                    
+                    Calendar[i].Add(employee.Id);
                 }
             }
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift5x2)
             {
-
+                if(dt.DayOfWeek == DayOfWeek.Monday)
+                {
+                    for (int i = day; i <= Calendar.Count - 2; i += 7)
+                    {
+                        Calendar[i].Add(employee.Id);
+                        Calendar[i + 1].Add(employee.Id);
+                        Calendar[i + 2].Add(employee.Id);
+                        Calendar[i + 3].Add(employee.Id);
+                        Calendar[i + 5].Add(employee.Id);
+                    }
+                }
             }
         }
+
+
+
+
 
         public void DateToNumberDay(DateTime thisdate)
         {
