@@ -11,7 +11,7 @@ namespace _1stProject
             Name = name;
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
-            _company = new Company();
+            _company = new Company("1",1);
         }
 
         public override void AddOvertimeHoursForApprove()
