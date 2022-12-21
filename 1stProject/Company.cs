@@ -75,6 +75,10 @@ namespace _1stProject
                         Calendar[i + 5].Add(employee.Id);
                     }
                 }
+                else
+                {
+                    Console.WriteLine("Work week must start on Monday");
+                }
             }
         }
 
