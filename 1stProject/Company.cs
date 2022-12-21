@@ -43,30 +43,38 @@ namespace _1stProject
             }
         }
 
-        public void ApproveTimeTableForEmployee(int day, int month, int year, Employee employee)
+        public void ApproveTimeTableForEmployee(int day, int month, int year, Employee employee, int firstDay)
         {
             DateTime dt = new DateTime(year, month, day);
 
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift2x2)
             {
-                for (int i = day+1; i <= Calendar.Count - 1; i += 4)
+                if (firstDay == Calendar.Count - 1)
                 {
-                    Calendar[i].Add(employee.Id);
-                    Calendar[i - 1].Add(employee.Id);
+                    Calendar[firstDay].Add(employee.Id);
+                }
+                else
+                {
+                    for (int i = firstDay + 1; i <= Calendar.Count - 1; i += 4)
+                    {
+                        Calendar[i].Add(employee.Id);
+                        Calendar[i - 1].Add(employee.Id);
+                    }
+
                 }
             }
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift1x3)
             {
-                for (int i = day; i <= Calendar.Count - 1; i += 4)
+                for (int i = firstDay; i <= Calendar.Count - 1; i += 4)
                 {
                     Calendar[i].Add(employee.Id);
                 }
             }
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift5x2)
             {
-                if(dt.DayOfWeek == DayOfWeek.Monday)
+                if (dt.DayOfWeek == DayOfWeek.Monday)
                 {
-                    for (int i = day+4; i <= Calendar.Count - 1; i += 7)
+                    for (int i = firstDay + 4; i <= Calendar.Count - 1; i += 7)
                     {
                         Calendar[i].Add(employee.Id);
                         Calendar[i - 1].Add(employee.Id);
