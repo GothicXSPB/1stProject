@@ -9,16 +9,16 @@ namespace _1stProject
         public string _pathAdmins;
         public string _pathEmployees;
         public string _pathCalendar;
-        public List<int> Admins { get; set; }
-        public List<int> Employees { get; set; }
+        public List<long> Admins { get; set; }
+        public List<long> Employees { get; set; }
         public Dictionary<int, List<int>> Calendar { get; set; }
 
         public Company(string nameCompany, int idCompany)
         {
             NameCompany = nameCompany;
             IDCompany = idCompany;
-            Admins = new List<int>();
-            Employees = new List<int>();
+            Admins = new List<long>();
+            Employees = new List<long>();
             Calendar = new Dictionary<int, List<int>>();
             _pathAdmins = $@"../{nameCompany}Admins.txt";
             _pathEmployees = $@"../{nameCompany}Employees.txt";
