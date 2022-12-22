@@ -6,8 +6,8 @@ namespace _1stProject
 {
     public class Storage
     {
-        Dictionary<int, string> allCompany = new Dictionary<int, string>();
-        Dictionary<int, List<int>> allWorker = new Dictionary<int, List<int>>();
+        public Dictionary<int, string> allCompany = new Dictionary<int, string>();
+        public Dictionary<long, List<int>> allWorker = new Dictionary<long, List<int>>();
 
         public string _pathAllCompany = @"../InformationAllCompany/AllCompany.txt";
         public string _pathAllWorker = @"../InformationAllWorker/AllWorker.txt";
