@@ -4,6 +4,7 @@ namespace _1stProject
 {
     public class Company
     {
+        private Storage _storage;
         public string NameCompany { get; set; }
         public int IDCompany { get; set; }
         public string _pathAdmins;

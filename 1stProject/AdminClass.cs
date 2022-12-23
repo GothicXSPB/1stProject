@@ -4,6 +4,7 @@ namespace _1stProject
     public class AdminClass: AbstractWorker
     {
         private Company _company;
+        private Storage _storage;
 
         public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
         {
@@ -12,6 +13,7 @@ namespace _1stProject
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
             _company = new Company("1",1);
+            _storage = Storage.GetInstance();
         }
 
         public override void AddOvertimeHoursForApprove()

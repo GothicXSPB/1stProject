@@ -6,17 +6,36 @@ namespace _1stProject
 {
     public class Storage
     {
-        public Dictionary<int, string> allCompany = new Dictionary<int, string>();
-        public Dictionary<long, List<int>> allWorker = new Dictionary<long, List<int>>();
+        Dictionary<int, string> AllCompany { get; set; }
+        Dictionary<int, List<int>> AllWorker {get; set; }
+        public string _pathAllCompany  { get; set; }
+        public string _pathAllWorker { get; set; }
 
-        public string _pathAllCompany = @"../InformationAllCompany/AllCompany.txt";
-        public string _pathAllWorker = @"../InformationAllWorker/AllWorker.txt";
+        private static Storage _storage;
+
+        private Storage()
+        {
+            AllCompany = new Dictionary<int, string>();
+            AllWorker = new Dictionary<int, List<int>>();
+            _pathAllCompany = @"../InformationAllCompany/AllCompany.txt";
+            _pathAllWorker = @"../InformationAllWorker/AllWorker.txt";
+        }
+
+
+        public static Storage GetInstance()
+        {
+            if (_storage == null)
+            {
+                _storage = new Storage();
+            }
+            return _storage;
+        }
 
         public void SaveAllCompany()
         {
             using (StreamWriter sw = new StreamWriter(_pathAllCompany))
             {
-                string jsn = JsonSerializer.Serialize(allCompany);
+                string jsn = JsonSerializer.Serialize(AllCompany);
                 sw.WriteLine(jsn);
             }
         }
@@ -25,7 +44,7 @@ namespace _1stProject
         {
             using (StreamWriter sw = new StreamWriter(_pathAllWorker))
             {
-                string jsn = JsonSerializer.Serialize(allWorker);
+                string jsn = JsonSerializer.Serialize(AllWorker);
                 sw.WriteLine(jsn);
             }
         }
@@ -35,7 +54,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathAllCompany))
             {
                 string jsn = sr.ReadLine()!;
-                allCompany = JsonSerializer.Deserialize<Dictionary<int, string>>(jsn)!;
+                AllCompany = JsonSerializer.Deserialize<Dictionary<int, string>>(jsn)!;
             }
         }
 
@@ -44,14 +63,14 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathAllWorker))
             {
                 string jsn = sr.ReadLine()!;
-                allWorker = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(jsn)!;
+                AllWorker = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(jsn)!;
             }
         }
 
         public void AddNewCompany(int idCompany, string nameCompany)
         {
             LoadAllCompany();
-            allCompany.Add(idCompany, nameCompany);
+            AllCompany.Add(idCompany, nameCompany);
             SaveAllCompany();
         }
 
@@ -66,7 +85,7 @@ namespace _1stProject
                 whatsCompany.Add(idCompany[i]);
             }
 
-            allWorker.Add(idWorker, whatsCompany);
+            AllWorker.Add(idWorker, whatsCompany);
 
             SaveAllWorker();
         }
