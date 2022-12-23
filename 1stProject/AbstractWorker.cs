@@ -5,7 +5,7 @@ namespace _1stProject
     {
 
 
-        public int Id { get; protected set; }
+        public long Id { get; protected set; }
         public string Name { get; protected set; }
         public TimeTable TypeOfTimeTable { get; set; }
         public string TelephoneNumber { get; protected set; }
@@ -51,6 +51,11 @@ namespace _1stProject
                    Name == worker.Name &&
                    TypeOfTimeTable == worker.TypeOfTimeTable &&
                    TelephoneNumber == worker.TelephoneNumber;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, TypeOfTimeTable, TelephoneNumber);
         }
     }
 }

@@ -9,17 +9,17 @@ Employee employee4 = new Employee(4, "Katerina Apo", "84959238456", TimeTable.Sh
 Employee employee5 = new Employee(5, "Artem Titov", "89024569432", TimeTable.Shift1x3);
 Company company = new Company("Мяу", 3);
 
-AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shift5x2);
+//AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shift5x2);
 
-admin.AddEmployee(employee1);
+//admin.AddEmployee(employee1);
 
-company.SaveAllEmployees();
+//company.SaveAllEmployees();
 
-admin.AddEmployee(employee2);
-admin.AddEmployee(employee3);
+//admin.AddEmployee(employee2);
+//admin.AddEmployee(employee3);
 
 
-admin.DeleteEmployee(2);
+//admin.DeleteEmployee(2);
 
 TelegramBotManager telegramBot = new TelegramBotManager();
 

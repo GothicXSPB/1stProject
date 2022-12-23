@@ -6,7 +6,7 @@ namespace _1stProject
         private Company _company;
         private Storage _storage;
 
-        public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable )
+        public AdminClass(long id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
         {
             Id = id;
             Name = name;
@@ -33,17 +33,23 @@ namespace _1stProject
 
         public void AddEmployee(Employee employee)
         {
-            _company.IdEmployees.Add(employee);
+
+            _company.IdEmployees.Add(employee.Id);
+            _company.SaveAllEmployees();
         }
 
         public void DeleteEmployee(int id)
         {
-            _company.IdEmployees.RemoveAll(employee => employee.Id == id);
+
+            _company.IdEmployees.RemoveAll(Id=> Id == id);
+            _company.SaveAllAdmins();
         }
 
         public void AddAdmin(AdminClass admin)
         {
-            _company.IdAdmins.Add(admin);
+
+            _company.IdAdmins.Add(admin.Id);
+            _company.SaveAllAdmins();
         }
 
         public void ApproveTimeTableForEmployee ()
@@ -95,6 +101,22 @@ namespace _1stProject
         public void MarkWorkersAbsence ()
         {
 
-        }       
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is AdminClass @class &&
+                   base.Equals(obj) &&
+                   Id == @class.Id &&
+                   Name == @class.Name &&
+                   TypeOfTimeTable == @class.TypeOfTimeTable &&
+                   TelephoneNumber == @class.TelephoneNumber &&
+                   EqualityComparer<Company>.Default.Equals(_company, @class._company);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, TypeOfTimeTable, TelephoneNumber, _company);
+        }
     }
 }
