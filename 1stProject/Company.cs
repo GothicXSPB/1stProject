@@ -6,20 +6,20 @@ namespace _1stProject
     {
         private Storage _storage;
         public string NameCompany { get; set; }
-        public int IDCompany { get; set; }
+        public int IdCompany { get; set; }
         public string _pathAdmins;
         public string _pathEmployees;
         public string _pathCalendar;
-        public List<long> Admins { get; set; }
-        public List<long> Employees { get; set; }
+        public List<long> IdAdmins { get; set; }
+        public List<long> IdEmployees { get; set; }
         public Dictionary<int, List<int>> Calendar { get; set; }
 
         public Company(string nameCompany, int idCompany)
         {
             NameCompany = nameCompany;
-            IDCompany = idCompany;
-            Admins = new List<long>();
-            Employees = new List<long>();
+            IdCompany = idCompany;
+            IdAdmins = new List<long>();
+            IdEmployees = new List<long>();
             Calendar = new Dictionary<int, List<int>>();
             _pathAdmins = $@"../{nameCompany}/Admins.txt";
             _pathEmployees = $@"../{nameCompany}/Employees.txt";
