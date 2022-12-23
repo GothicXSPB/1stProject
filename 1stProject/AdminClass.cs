@@ -31,17 +31,17 @@ namespace _1stProject
 
         public void AddEmployee(Employee employee)
         {
-            _company.Employees.Add(employee);
+            _company.IdEmployees.Add(employee);
         }
 
         public void DeleteEmployee(int id)
         {
-            _company.Employees.RemoveAll(employee => employee.Id == id);
+            _company.IdEmployees.RemoveAll(employee => employee.Id == id);
         }
 
         public void AddAdmin(AdminClass admin)
         {
-            _company.Admins.Add(admin);
+            _company.IdAdmins.Add(admin);
         }
 
         public void ApproveTimeTableForEmployee ()

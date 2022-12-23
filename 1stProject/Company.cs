@@ -20,9 +20,9 @@ namespace _1stProject
             Admins = new List<long>();
             Employees = new List<long>();
             Calendar = new Dictionary<int, List<int>>();
-            _pathAdmins = $@"../{nameCompany}Admins.txt";
-            _pathEmployees = $@"../{nameCompany}Employees.txt";
-            _pathCalendar = $@"../{nameCompany}Calendar.txt";
+            _pathAdmins = $@"../{nameCompany}/Admins.txt";
+            _pathEmployees = $@"../{nameCompany}/Employees.txt";
+            _pathCalendar = $@"../{nameCompany}/Calendar.txt";
         }
 
         public void CreateTimetable(int a)
@@ -103,7 +103,7 @@ namespace _1stProject
         {
             using (StreamWriter sw = new StreamWriter(_pathAdmins))
             {
-                string jsn = JsonSerializer.Serialize(Admins);
+                string jsn = JsonSerializer.Serialize(IdAdmins);
                 sw.WriteLine(jsn);
             }
         }
@@ -112,7 +112,7 @@ namespace _1stProject
         {
             using (StreamWriter sw = new StreamWriter(_pathEmployees))
             {
-                string jsn = JsonSerializer.Serialize(Employees);
+                string jsn = JsonSerializer.Serialize(IdEmployees);
                 sw.WriteLine(jsn);
             }
         }
@@ -131,7 +131,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathAdmins))
             {
                 string jsn = sr.ReadLine()!;
-                Admins = JsonSerializer.Deserialize<List<int>>(jsn)!;
+                IdAdmins = JsonSerializer.Deserialize<List<int>>(jsn)!;
             }
         }
 
@@ -140,7 +140,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathEmployees))
             {
                 string jsn = sr.ReadLine()!;
-                Admins = JsonSerializer.Deserialize<List<int>>(jsn)!;
+                IdAdmins = JsonSerializer.Deserialize<List<int>>(jsn)!;
             }
         }
 
