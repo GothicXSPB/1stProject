@@ -12,9 +12,10 @@ using Telegram.Bot.Types.Enums;
 
 namespace _1stProject
 {
-    internal class TelegramBotManager
+    public class TelegramBotManager
     {
         ITelegramBotClient _bot;
+        public long Id { get; set; }
 
         public TelegramBotManager()
         {
