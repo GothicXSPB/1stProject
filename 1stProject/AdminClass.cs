@@ -6,7 +6,7 @@ namespace _1stProject
         private Company _company;
         private Storage _storage;
 
-        public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
+        public AdminClass(int id, string name, string telephoneNumber, TimeTable typeOfTimeTable )
         {
             Id = id;
             Name = name;
@@ -49,6 +49,7 @@ namespace _1stProject
         public void ApproveTimeTableForEmployee ()
         {
 
+            
         }
 
         public void ApproveOvertime ()

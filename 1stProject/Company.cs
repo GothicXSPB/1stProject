@@ -10,16 +10,16 @@ namespace _1stProject
         public string _pathAdmins;
         public string _pathEmployees;
         public string _pathCalendar;
-        public List<int> IdAdmins { get; set; }
-        public List<int> IdEmployees { get; set; }
+        public List<long> Admins { get; set; }
+        public List<long> Employees { get; set; }
         public Dictionary<int, List<int>> Calendar { get; set; }
 
         public Company(string nameCompany, int idCompany)
         {
             NameCompany = nameCompany;
             IDCompany = idCompany;
-            IdAdmins = new List<int>();
-            IdEmployees = new List<int>();
+            Admins = new List<long>();
+            Employees = new List<long>();
             Calendar = new Dictionary<int, List<int>>();
             _pathAdmins = $@"../{nameCompany}/Admins.txt";
             _pathEmployees = $@"../{nameCompany}/Employees.txt";
@@ -43,6 +43,57 @@ namespace _1stProject
                 }
             }
         }
+
+        public void ApproveTimeTableForEmployee(int day, int month, int year, Employee employee, int firstDay)
+        {
+            DateTime dt = new DateTime(year, month, day);
+
+            if (employee.TypeOfTimeTable == Options.TimeTable.Shift2x2)
+            {
+                if (firstDay == Calendar.Count - 1)
+                {
+                    Calendar[firstDay].Add(employee.Id);
+                }
+                else
+                {
+                    for (int i = firstDay + 1; i <= Calendar.Count - 1; i += 4)
+                    {
+                        Calendar[i].Add(employee.Id);
+                        Calendar[i - 1].Add(employee.Id);
+                    }
+
+                }
+            }
+            if (employee.TypeOfTimeTable == Options.TimeTable.Shift1x3)
+            {
+                for (int i = firstDay; i <= Calendar.Count - 1; i += 4)
+                {
+                    Calendar[i].Add(employee.Id);
+                }
+            }
+            if (employee.TypeOfTimeTable == Options.TimeTable.Shift5x2)
+            {
+                if (dt.DayOfWeek == DayOfWeek.Monday)
+                {
+                    for (int i = firstDay + 4; i <= Calendar.Count - 1; i += 7)
+                    {
+                        Calendar[i].Add(employee.Id);
+                        Calendar[i - 1].Add(employee.Id);
+                        Calendar[i - 2].Add(employee.Id);
+                        Calendar[i - 3].Add(employee.Id);
+                        Calendar[i - 4].Add(employee.Id);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Work week must start on Monday");
+                }
+            }
+        }
+
+
+
+
 
         public void DateToNumberDay(DateTime thisdate)
         {
