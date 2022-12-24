@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
-using Telegram.Bot;
-using _1stProject;
-using Telegram.Bot.Types.ReplyMarkups;
 using Telegram.Bot.Types.Enums;
+using Telegram.Bot.Types.ReplyMarkups;
 
 namespace _1stProject
 {
     public class TelegramBotManager
     {
         ITelegramBotClient _bot;
-        public long Id { get; set; }
-
+        public long UserTgId { get; set; }
         public TelegramBotManager()
         {
             string token = @"5910759542:AAHMbJh_wprscd-3TGi8T5kUaRwZG1LKB7s";
@@ -41,14 +34,17 @@ namespace _1stProject
 
         public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
+            UserTgId = GetTgUserId(update);
+            //=======
+
             Console.WriteLine(update.Message.Chat.FirstName + " " + update.Message.Chat.Id);
             if (update.Message.Text == "/keyboard")
             {
                 ReplyKeyboardMarkup keyboard = new(new[]
                 {
-            new KeyboardButton[] {"Меню"},
-            new KeyboardButton[] {"1", "2"}
-        })
+                new KeyboardButton[] {"Меню"},
+                new KeyboardButton[] {"1", "2"}
+                })
                 {
                     ResizeKeyboard = true
                 };
@@ -86,13 +82,29 @@ namespace _1stProject
                         "Name:" + company1.NameCompany + "\r\n" + "Id" + company1.IDCompany);
                 return;
             }
+
         }
-
-
         public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
 
         }
 
+        public long GetTgUserId(Update update)
+        {
+            long userId;
+            if (update.Type == UpdateType.Message)
+            {
+                userId = update.Message.Chat.Id;
+            }
+            else if (update.Type == UpdateType.CallbackQuery)
+            {
+                userId = update.CallbackQuery.From.Id;
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+            return userId;
+        }
     }
 }

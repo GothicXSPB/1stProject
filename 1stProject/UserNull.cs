@@ -7,16 +7,16 @@ namespace _1stProject
     {
         Storage storage = new Storage();
         TelegramBotManager _telegramBotManager= new TelegramBotManager();
-        public long UserTgId { get; set; }
+        public long CurrentCmId { get; set; }
 
         public UserNull ()
         {
-            UserTgId = _telegramBotManager.Id;
+            CurrentCmId = _telegramBotManager.UserTgId;
         }
 
         public void CheckIsThisUserExistsInAllTgBase ()
         {
-            bool workerIsExists = storage.allWorker.ContainsKey(UserTgId);
+            bool workerIsExists = storage.AllWorker.ContainsKey(CurrentCmId);
 
             if (workerIsExists is true)
             {
