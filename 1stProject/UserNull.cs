@@ -14,18 +14,10 @@ namespace _1stProject
             CurrentCmId = _telegramBotManager.UserTgId;
         }
 
-        public void CheckIsThisUserExistsInAllTgBase ()
+        public bool CheckIsThisUserExistsInAllTgBase ()
         {
             bool workerIsExists = storage.AllWorker.ContainsKey(CurrentCmId);
-
-            if (workerIsExists is true)
-            {
-                ///по логике, тут кнопки с выбором компании
-            }
-            else
-            {
-                ///а тут кнопка "вы не зарегестрирвоаны ни в одной компании. Хотите создать новую?"
-            }
+            return workerIsExists;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _1stProject.States
 {
-    internal interface IState
+    public interface IState
     {
     }
 }
