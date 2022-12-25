@@ -33,21 +33,21 @@ namespace _1stProject
 
         public void AddEmployee(Employee employee)
         {
-
+            _company.LoadAllEmployees();
             _company.IdEmployees.Add(employee.Id);
             _company.SaveAllEmployees();
         }
 
         public void DeleteEmployee(int id)
         {
-
+            _company.LoadAllEmployees();
             _company.IdEmployees.RemoveAll(Id=> Id == id);
             _company.SaveAllAdmins();
         }
 
         public void AddAdmin(AdminClass admin)
         {
-
+            _company.LoadAllEmployees();
             _company.IdAdmins.Add(admin.Id);
             _company.SaveAllAdmins();
         }
