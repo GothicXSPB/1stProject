@@ -7,15 +7,13 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using _1stProject.TgButtonsLogic;
 
-
 namespace _1stProject.States
 {
-    internal class CreateCompany: IState
+    internal class MenuForAdmin:IState
     {
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage message;
-             
+            ModelOfMessage message = MessagesFromTg;
             return;
         }
     }

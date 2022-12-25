@@ -76,10 +76,10 @@ namespace _1stProject
                 Company company1 = new Company(update.Message.Text, 11234); //(long)Convert.ToDouble(update.Message.Text)
                 AdminClass admin = new AdminClass(update.Message.Chat.Id, update.Message.Chat.FirstName, "123", 0);
                 admin.AddAdmin(admin);
-                Console.WriteLine(update.Message.Chat.FirstName + "Создал компанию " + company1.NameCompany + " " + company1.IDCompany);
+                Console.WriteLine(update.Message.Chat.FirstName + "Создал компанию " + company1.NameCompany + " " + company1.IdCompany);
 
                 _bot.SendTextMessageAsync(update.Message.Chat.Id, $"Твоя комания:" + "\r\n" +
-                        "Name:" + company1.NameCompany + "\r\n" + "Id" + company1.IDCompany);
+                        "Name:" + company1.NameCompany + "\r\n" + "Id" + company1.IdCompany);
                 return;
             }
 

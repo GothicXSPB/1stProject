@@ -6,7 +6,7 @@ namespace _1stProject
     {
         private Storage _storage;
         public string NameCompany { get; set; }
-        public int IDCompany { get; set; }
+        public int IdCompany { get; set; }
         public string _pathAdmins;
         public string _pathEmployees;
         public string _pathCalendar;
@@ -17,7 +17,7 @@ namespace _1stProject
         public Company(string nameCompany, int idCompany)
         {
             NameCompany = nameCompany;
-            IDCompany = idCompany;
+            IdCompany = idCompany;
             IdAdmins = new List<long>();
             IdEmployees = new List<long>();
             Calendar = new Dictionary<int, List<long>>();
