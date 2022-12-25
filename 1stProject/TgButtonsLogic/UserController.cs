@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _1stProject.States;
+using Telegram.Bot.Types;
 
 namespace _1stProject.TgButtonsLogic
 {
@@ -16,6 +17,9 @@ namespace _1stProject.TgButtonsLogic
             UserId = userId;
             State = new Start();
         }
-
+        public ModelOfMessage GetReply (Update update) 
+        {
+            return State.HandleUpdate(update, this);
+        }
     }
 }
