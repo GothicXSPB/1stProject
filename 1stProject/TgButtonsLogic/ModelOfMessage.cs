@@ -10,6 +10,6 @@ namespace _1stProject.TgButtonsLogic
     public class ModelOfMessage
     {
        public string Message { get; set; }
-       public InlineKeyboardMarkup Keybord { get; set; }
+       public InlineKeyboardMarkup Keyboard { get; set; }
     }
 }

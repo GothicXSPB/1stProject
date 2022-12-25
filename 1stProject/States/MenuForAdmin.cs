@@ -11,6 +11,7 @@ namespace _1stProject.States
 {
     internal class MenuForAdmin:IState
     {
+        //предложить меню с функционалом админа
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
             ModelOfMessage message = MessagesFromTg;

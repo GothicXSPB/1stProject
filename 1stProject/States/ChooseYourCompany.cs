@@ -7,17 +7,15 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using _1stProject.TgButtonsLogic;
 
-
 namespace _1stProject.States
 {
-    public class CreateCompany: IState
+    //подгрузка компаний для выбора
+    public class ChooseYourCompany:IState
     {
-        //проверка существует ли компания
-        //сделать первого юзера админом
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
             ModelOfMessage message;
-             
+
             return;
         }
     }

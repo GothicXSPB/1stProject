@@ -11,6 +11,8 @@ namespace _1stProject.States
 {
     internal class MemberOfExistingComp:IState
     {
+        //проверка по спискам существующих сотрудников админов и юзеров
+        //проверка по спискам компаний
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
             ModelOfMessage message = MessagesFromTg;

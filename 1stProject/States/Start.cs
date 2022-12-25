@@ -11,6 +11,8 @@ namespace _1stProject.States
 {
     internal class Start:IState
     {
+        //сказать привет, предложить вступить,создать, войти
+        //функционал
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
             return ;

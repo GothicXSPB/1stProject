@@ -11,6 +11,7 @@ namespace _1stProject.States
 {
     public class MenuOfRegularUser:IState
     {
+        //предложить меню с функционалом юзера
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
             ModelOfMessage message = MessagesFromTg;
