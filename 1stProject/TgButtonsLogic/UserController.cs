@@ -21,15 +21,5 @@ namespace _1stProject.TgButtonsLogic
         {
             return State.HandleUpdate(update, this);
         }
-
-        public bool IsTheUserExist ()
-        {
-
-            return;
-        }
-        public bool IsTheUserAdminOrNot ()
-        {
-            return;
-        }
     }
 }

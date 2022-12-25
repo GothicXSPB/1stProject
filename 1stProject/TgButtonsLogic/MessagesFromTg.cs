@@ -27,7 +27,6 @@ namespace _1stProject.TgButtonsLogic
                         })
                 };
             }
-
         }
 
         public static ModelOfMessage ShowMenuForAdmin
@@ -48,9 +47,8 @@ namespace _1stProject.TgButtonsLogic
                         })
                 };
             }
-
-
         }
+
         public static ModelOfMessage ShowMenuForRegularUser
         {
             get
@@ -98,6 +96,17 @@ namespace _1stProject.TgButtonsLogic
                 return new ModelOfMessage()
                 {
                     Message = "Для создания компании укажите уникальное имя компании. Далее оно будет использоваться для авторизации вас и ваших сотрудников",
+                    Keyboard = null
+                };
+            }
+        }
+        public static ModelOfMessage ShowThatCompanyIsNotUnique
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Многие люди думают одинаково. Такое имя уже существует. Попробуйте еще раз",
                     Keyboard = null
                 };
             }
