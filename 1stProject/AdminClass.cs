@@ -6,13 +6,13 @@ namespace _1stProject
         private Company _company;
         private Storage _storage;
 
-        public AdminClass(long id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
+        public AdminClass(long id, string name, string telephoneNumber, TimeTable typeOfTimeTable, string nameCompany, int idCompany)
         {
             Id = id;
             Name = name;
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
-            _company = new Company("1",1);
+            _company = new Company(nameCompany, idCompany);
             _storage = Storage.GetInstance();
         }
 
@@ -52,10 +52,9 @@ namespace _1stProject
             _company.SaveAllAdmins();
         }
 
-        public void ApproveTimeTableForEmployee ()
+        public void ApproveTimeTableForEmployeeAndSave(int day, int month, int year, Employee employee, int firstDay)
         {
-
-            
+            _company.ApproveTimeTableForEmployee(day, month, year, employee, firstDay);
         }
 
         public void ApproveOvertime ()
