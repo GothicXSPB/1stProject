@@ -21,6 +21,7 @@ namespace _1stProject
 
         public void ShowFullMonthlyTimetablee(DateTime thisdate)
         {
+            _company.LoadAllCalendar();
             int i = thisdate.DayOfYear;
             int v = i + 30;
             for (i = thisdate.DayOfYear; ; i = v, i++)
@@ -31,6 +32,7 @@ namespace _1stProject
 
         public void ShowFullTimetableForTheDate(DateTime thisdate)
         {
+            _company.LoadAllCalendar();
             int i = thisdate.DayOfYear;
             Console.WriteLine(_company.Calendar[i]);
         }
