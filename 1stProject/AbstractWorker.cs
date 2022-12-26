@@ -3,7 +3,7 @@ namespace _1stProject
 {
     public abstract class AbstractWorker
     {
-
+        private Company _company;
 
         public long Id { get; protected set; }
         public string Name { get; protected set; }
@@ -14,14 +14,19 @@ namespace _1stProject
 
         public abstract void SwapShifts(Employee employee, Employee employee1, DateTime a, DateTime b);
 
-        public void ShowYourOwnMonthlyTimetable()
+        public void ShowYourOwnMonthlyTimetable(DateTime thisdate)
         {
-
+            
         }
 
-        public void ShowFullMonthlyTimetablee()
+        public void ShowFullMonthlyTimetablee(DateTime thisdate)
         {
-
+            int i = thisdate.DayOfYear;
+            int v = i + 30;
+            for (i = thisdate.DayOfYear; ; i = v, i++)
+            {
+                Console.WriteLine(_company.Calendar[i]);
+            }
         }
 
         public void ShowFullTimetableForTheDate()
