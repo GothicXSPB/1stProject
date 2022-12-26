@@ -29,9 +29,10 @@ namespace _1stProject
             }
         }
 
-        public void ShowFullTimetableForTheDate()
+        public void ShowFullTimetableForTheDate(DateTime thisdate)
         {
-
+            int i = thisdate.DayOfYear;
+            Console.WriteLine(_company.Calendar[i]);
         }
 
         public void ShowOwnPersonalCard()
