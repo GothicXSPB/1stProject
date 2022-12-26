@@ -15,7 +15,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Доброго вам дня! Вас привествует система учета рабочего времени!",
+                    Text = "Доброго вам дня! Вас привествует система учета рабочего времени!",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
@@ -35,7 +35,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Ваши права администратора подтверждены. Прекласный сегодня денек! =) Что бы вы хотели сделать сегодня?",
+                    Text = "Ваши права администратора подтверждены. Прекласный сегодня денек! =) Что бы вы хотели сделать сегодня?",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
@@ -55,7 +55,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Прекрасный денек! Что бы вы хотели сделать сегодня? =)",
+                    Text = "Прекрасный денек! Что бы вы хотели сделать сегодня? =)",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
@@ -75,7 +75,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Выберите компанию в которой вы хотите продолжать работу",
+                    Text = "Выберите компанию в которой вы хотите продолжать работу",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
@@ -95,7 +95,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Для создания компании укажите уникальное имя компании. Далее оно будет использоваться для авторизации вас и ваших сотрудников",
+                    Text = "Для создания компании укажите уникальное имя компании. Далее оно будет использоваться для авторизации вас и ваших сотрудников",
                     Keyboard = null
                 };
             }
@@ -106,7 +106,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Многие люди думают одинаково. Такое имя уже существует. Попробуйте еще раз",
+                    Text = "Многие люди думают одинаково. Такое имя уже существует. Попробуйте еще раз",
                     Keyboard = null
                 };
             }

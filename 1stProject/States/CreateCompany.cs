@@ -10,15 +10,15 @@ using _1stProject.TgButtonsLogic;
 
 namespace _1stProject.States
 {
-    public class CreateCompany: IState
-    {
-        //проверка существует ли компания
-        //сделать первого юзера админом
-        public ModelOfMessage HandleUpdate(Update update, UserController controller)
-        {
-            ModelOfMessage message;
+    //public class CreateCompany: IState
+    //{
+    //    //проверка существует ли компания
+    //    //сделать первого юзера админом
+    //    public ModelOfMessage HandleUpdate(Update update, UserController controller)
+    //    {
+    //        ModelOfMessage message;
              
-            return;
-        }
-    }
+    //        return;
+    //    }
+    //}
 }

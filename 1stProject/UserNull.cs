@@ -19,14 +19,14 @@ namespace _1stProject
             bool workerIsExists = storage.AllWorker.ContainsKey(CurrentCmId);
             return workerIsExists;
         }
-        public bool IsTheUserExist()
-        {
+        //public bool IsTheUserExist()
+        //{
 
-            return;
-        }
-        public bool IsTheUserAdminOrNot()
-        {
-            return;
-        }
+        //    return;
+        //}
+        //public bool IsTheUserAdminOrNot()
+        //{
+        //    return;
+        //}
     }
 }

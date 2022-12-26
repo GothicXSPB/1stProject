@@ -9,7 +9,7 @@ namespace _1stProject.TgButtonsLogic
 {
     public class ModelOfMessage
     {
-       public string Message { get; set; }
+       public string Text { get; set; }
        public InlineKeyboardMarkup Keyboard { get; set; }
     }
 }

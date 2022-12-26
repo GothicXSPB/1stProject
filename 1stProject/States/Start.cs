@@ -9,13 +9,27 @@ using _1stProject.TgButtonsLogic;
 
 namespace _1stProject.States
 {
-    internal class Start:IState
+    internal class Start : IState
     {
         //сказать привет, предложить вступить,создать, войти
         //функционал
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            return ;
+            ModelOfMessage result = MessagesFromTg.ShowStartMenu;
+
+            switch (update.Type)
+            {
+                case UpdateType.CallbackQuery:
+                    switch (update.CallbackQuery.Data)
+                    {
+                        case "newUserOrCompany":
+                            //controller.State = new SozdatState();
+                            //result = MessagesFromTg.SozdatSektaNameQuestion;
+                            break;
+                    }
+                    break;
+            }
+            return result;
         }
     }
 }

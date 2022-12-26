@@ -9,13 +9,13 @@ using _1stProject.TgButtonsLogic;
 
 namespace _1stProject.States
 {
-    public class MenuOfRegularUser:IState
-    {
-        //предложить меню с функционалом юзера
-        public ModelOfMessage HandleUpdate(Update update, UserController controller)
-        {
-            ModelOfMessage message = MessagesFromTg;
-            return;
-        }
-    }
+    //public class MenuOfRegularUser:IState
+    //{
+    //    //предложить меню с функционалом юзера
+    //    public ModelOfMessage HandleUpdate(Update update, UserController controller)
+    //    {
+    //        ModelOfMessage message = MessagesFromTg;
+    //        return;
+    //    }
+    //}
 }

@@ -10,13 +10,13 @@ using _1stProject.TgButtonsLogic;
 namespace _1stProject.States
 {
     //подгрузка компаний для выбора
-    public class ChooseYourCompany:IState
-    {
-        public ModelOfMessage HandleUpdate(Update update, UserController controller)
-        {
-            ModelOfMessage message;
+    //public class ChooseYourCompany:IState
+    //{
+    //    public ModelOfMessage HandleUpdate(Update update, UserController controller)
+    //    {
+    //        ModelOfMessage message;
 
-            return;
-        }
-    }
+    //        return;
+    //    }
+    //}
 }
