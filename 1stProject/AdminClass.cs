@@ -21,9 +21,18 @@ namespace _1stProject
 
         }
 
-        public override void SwapShifts()
+        public override void SwapShifts(Employee employee1, Employee employee2, DateTime a, DateTime b)
         {
-
+            int firstDay = a.DayOfYear;
+            int secondDay = b.DayOfYear;
+            
+            if (_company.Calendar[firstDay].Contains(employee1.Id)&& _company.Calendar[secondDay].Contains(employee2.Id))
+            {
+            _company.Calendar[firstDay].Add(employee2.Id);
+            _company.Calendar[secondDay].Add(employee1.Id);
+            _company.Calendar[firstDay].Remove(employee1.Id);
+            _company.Calendar[secondDay].Remove(employee2.Id);
+            }
         }
 
         public void CreateNullTimeTable(int year)

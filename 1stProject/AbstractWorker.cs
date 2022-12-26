@@ -12,7 +12,7 @@ namespace _1stProject
 
         public abstract void AddOvertimeHoursForApprove();
 
-        public abstract void SwapShifts();
+        public abstract void SwapShifts(Employee employee, Employee employee1, DateTime a, DateTime b);
 
         public void ShowYourOwnMonthlyTimetable()
         {
