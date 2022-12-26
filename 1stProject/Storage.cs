@@ -6,17 +6,17 @@ namespace _1stProject
 {
     public class Storage
     {
-        Dictionary<int, string> AllCompany { get; set; }
-        Dictionary<int, List<int>> AllWorker {get; set; }
+        public Dictionary<int, string> AllCompany { get; set; }
+        public Dictionary<long, List<int>> AllWorker {get; set; }
         public string _pathAllCompany  { get; set; }
         public string _pathAllWorker { get; set; }
 
-        private static Storage _storage;
+        public static Storage _storage;
 
-        private Storage()
+        public Storage()
         {
             AllCompany = new Dictionary<int, string>();
-            AllWorker = new Dictionary<int, List<int>>();
+            AllWorker = new Dictionary<long, List<int>>();
             _pathAllCompany = @"../InformationAllCompany/AllCompany.txt";
             _pathAllWorker = @"../InformationAllWorker/AllWorker.txt";
         }
@@ -63,7 +63,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathAllWorker))
             {
                 string jsn = sr.ReadLine()!;
-                AllWorker = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(jsn)!;
+                AllWorker = JsonSerializer.Deserialize<Dictionary<long, List<int>>>(jsn)!;
             }
         }
 

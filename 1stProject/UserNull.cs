@@ -7,25 +7,26 @@ namespace _1stProject
     {
         Storage storage = new Storage();
         TelegramBotManager _telegramBotManager= new TelegramBotManager();
-        public long UserTgId { get; set; }
+        public long CurrentCmId { get; set; }
 
         public UserNull ()
         {
-            UserTgId = _telegramBotManager.Id;
+            CurrentCmId = _telegramBotManager.UserTgId;
         }
 
-        public void CheckIsThisUserExistsInAllTgBase ()
+        public bool CheckIsThisUserExistsInAllTgBase ()
         {
-            bool workerIsExists = storage.allWorker.ContainsKey(UserTgId);
+            bool workerIsExists = storage.AllWorker.ContainsKey(CurrentCmId);
+            return workerIsExists;
+        }
+        public bool IsTheUserExist()
+        {
 
-            if (workerIsExists is true)
-            {
-                ///по логике, тут кнопки с выбором компании
-            }
-            else
-            {
-                ///а тут кнопка "вы не зарегестрирвоаны ни в одной компании. Хотите создать новую?"
-            }
+            return;
+        }
+        public bool IsTheUserAdminOrNot()
+        {
+            return;
         }
     }
 }
