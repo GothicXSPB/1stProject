@@ -21,7 +21,6 @@ namespace _1stProject
             _pathAllWorker = @"../InformationAllWorker/AllWorker.txt";
         }
 
-
         public static Storage GetInstance()
         {
             if (_storage == null)
@@ -88,6 +87,15 @@ namespace _1stProject
             AllWorker.Add(idWorker, whatsCompany);
 
             SaveAllWorker();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Storage storage &&
+                   EqualityComparer<Dictionary<int, string>>.Default.Equals(AllCompany, storage.AllCompany) &&
+                   EqualityComparer<Dictionary<long, List<int>>>.Default.Equals(AllWorker, storage.AllWorker) &&
+                   _pathAllCompany == storage._pathAllCompany &&
+                   _pathAllWorker == storage._pathAllWorker;
         }
     }
 }
