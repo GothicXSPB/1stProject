@@ -38,7 +38,7 @@ namespace _1stProject
             _company.SaveAllEmployees();
         }
 
-        public void DeleteEmployee(int id)
+        public void DeleteEmployee(long id)
         {
             _company.LoadAllEmployees();
             _company.IdEmployees.RemoveAll(Id=> Id == id);
