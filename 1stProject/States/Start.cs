@@ -23,7 +23,6 @@ namespace _1stProject.States
                 {
                         controller.State = new MemberOfExistingComp();
                         model = MessagesFromTg.ShowMenuForChoosingCompany;
-   
                 }
                 else if (answer == "newCompany")
                 {

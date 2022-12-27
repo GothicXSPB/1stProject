@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _1stProject.TgButtonsLogic;
 using Telegram.Bot.Types;
-using Telegram.Bot.Types.Enums;
-using _1stProject.TgButtonsLogic;
 
 
 namespace _1stProject.States
 {
-    public class CreateCompany: IState
+    public class CreateCompany : IState
     {
         Storage _storage1 = new Storage();
         //проверка существует ли компания
@@ -18,8 +12,8 @@ namespace _1stProject.States
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
             ModelOfMessage message;
-            bool exists = _storage1.IsThisCompanyAlreadyExist();
-            if  (exists = true)
+            bool exists = IsThisCompanyAlreadyExist(update);
+            if (exists == true)
             {
                 message = MessagesFromTg.ShowThatCompanyIsNotUnique;
             }
@@ -27,9 +21,19 @@ namespace _1stProject.States
             {
                 controller.State = new Start();
                 message = MessagesFromTg.ShowStartMenu;
-
             }
             return message;
+        }
+        public bool IsThisCompanyAlreadyExist(Update update)
+        {
+            if (_storage1.AllCompany.ContainsValue(update.Message.Text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

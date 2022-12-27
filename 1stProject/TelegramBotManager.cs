@@ -64,7 +64,7 @@ namespace _1stProject
 
         public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
-
+            Console.WriteLine("я умер");
         }
 
         public string GetText (Update update)

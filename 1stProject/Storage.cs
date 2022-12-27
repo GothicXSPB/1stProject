@@ -14,7 +14,8 @@ namespace _1stProject
         public string _pathAllWorker { get; set; }
 
         public static Storage _storage;
-        TelegramBotManager _botManager = new TelegramBotManager();
+        
+        //TelegramBotManager _botManager = new TelegramBotManager();
 
         public Storage()
         {
@@ -75,18 +76,6 @@ namespace _1stProject
             LoadAllCompany();
             AllCompany.Add(idCompany, nameCompany);
             SaveAllCompany();
-        }
-
-        public bool IsThisCompanyAlreadyExist ()
-        {
-            if (AllCompany.ContainsValue(_botManager.UsersText))
-            {
-            return true;
-            }
-            else
-            {
-            return false;
-            }
         }
 
         public void AddNewWorker(int idWorker, int[] idCompany)
