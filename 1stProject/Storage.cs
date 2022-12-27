@@ -50,19 +50,33 @@ namespace _1stProject
 
         public void LoadAllCompany()
         {
-            using (StreamReader sr = new StreamReader(_pathAllCompany))
+            if (File.Exists(_pathAllCompany))
             {
-                string jsn = sr.ReadLine()!;
-                AllCompany = JsonSerializer.Deserialize<Dictionary<int, string>>(jsn)!;
+                using (StreamReader sr = new StreamReader(_pathAllCompany))
+                {
+                    string jsn = sr.ReadLine()!;
+                    AllCompany = JsonSerializer.Deserialize<Dictionary<int, string>>(jsn)!;
+                }
+            }
+            else
+            {
+                throw new DirectoryNotFoundException();
             }
         }
 
         public void LoadAllWorker()
         {
-            using (StreamReader sr = new StreamReader(_pathAllWorker))
+            if (File.Exists(_pathAllWorker))
             {
-                string jsn = sr.ReadLine()!;
-                AllWorker = JsonSerializer.Deserialize<Dictionary<long, List<int>>>(jsn)!;
+                using (StreamReader sr = new StreamReader(_pathAllWorker))
+                {
+                    string jsn = sr.ReadLine()!;
+                    AllWorker = JsonSerializer.Deserialize<Dictionary<long, List<int>>>(jsn)!;
+                }
+            }
+            else
+            {
+                throw new DirectoryNotFoundException();
             }
         }
 
