@@ -69,4 +69,31 @@ namespace _1stProject.Tests.TestCaseSources
             yield return new Object[] { allCompany, newAllCompany, a, b };
         }
     }
+
+    public class AddWorkerTestsCaseSources : IEnumerable
+    {
+        public IEnumerator GetEnumerator()
+        {
+            long a = 77300000140014;
+            List<int> b = new List<int>() { 1, 423, 35, 02846238 };
+            Dictionary<long, List<int>> allWorker = new Dictionary<long, List<int>>()
+            {
+                {132946273, new List<int>() {1, 6, 9} },
+                {80202020202020, new List<int>() {2, 6} },
+                {10099503, new List<int>() {9, 55, 82544} },
+                {8777722, new List<int>() }
+            };
+            Dictionary<long, List<int>> newAllWorker = new Dictionary<long, List<int>>()
+            {
+                {132946273, new List<int>() {1, 6, 9} },
+                {80202020202020, new List<int>() {2, 6} },
+                {10099503, new List<int>() {9, 55, 82544} },
+                {8777722, new List<int>() }
+            };
+
+            newAllWorker.Add(a, b);
+
+            yield return new Object[] { allWorker, newAllWorker, a, b };
+        }
+    }
 }

@@ -124,6 +124,27 @@ namespace _1stProject.Tests
             CollectionAssert.AreEqual(expecredAllCompany, actualAllCompany);
         }
 
+        [TestCaseSource(typeof(AddWorkerTestsCaseSources))]
+        public void AddNewWorkerTests(Dictionary<long, List<int>> AllWorker, Dictionary<long, List<int>> newAllWorker, long a, List<int> b)
+        {
+            using (StreamWriter sw = new StreamWriter(_pathTests))
+            {
+                string jsn = JsonSerializer.Serialize(AllWorker);
+                sw.WriteLine(jsn);
+            }
+            _storage.AddNewWorker(a, b);
+            using (StreamReader sr = new StreamReader(_pathTests))
+            {
+                string jsn = sr.ReadLine()!;
+                AllWorker = JsonSerializer.Deserialize<Dictionary<long, List<int>>>(jsn)!;
+            }
+
+            Dictionary<long, List<int>> expecredAllCompany = newAllWorker;
+            Dictionary<long, List<int>> actualAllCompany = _storage.AllWorker;
+
+            CollectionAssert.AreEqual(expecredAllCompany, actualAllCompany);
+        }
+
         [TearDown]
         public void TearDown()
         {
