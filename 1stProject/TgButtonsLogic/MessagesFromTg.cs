@@ -21,8 +21,27 @@ namespace _1stProject.TgButtonsLogic
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Я зарегистрированный пользователь в компании") { CallbackData = "UseAvaliableFunction" },
-                                new InlineKeyboardButton("Я новый пользователь или я хочу создать новую компанию") { CallbackData = "newUserOrCompany" }
+                                new InlineKeyboardButton("Войти в компании") { CallbackData = "UseAvaliableFunction" },
+                                new InlineKeyboardButton("Создать новую компанию") { CallbackData = "NewCompany" }
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage AddNewCompany
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Text = "Новая компания успешно создана, вы являетесь ее админом",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Меню") { CallbackData = "MenuAdmin" }
                             },
                         })
                 };
@@ -35,14 +54,28 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Text = "Ваши права администратора подтверждены. Прекласный сегодня денек! =) Что бы вы хотели сделать сегодня?",
+                    Text = "Ваши права администратора подтверждены. Информация о компании:" + "\r\n" + "Работкини:" + "\r\n" + "Админы:",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Я хочу ") { CallbackData = "хххх" },
-                                new InlineKeyboardButton("Я хочу") { CallbackData = "хх" }
+                                new InlineKeyboardButton("Добавить сотрудника") { CallbackData = "AddEmployee" },
+                                new InlineKeyboardButton("Добавить сотрудника в календарь") { CallbackData = "AddEmployeeToCalendar" },
+                            },
+                            new[]
+                            {
+                                new InlineKeyboardButton("Удалить сотрудника") { CallbackData = "DeleteEmployee" },
+                                new InlineKeyboardButton("Добавить админа") { CallbackData = "AddAdmin" }
+                            },
+                            new[]
+                            {
+                                new InlineKeyboardButton("Удалить сотрудник с даты") { CallbackData = "DeleteEmployeeToCalendar" },
+                                new InlineKeyboardButton("Поставить сотрудник на даты") { CallbackData = "AddEmployeeToDays" },
+                            },
+                            new[]
+                            {
+                                new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" },
                             },
                         })
                 };
@@ -61,7 +94,7 @@ namespace _1stProject.TgButtonsLogic
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Я хочу ") { CallbackData = "хххх" },
+                                new InlineKeyboardButton("Я хочу") { CallbackData = "хххх" },
                                 new InlineKeyboardButton("Я хочу") { CallbackData = "хх" }
                             },
                         })
@@ -75,16 +108,8 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Text = "Выберите компанию в которой вы хотите продолжать работу",
-                    Keyboard = new InlineKeyboardMarkup(
-                        new[]
-                        {
-                            new[]
-                            {
-                                new InlineKeyboardButton("компания 1") { CallbackData = "хххх" },
-                                new InlineKeyboardButton("компания 2") { CallbackData = "хх" }
-                            },
-                        })
+                    Text = "Напишите компанию в которой вы хотите продолжать работу",
+                    Keyboard = null
                 };
             }
 

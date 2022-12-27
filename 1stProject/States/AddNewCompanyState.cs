@@ -3,32 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _1stProject.TgButtonsLogic;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
-using _1stProject.TgButtonsLogic;
 
 namespace _1stProject.States
 {
-    internal class Start : IState
+    public class AddNewCompanyState : IState
     {
-        //сказать привет, предложить вступить,создать, войти
-        //функционал
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage result = MessagesFromTg.ShowStartMenu;
+            ModelOfMessage result = MessagesFromTg.ShowMenuForAdmin;
 
             switch (update.Type)
             {
                 case UpdateType.CallbackQuery:
                     switch (update.CallbackQuery.Data)
                     {
-                        case "UseAvaliableFunction":
+                        case "Menu":
                             controller.State = new ChooseYourCompany();
-                            result = MessagesFromTg.ShowMenuForCreatingNewCompany;
-                            break;
-                        case "NewCompany":
-                            controller.State = new AddNewCompanyState();
-                            result = MessagesFromTg.AddNewCompany;
+                            result = MessagesFromTg.ShowMenuForAdmin;
                             break;
                     }
                     break;

@@ -19,7 +19,7 @@ namespace _1stProject
             string token = @"5910759542:AAHMbJh_wprscd-3TGi8T5kUaRwZG1LKB7s";
             _bot = new TelegramBotClient(token);
 
-            Console.WriteLine("Запущен бот " + _bot.GetMeAsync().Result.FirstName);
+            Console.WriteLine("Запущен бот " );
             var cts = new CancellationTokenSource();
             var cancellationToken = cts.Token;
 
@@ -49,6 +49,7 @@ namespace _1stProject
 
             await _bot.SendTextMessageAsync(UserTgId, message.Text, replyMarkup: message.Keyboard);
         }
+
         public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             Console.WriteLine("Error");
