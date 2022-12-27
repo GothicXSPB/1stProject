@@ -9,7 +9,7 @@ using _1stProject.TgButtonsLogic;
 
 namespace _1stProject.States
 {
-    internal class Start : IState
+    public class Start : IState
     {
         //сказать привет, предложить вступить,создать, войти
         //функционал
