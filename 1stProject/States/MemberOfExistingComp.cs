@@ -13,10 +13,10 @@ namespace _1stProject.States
     {
         //проверка по спискам компаний
         //проверка по спискам существующих сотрудников админов и юзеров
-        public ModelOfMessage HandleUpdate(Update update, UserController controller)
+        public ModelOfMessage HandleUpdate(Update update, UserController controller) /*- требует редактирования*/
         {
-            ModelOfMessage message = MessagesFromTg ;
-            return;
+            ModelOfMessage message = MessagesFromTg.ShowMenuForAdmin;
+            return message;
         }
     }
 }
