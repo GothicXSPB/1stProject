@@ -87,19 +87,10 @@ namespace _1stProject
             SaveAllCompany();
         }
 
-        public void AddNewWorker(int idWorker, int[] idCompany)
+        public void AddNewWorker(long idWorker, List<int> idCompany)
         {
             LoadAllWorker();
-
-            List<int> whatsCompany = new List<int>();
-
-            for (int i = 0; i < idCompany.Length; i++)
-            {
-                whatsCompany.Add(idCompany[i]);
-            }
-
-            AllWorker.Add(idWorker, whatsCompany);
-
+            AllWorker.Add(idWorker, idCompany);
             SaveAllWorker();
         }
 
