@@ -15,7 +15,30 @@ namespace _1stProject.States
         //функционал
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            return ;
+            ModelOfMessage model = MessagesFromTg.ShowStartMenu;
+            if (update.Type == UpdateType.CallbackQuery)
+            {
+                string answer = update.CallbackQuery.Data;
+                if (answer == "UseAvaliableFunction")
+                {
+                    controller.State = new ChooseYourCompany();
+                }
+                else if (answer == "newCompany")
+                {
+                    controller.State = new ChooseYourCompany();
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
+                    
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+
+            return model;
         }
     }
 }

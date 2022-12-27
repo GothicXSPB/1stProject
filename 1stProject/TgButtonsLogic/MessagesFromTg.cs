@@ -22,7 +22,7 @@ namespace _1stProject.TgButtonsLogic
                             new[]
                             {
                                 new InlineKeyboardButton("Я зарегистрированный пользователь в компании") { CallbackData = "UseAvaliableFunction" },
-                                new InlineKeyboardButton("Я новый пользователь или я хочу создать новую компанию") { CallbackData = "newUserOrCompany" }
+                                new InlineKeyboardButton("Я хочу создать новую компанию") { CallbackData = "newCompany" }
                             },
                         })
                 };
