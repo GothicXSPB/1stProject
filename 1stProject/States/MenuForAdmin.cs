@@ -14,7 +14,7 @@ namespace _1stProject.States
         //предложить меню с функционалом админа
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage result = MessagesFromTg.ShowStartMenu;
+            ModelOfMessage result = MessagesFromTg.ShowMenuForAdmin;
 
             switch (update.Type)
             {

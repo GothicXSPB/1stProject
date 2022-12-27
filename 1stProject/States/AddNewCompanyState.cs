@@ -13,15 +13,15 @@ namespace _1stProject.States
     {
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage result = MessagesFromTg.ShowMenuForAdmin;
+            ModelOfMessage result = MessagesFromTg.AddNewCompany;
 
             switch (update.Type)
             {
                 case UpdateType.CallbackQuery:
                     switch (update.CallbackQuery.Data)
                     {
-                        case "Menu":
-                            controller.State = new ChooseYourCompany();
+                        case "MenuAdmin":
+                            controller.State = new MenuForAdmin();
                             result = MessagesFromTg.ShowMenuForAdmin;
                             break;
                     }
