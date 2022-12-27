@@ -21,9 +21,9 @@ namespace _1stProject
 
         public void ShowScheduleForThePeriod(DateTime thisdate1, DateTime thisdate2)
         {
-            int i = thisdate1.DayOfYear;
+            int a = thisdate1.DayOfYear;
             int j = thisdate2.DayOfYear;
-            for (i = thisdate1.DayOfYear; ; i = j, i++)
+            for (int i = thisdate1.DayOfYear; i <= j; i++)
             {
                 Console.WriteLine(_company.Calendar[i]);
             }
@@ -32,9 +32,9 @@ namespace _1stProject
         public void ShowFullMonthlyTimetablee(DateTime thisdate)
         {
             _company.LoadAllCalendar();
-            int i = thisdate.DayOfYear;
-            int v = i + 30;
-            for (i = thisdate.DayOfYear; ; i = v, i++)
+            int a = thisdate.DayOfYear;
+            int v = a + 30;
+            for (int i = a; i <= v; i++)
             {
                 Console.WriteLine(_company.Calendar[i]);
             }
