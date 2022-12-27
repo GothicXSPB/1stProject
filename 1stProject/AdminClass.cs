@@ -21,6 +21,13 @@ namespace _1stProject
 
         }
 
+        public void RemoveAnEmployeeFromThisDate(Employee employee, DateTime a)
+        {
+            int RemoveDay = a.DayOfYear;
+
+            _company.Calendar[RemoveDay].Remove(employee.Id);
+        }
+
         public override void SwapShifts(Employee employee1, Employee employee2, DateTime a, DateTime b)
         {
             int firstDay = a.DayOfYear;
