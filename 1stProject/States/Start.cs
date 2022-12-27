@@ -21,11 +21,14 @@ namespace _1stProject.States
                 string answer = update.CallbackQuery.Data;
                 if (answer == "UseAvaliableFunction")
                 {
-                    controller.State = new ChooseYourCompany();
+                        controller.State = new MemberOfExistingComp();
+                        model = MessagesFromTg.ShowMenuForChoosingCompany;
+   
                 }
                 else if (answer == "newCompany")
                 {
                     controller.State = new ChooseYourCompany();
+                    model = MessagesFromTg.ShowMenuForCreatingNewCompany;
                 }
                 else
                 {
