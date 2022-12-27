@@ -1,6 +1,7 @@
 ﻿using _1stProject;
 using _1stProject.Tests.TestCaseSources;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Text.Json;
 
 namespace _1stProject.Tests
@@ -100,6 +101,27 @@ namespace _1stProject.Tests
         {
             _pathTests = "whereNOfile.test";
             Assert.Throws<DirectoryNotFoundException>(() => _storage.LoadAllWorker());
+        }
+
+        [TestCaseSource(typeof(AddCompanyTestsCaseSources))]
+        public void AddNewCompanyTests(Dictionary<int, string> AllCompany, Dictionary<int, string> newAllCompany, int a, string b)
+        {
+            using (StreamWriter sw = new StreamWriter(_pathTests))
+            {
+                string jsn = JsonSerializer.Serialize(AllCompany);
+                sw.WriteLine(jsn);
+            }
+            _storage.AddNewCompany(a, b);
+            using (StreamReader sr = new StreamReader(_pathTests))
+            {
+                string jsn = sr.ReadLine()!;
+                AllCompany = JsonSerializer.Deserialize<Dictionary<int, string>>(jsn)!;
+            }
+
+            Dictionary<int, string> expecredAllCompany = newAllCompany;
+            Dictionary<int, string> actualAllCompany = _storage.AllCompany;
+
+            CollectionAssert.AreEqual(expecredAllCompany, actualAllCompany);
         }
 
         [TearDown]

@@ -42,4 +42,31 @@ namespace _1stProject.Tests.TestCaseSources
             };
         }
     }
+
+    public class AddCompanyTestsCaseSources : IEnumerable
+    {
+        public IEnumerator GetEnumerator()
+        {
+            int a = 7;
+            string b = "Umbrella";
+            Dictionary<int, string> allCompany = new Dictionary<int, string>()
+            {
+                {1, "Lapa" },
+                {2, "Velvet and soup" },
+                {3, "coFFeeGang" },
+                {4, "smokeWeeD_everyDAY" }
+            };
+            Dictionary<int, string> newAllCompany = new Dictionary<int, string>()
+            {
+                {1, "Lapa" },
+                {2, "Velvet and soup" },
+                {3, "coFFeeGang" },
+                {4, "smokeWeeD_everyDAY" }
+            };
+
+            newAllCompany.Add(a, b);
+
+            yield return new Object[] { allCompany, newAllCompany, a, b };
+        }
+    }
 }
