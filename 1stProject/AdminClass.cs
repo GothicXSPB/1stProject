@@ -21,6 +21,13 @@ namespace _1stProject
 
         }
 
+        public void AddEmployeeForThisDate(Employee employee, DateTime a)
+        {
+            int AddEmployeeDay = a.DayOfYear;
+
+            _company.Calendar[AddEmployeeDay].Add(employee.Id);
+        }
+
         public void RemoveAnEmployeeFromThisDate(Employee employee, DateTime a)
         {
             int RemoveDay = a.DayOfYear;
