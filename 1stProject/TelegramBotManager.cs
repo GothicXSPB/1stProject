@@ -51,6 +51,7 @@ namespace _1stProject
         public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             UserTgId = GetTgUserId(update);
+            _userController = new UserController(UserTgId);
             ModelOfMessage message = _userController.GetReply(update);
             await _bot.SendTextMessageAsync(UserTgId, message.Message, replyMarkup: message.Keyboard);
 
@@ -71,12 +72,12 @@ namespace _1stProject
             //    return;
             //}
 
-            //if (update.Message.Text == "/start")
-            //{
-            //    _bot.SendTextMessageAsync(update.Message.Chat.Id, $"Привет, я телеграмм бот менеджер,напиши" + "\r\n" + "/keyboard" + "\r\n" +
-            //        $"1-Создать новую компанию" + "\r\n" + $"2-Зайти в существующую компанию");
-            //    return;
-            //}
+            if (update.Message.Text == "/start")
+            {
+                _bot.SendTextMessageAsync(update.Message.Chat.Id, $"Привет, я телеграмм бот менеджер,напиши" + "\r\n" + "/keyboard" + "\r\n" +
+                    $"1-Создать новую компанию" + "\r\n" + $"2-Зайти в существующую компанию");
+                return;
+            }
             //if (update.Message.Text == "Меню")
             //{
             //    _bot.SendTextMessageAsync(update.Message.Chat.Id, $"Привет, я телеграмм бот менеджер,напиши" + "\r\n" +
