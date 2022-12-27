@@ -26,18 +26,9 @@ namespace _1stProject.States
                 }
                 else if (answer == "newCompany")
                 {
-                    controller.State = new ChooseYourCompany();
+                    controller.State = new CreateCompany();
                     model = MessagesFromTg.ShowMenuForCreatingNewCompany;
-                }
-                else
-                {
-                    throw new ArgumentException();
-                }
-                    
-            }
-            else
-            {
-                throw new ArgumentException();
+                }   
             }
 
             return model;

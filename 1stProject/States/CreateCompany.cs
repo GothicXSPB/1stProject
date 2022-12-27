@@ -7,33 +7,26 @@ namespace _1stProject.States
     public class CreateCompany : IState
     {
         Storage _storage1 = new Storage();
+        Company _company;
         //проверка существует ли компания
         //сделать первого юзера админом
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage message;
+            ModelOfMessage message= MessagesFromTg.ShowThatCompanyIsNotUnique;
             bool exists = IsThisCompanyAlreadyExist(update);
-            if (exists == true)
+            if (exists == false)
             {
-                message = MessagesFromTg.ShowThatCompanyIsNotUnique;
-            }
-            else
-            {
+                _storage1.AddNewCompany(_company.IdCompany, _company.NameCompany);
                 controller.State = new Start();
+                Console.WriteLine("Компания создана!");
                 message = MessagesFromTg.ShowStartMenu;
             }
-            return message;
+              return message;
         }
         public bool IsThisCompanyAlreadyExist(Update update)
         {
-            if (_storage1.AllCompany.ContainsValue(update.Message.Text))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            bool answer =_storage1.AllCompany.ContainsValue(update.Message.Text);
+            return answer;
         }
     }
 }

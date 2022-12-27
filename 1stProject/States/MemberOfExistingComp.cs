@@ -11,11 +11,10 @@ namespace _1stProject.States
 {
     internal class MemberOfExistingComp : IState
     {
-        //проверка по спискам компаний
-        //проверка по спискам существующих сотрудников админов и юзеров
+        //ВЫВЕСТИ КОМПАНИИ В КОТОРЫХ УЧАСТВУЕТ ЮЗЕР
         public ModelOfMessage HandleUpdate(Update update, UserController controller) /*- требует редактирования*/
         {
-            ModelOfMessage message = MessagesFromTg.ShowMenuForAdmin;
+            ModelOfMessage message = MessagesFromTg.ShowMenuForAdmin; /*- требует редактирования*/
             return message;
         }
     }
