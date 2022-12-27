@@ -19,6 +19,16 @@ namespace _1stProject
             
         }
 
+        public void ShowScheduleForThePeriod(DateTime thisdate1, DateTime thisdate2)
+        {
+            int i = thisdate1.DayOfYear;
+            int j = thisdate2.DayOfYear;
+            for (i = thisdate1.DayOfYear; ; i = j, i++)
+            {
+                Console.WriteLine(_company.Calendar[i]);
+            }
+        }
+
         public void ShowFullMonthlyTimetablee(DateTime thisdate)
         {
             _company.LoadAllCalendar();
