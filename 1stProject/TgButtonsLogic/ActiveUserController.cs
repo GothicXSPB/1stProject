@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _1stProject.TgButtonsLogic
 {
-    internal class ActiveUserController
+    public class ActiveUserController
     {
+       
     }
 }
