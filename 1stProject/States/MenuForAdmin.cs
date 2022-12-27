@@ -11,11 +11,13 @@ namespace _1stProject.States
 {
     internal class MenuForAdmin:IState
     {
+        //проверка по спискам компаний
+        //проверка по спискам существующих сотрудников админов и юзеров
         //предложить меню с функционалом админа
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage message = MessagesFromTg;
-            return;
+            //ModelOfMessage message = MessagesFromTg;
+            //return;
         }
     }
 }

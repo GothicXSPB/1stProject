@@ -12,13 +12,24 @@ namespace _1stProject.States
 {
     public class CreateCompany: IState
     {
+        Storage _storage1 = new Storage();
         //проверка существует ли компания
         //сделать первого юзера админом
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
             ModelOfMessage message;
-             
-            return;
+            bool exists = _storage1.IsThisCompanyAlreadyExist();
+            if  (exists = true)
+            {
+                message = MessagesFromTg.ShowThatCompanyIsNotUnique;
+            }
+            else
+            {
+                controller.State = new Start();
+                message = MessagesFromTg.ShowStartMenu;
+
+            }
+            return message;
         }
     }
 }

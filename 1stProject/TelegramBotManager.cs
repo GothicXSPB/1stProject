@@ -10,6 +10,18 @@ namespace _1stProject
     {
         ITelegramBotClient _bot;
         public long UserTgId { get; set; }
+        protected string _userText;
+        public string UsersText 
+        { 
+            get
+            {
+                return _userText; 
+            }
+            set
+            {
+                _userText = value;
+            } 
+        }
         public TelegramBotManager()
         {
             string token = @"5910759542:AAHMbJh_wprscd-3TGi8T5kUaRwZG1LKB7s";
@@ -89,6 +101,14 @@ namespace _1stProject
 
         }
 
+        public string GetText (Update update)
+        {
+            if (update.Type == UpdateType.Message)
+            {
+                _userText = update.Message.Text; 
+            }
+            return _userText;
+        }
         public long GetTgUserId(Update update)
         {
             long userId;

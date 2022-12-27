@@ -1,6 +1,8 @@
 ﻿using System.Globalization;
 using System.Text.Json;
 using _1stProject.Options;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 
 namespace _1stProject
 {
@@ -12,6 +14,7 @@ namespace _1stProject
         public string _pathAllWorker { get; set; }
 
         public static Storage _storage;
+        TelegramBotManager _botManager = new TelegramBotManager();
 
         public Storage()
         {
@@ -72,6 +75,18 @@ namespace _1stProject
             LoadAllCompany();
             AllCompany.Add(idCompany, nameCompany);
             SaveAllCompany();
+        }
+
+        public bool IsThisCompanyAlreadyExist ()
+        {
+            if (AllCompany.ContainsValue(_botManager.UsersText))
+            {
+            return true;
+            }
+            else
+            {
+            return false;
+            }
         }
 
         public void AddNewWorker(int idWorker, int[] idCompany)
