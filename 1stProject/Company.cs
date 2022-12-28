@@ -24,9 +24,9 @@ namespace _1stProject
             IdAdmins = new List<long>();
             IdEmployees = new List<long>();
             Calendar = new Dictionary<int, List<long>>();
-            PathAdmins = $@"../{nameCompany}/Admins.txt";
-            PathEmployees = $@"../{nameCompany}/Employees.txt";
-            PathCalendar = $@"../{nameCompany}/Calendar.txt";
+            PathAdmins = $@"../{NameCompany}/Admins.txt";
+            PathEmployees = $@"../{NameCompany}/Employees.txt";
+            PathCalendar = $@"../{NameCompany}/Calendar.txt";
         }
 
         public void CreateTimetable(int a)
