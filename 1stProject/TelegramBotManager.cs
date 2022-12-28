@@ -1,4 +1,5 @@
-﻿using Telegram.Bot;
+﻿using _1stProject.TgButtonsLogic;
+using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -31,7 +32,7 @@ namespace _1stProject
             string token = @"5910759542:AAHMbJh_wprscd-3TGi8T5kUaRwZG1LKB7s";
             _bot = new TelegramBotClient(token);
 
-            Console.WriteLine("Запущен бот " + _bot.GetMeAsync().Result.FirstName);
+            Console.WriteLine("Запущен бот " );
             var cts = new CancellationTokenSource();
             var cancellationToken = cts.Token;
 
@@ -64,7 +65,7 @@ namespace _1stProject
 
         public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
-            Console.WriteLine("я умер");
+            Console.WriteLine("Error");
         }
 
         public string GetText (Update update)

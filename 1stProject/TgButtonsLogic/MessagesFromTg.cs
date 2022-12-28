@@ -1,4 +1,10 @@
-﻿using Telegram.Bot.Types.ReplyMarkups;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using _1stProject.States;
+using Telegram.Bot.Types.ReplyMarkups;
 
 namespace _1stProject.TgButtonsLogic
 {
@@ -16,30 +22,81 @@ namespace _1stProject.TgButtonsLogic
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Я зарегистрированный пользователь в компании") { CallbackData = "UseAvaliableFunction" },
-                                new InlineKeyboardButton("Я хочу создать новую компанию") { CallbackData = "newCompany" }
+                                new InlineKeyboardButton("Войти в компании") { CallbackData = "UseAvaliableFunction" },
+                                new InlineKeyboardButton("Создать новую компанию") { CallbackData = "newCompany" }
                             },
                         })
                 };
             }
         }
 
+        public static ModelOfMessage AddNewCompany
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Напиши название компании и через пробел ее идентификатор",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" }
+                            }
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage GreatCompany
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Компания успешно создана",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Меню") { CallbackData = "Menu" }
+                            },
+                        })
+                };
+            }
+        }
         public static ModelOfMessage ShowMenuForAdmin
         {
             get
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Ваши права администратора подтверждены. Прекласный сегодня денек! =) Что бы вы хотели сделать сегодня?",
+                    Message = "Ваши права администратора подтверждены. Информация о компании:" + "\r\n" + "Работники:" + "\r\n" + "Админы:",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Я хочу ") { CallbackData = "хххх" },
-                                new InlineKeyboardButton("Я хочу") { CallbackData = "хх" }
+                                new InlineKeyboardButton("Добавить сотрудника") { CallbackData = "AddEmployee" },
+                                new InlineKeyboardButton("Добавить сотрудника в календарь") { CallbackData = "AddEmployeeToCalendar" },
                             },
                             new[]
+                            {
+                                new InlineKeyboardButton("Удалить сотрудника") { CallbackData = "DeleteEmployee" },
+                                new InlineKeyboardButton("Добавить админа") { CallbackData = "AddAdmin" }
+                            },
+                            new[]
+                            {
+                                new InlineKeyboardButton("Удалить сотрудник с даты") { CallbackData = "DeleteEmployeeToCalendar" },
+                                new InlineKeyboardButton("Поставить сотрудник на даты") { CallbackData = "AddEmployeeToDays" },
+                            },
+                            new[]
+                            {
+                                new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" },
+                            },
+                                 new[]
                             {
                                 new InlineKeyboardButton("Вернуться назад") { CallbackData = "return" },
                             },
@@ -60,27 +117,22 @@ namespace _1stProject.TgButtonsLogic
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Я хочу ") { CallbackData = "хххх" },
+                                new InlineKeyboardButton("Я хочу") { CallbackData = "хххх" },
                                 new InlineKeyboardButton("Я хочу") { CallbackData = "хх" }
-                            },
-                                 new[]
-                            {
-                                new InlineKeyboardButton("Вернуться назад") { CallbackData = "return" },
                             },
                         })
                 };
             }
         }
-
+       
         public static ModelOfMessage ShowMenuForChoosingCompany
         {
             get
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Выберите компанию в которой вы хотите продолжать работу ТУТ ВЫВОДИМ СПИСОК КОМПАНИЙ",
-                    Keyboard = null 
-
+                    Message = "Напишите компанию в которой вы хотите продолжать работу",
+                    Keyboard = null
                 };
             }
 

@@ -180,5 +180,21 @@ namespace _1stProject
                    IdEmployees.SequenceEqual(company.IdEmployees) &&
                    Calendar.SequenceEqual(company.Calendar);
         }
+
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(_storage);
+            hash.Add(_userNull);
+            hash.Add(NameCompany);
+            hash.Add(IdCompany);
+            hash.Add(_pathAdmins);
+            hash.Add(_pathEmployees);
+            hash.Add(_pathCalendar);
+            hash.Add(IdAdmins);
+            hash.Add(IdEmployees);
+            hash.Add(Calendar);
+            return hash.ToHashCode();
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Text.Json;
 using _1stProject.Options;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using File = System.IO.File;
 
 namespace _1stProject
 {
@@ -106,6 +107,11 @@ namespace _1stProject
                 AllWorker.SequenceEqual(storage.AllWorker) && 
                 _pathAllCompany == storage._pathAllCompany &&
                 _pathAllWorker == storage._pathAllWorker;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(AllCompany, AllWorker, _pathAllCompany, _pathAllWorker);
         }
     }
 }
