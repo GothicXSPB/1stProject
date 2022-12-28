@@ -1,10 +1,12 @@
 ﻿using System.Text.Json;
 
+
 namespace _1stProject
 {
     public class Company
     {
         private Storage _storage;
+        UserNull _userNull = new UserNull();
         public string NameCompany { get; set; }
         public int IdCompany { get; set; }
         public string _pathAdmins;
@@ -97,6 +99,17 @@ namespace _1stProject
         {
             int numberperday = thisdate.DayOfYear;
         }
+
+        //public string IsTheUserExistAsAdminOrRegular() 
+        //{
+        //    SaveAllAdmins.ContainsKey(CurrentCmId);
+        //    SaveAllEmployees.ContainsKey(CurrentCmId);
+        //    return;
+        //}
+        //public int FindAllUsersCompanies( _userNull.  )
+        //{
+        //    return;
+        //}
 
         public void SaveAllAdmins()
         {

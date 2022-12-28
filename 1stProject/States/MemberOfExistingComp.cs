@@ -9,14 +9,13 @@ using _1stProject.TgButtonsLogic;
 
 namespace _1stProject.States
 {
-    internal class MemberOfExistingComp:IState
+    internal class MemberOfExistingComp : IState
     {
-        //проверка по спискам существующих сотрудников админов и юзеров
-        //проверка по спискам компаний
-        public ModelOfMessage HandleUpdate(Update update, UserController controller)
+        //ВЫВЕСТИ КОМПАНИИ В КОТОРЫХ УЧАСТВУЕТ ЮЗЕР
+        public ModelOfMessage HandleUpdate(Update update, UserController controller) /*- требует редактирования*/
         {
-            ModelOfMessage message = MessagesFromTg;
-            return;
+            ModelOfMessage message = MessagesFromTg.ShowMenuForAdmin; /*- требует редактирования*/
+            return message;
         }
     }
 }
