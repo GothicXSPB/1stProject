@@ -14,9 +14,9 @@ namespace _1stProject.States
     {
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage message;
+            ModelOfMessage message = MessagesFromTg.ShowMenuForChoosingCompany;
 
-            return;
+            return message;
         }
     }
 }

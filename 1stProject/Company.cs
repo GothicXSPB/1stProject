@@ -1,11 +1,13 @@
 ﻿using System.Linq;
 using System.Text.Json;
 
+
 namespace _1stProject
 {
     public class Company
     {
         private Storage _storage;
+        UserNull _userNull = new UserNull();
         public string NameCompany { get; set; }
         public int IdCompany { get; set; }
         public string _pathAdmins;
@@ -44,10 +46,10 @@ namespace _1stProject
                 }
             }
         }
-
-        public void ApproveTimeTableForEmployee(int day, int month, int year, Employee employee, int firstDay)
+                      
+        public void ApproveTimeTableForEmployee(DateTime thisDate, Employee employee)
         {
-            DateTime dt = new DateTime(year, month, day);
+            int firstDay = thisDate.DayOfYear;            
 
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift2x2)
             {
@@ -65,6 +67,7 @@ namespace _1stProject
 
                 }
             }
+
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift1x3)
             {
                 for (int i = firstDay; i <= Calendar.Count - 1; i += 4)
@@ -72,9 +75,10 @@ namespace _1stProject
                     Calendar[i].Add(employee.Id);
                 }
             }
+
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift5x2)
             {
-                if (dt.DayOfWeek == DayOfWeek.Monday)
+                if (thisDate.DayOfWeek == DayOfWeek.Monday)
                 {
                     for (int i = firstDay + 4; i <= Calendar.Count - 1; i += 7)
                     {
@@ -96,6 +100,17 @@ namespace _1stProject
         {
             int numberperday = thisdate.DayOfYear;
         }
+
+        //public string IsTheUserExistAsAdminOrRegular() 
+        //{
+        //    SaveAllAdmins.ContainsKey(CurrentCmId);
+        //    SaveAllEmployees.ContainsKey(CurrentCmId);
+        //    return;
+        //}
+        //public int FindAllUsersCompanies( _userNull.  )
+        //{
+        //    return;
+        //}
 
         public void SaveAllAdmins()
         {
