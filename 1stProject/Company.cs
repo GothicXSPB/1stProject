@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Linq;
+using System.Text.Json;
 
 namespace _1stProject
 {
@@ -91,10 +92,6 @@ namespace _1stProject
             }
         }
 
-
-
-
-
         public void DateToNumberDay(DateTime thisdate)
         {
             int numberperday = thisdate.DayOfYear;
@@ -152,6 +149,20 @@ namespace _1stProject
                 string jsn = sr.ReadLine()!;
                 Calendar = JsonSerializer.Deserialize<Dictionary<int, List<long>>>(jsn)!;
             }
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Company company &&
+                   _storage == company._storage &&
+                   NameCompany == company.NameCompany &&
+                   IdCompany == company.IdCompany &&
+                   _pathAdmins == company._pathAdmins &&
+                   _pathEmployees == company._pathEmployees &&
+                   _pathCalendar == company._pathCalendar &&
+                   IdAdmins.SequenceEqual(company.IdAdmins) &&
+                   IdEmployees.SequenceEqual(company.IdEmployees) &&
+                   Calendar.SequenceEqual(company.Calendar);
         }
     }
 }
