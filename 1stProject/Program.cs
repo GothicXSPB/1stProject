@@ -9,7 +9,16 @@ Employee employee4 = new Employee(4, "Katerina Apo", "84959238456", TimeTable.Sh
 Employee employee5 = new Employee(5, "Artem Titov", "89024569432", TimeTable.Shift1x3);
 //Company company = new Company("Мяу", 3);
 
-//AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shift5x2);
+AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shift5x2, "Meow", 1);
+
+
+company.SaveAllAdmins();
+company.SaveAllCalendar();
+company.SaveAllAdmins();
+admin.AddEmployee(employee5);
+admin.CreateNullTimeTable(2023);
+admin.ApproveTimeTableForEmployeeAndSave(12, 03, 2023, employee5, 3);
+admin.ShowScheduleForThePeriod2(DateTime.Parse("12.03.2023"), DateTime.Parse("12.04.2023"));
 
 //admin.AddEmployee(employee1);
 
@@ -21,6 +30,6 @@ Employee employee5 = new Employee(5, "Artem Titov", "89024569432", TimeTable.Shi
 
 //admin.DeleteEmployee(2);
 
-TelegramBotManager telegramBot = new TelegramBotManager();
+//TelegramBotManager telegramBot = new TelegramBotManager();
 
-Console.ReadLine();
+//Console.ReadLine();

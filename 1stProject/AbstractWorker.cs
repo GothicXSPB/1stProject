@@ -3,7 +3,7 @@ namespace _1stProject
 {
     public abstract class AbstractWorker
     {
-
+        private Company _company;
 
         public long Id { get; protected set; }
         public string Name { get; protected set; }
@@ -12,22 +12,12 @@ namespace _1stProject
 
         public abstract void AddOvertimeHoursForApprove();
 
-        public abstract void SwapShifts();
+        public abstract void SwapShifts(Employee employee, Employee employee1, DateTime a, DateTime b);
 
-        public void ShowYourOwnMonthlyTimetable()
+        public void ShowYourOwnMonthlyTimetable(DateTime thisdate)
         {
 
-        }
-
-        public void ShowFullMonthlyTimetablee()
-        {
-
-        }
-
-        public void ShowFullTimetableForTheDate()
-        {
-
-        }
+        }        
 
         public void ShowOwnPersonalCard()
         {

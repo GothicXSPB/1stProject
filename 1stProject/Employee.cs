@@ -31,7 +31,7 @@ namespace _1stProject
             return HashCode.Combine(Id, Name, TypeOfTimeTable, TelephoneNumber);
         }
 
-        public override void SwapShifts()
+        public override void SwapShifts(Employee employee, Employee employee1, DateTime a, DateTime b)
         {
 
         }

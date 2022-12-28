@@ -94,7 +94,10 @@ namespace _1stProject
                     Console.WriteLine("Work week must start on Monday");
                 }
             }
-        }
+
+
+
+
 
         public int DateToNumberDay(DateTime thisdate)
         {
