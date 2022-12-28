@@ -89,5 +89,40 @@ namespace _1stProject.Tests
 
             CollectionAssert.AreEqual(expecredAllEmployees, actualAllEmployees);
         }
+
+        [TestCaseSource(typeof(CalendarCompanyTestsCaseSources))]
+        public void SaveAllCalendarTests(Dictionary<int, List<long>> Calendar)
+        {
+            _company.Calendar = Calendar;
+            _company.SaveAllCalendar();
+
+            Dictionary<int, List<long>> expecredIdCalendar = _company.Calendar;
+            Dictionary<int, List<long>> actualIdCalendar;
+
+            using (StreamReader sr = new StreamReader(_pathCompanyTests))
+            {
+                string jsn = sr.ReadLine()!;
+                actualIdCalendar = JsonSerializer.Deserialize<Dictionary<int, List<long>>>(jsn)!;
+            }
+
+            CollectionAssert.AreEqual(expecredIdCalendar, actualIdCalendar);
+        }
+
+        [TestCaseSource(typeof(CalendarCompanyTestsCaseSources))]
+        public void LoadAllCalendarTests(Dictionary<int, List<long>> Calendar)
+        {
+            using (StreamWriter sw = new StreamWriter(_pathCompanyTests))
+            {
+                string jsn = JsonSerializer.Serialize(Calendar);
+                sw.WriteLine(jsn);
+            }
+
+            _company.LoadAllCalendar();
+
+            Dictionary<int, List<long>> expecredAllCalendar = Calendar;
+            Dictionary<int, List<long>> actualAllCalendar = _company.Calendar;
+
+            CollectionAssert.AreEqual(expecredAllCalendar, actualAllCalendar);
+        }
     }
 }

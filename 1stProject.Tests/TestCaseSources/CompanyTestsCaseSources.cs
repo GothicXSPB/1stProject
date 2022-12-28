@@ -31,4 +31,24 @@ namespace _1stProject.Tests.TestCaseSources
             };
         }
     }
+
+    public class CalendarCompanyTestsCaseSources : IEnumerable
+    {
+        public IEnumerator GetEnumerator()
+        {
+            Dictionary<int, List<long>> calendar = new Dictionary<int, List<long>>()
+            {
+                {1, new List<long>() {35423525,23252352356, 946332424363} },
+                {67, new List<long>() {725424722341,09091283124, 332294791874298 } },
+                {1201, new List<long>() {6161661616,000024140041, 39084725981} }
+            };
+
+            yield return new Object[] { calendar };
+
+            yield return new Object[]
+            {
+                    new Dictionary<int, List<long>>()
+            };
+        }
+    }
 }
