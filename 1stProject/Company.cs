@@ -19,32 +19,10 @@ namespace _1stProject
 
         public List<long> IdAdmins { get; set; }
         public List<long> IdEmployees { get; set; }
-        public Dictionary<int, List<long>> Calendar { get; set; }
-              
-        
+        public Dictionary<int, List<long>> Calendar { get; set; }      
+            
        
-        public void CreateDirectory()
-        {
-        DirectoryInfo Admins = new DirectoryInfo(PathAdminsDir);
-        DirectoryInfo Employees = new DirectoryInfo(PathEmployeesDir);
-        DirectoryInfo Calendar = new DirectoryInfo(PathCalendarDir);
-        if (!Admins.Exists)
-            {
-                Admins.Create();
-            }
-        if (!Employees.Exists)
-            {
-                Employees.Create();
-            }
-        if (!Calendar.Exists)
-            {
-                Calendar.Create();
-            }
-        }
-
-
-
-        public Company(string nameCompany, int idCompany)
+       public Company(string nameCompany, int idCompany)
         {
             NameCompany = nameCompany;
             IdCompany = idCompany;
@@ -59,6 +37,24 @@ namespace _1stProject
             PathCalendarDir = $@"../{NameCompany}";
         }
 
+        public void CreateDirectory()
+        {
+            DirectoryInfo Admins = new DirectoryInfo(PathAdminsDir);
+            DirectoryInfo Employees = new DirectoryInfo(PathEmployeesDir);
+            DirectoryInfo Calendar = new DirectoryInfo(PathCalendarDir);
+            if (!Admins.Exists)
+            {
+                Admins.Create();
+            }
+            if (!Employees.Exists)
+            {
+                Employees.Create();
+            }
+            if (!Calendar.Exists)
+            {
+                Calendar.Create();
+            }
+        }
 
 
         public void CreateTimetable(int a)

@@ -18,7 +18,7 @@ company.SaveAllCalendar();
 company.SaveAllEmployees();
 
 
-
+admin.AddEmployeeForThisDate(employee5, DateTime.Parse("12.03.2023"));
 admin.AddEmployee(employee5);
 admin.CreateNullTimeTable(2023);
 admin.ApproveTimeTableForEmployeeAndSave(DateTime.Parse("12.03.2023"), employee5);
