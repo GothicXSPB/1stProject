@@ -12,7 +12,7 @@ namespace _1stProject
             Name = name;
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
-            _company = AdminClass._company;
+            _company = new Company(nameCompany, idCompany);
             _storage = Storage.GetInstance();
         }
 
@@ -24,7 +24,7 @@ namespace _1stProject
             for (int i = a; i <= v; i++)
             {
                 Console.WriteLine(_company.Calendar[i]);
-            }            
+            }
         }
 
         public void ShowFullTimetableForTheDate(DateTime thisdate)
@@ -48,7 +48,7 @@ namespace _1stProject
                 Console.WriteLine("{0}, {1}",
                                     pair.Key,
                                     pair.Value);
-                //Console.WriteLine(_company.Calendar[i].);
+                
             }
 
         }
@@ -93,9 +93,9 @@ namespace _1stProject
 
         public void AddEmployee(Employee employee)
         {
-            _company.SaveAllEmployees();
-            _company.IdEmployees.Add(employee.Id);
             _company.LoadAllEmployees();
+            _company.IdEmployees.Add(employee.Id);
+            _company.SaveAllEmployees();
         }
 
         public void DeleteEmployee(long id)
@@ -112,9 +112,9 @@ namespace _1stProject
             _company.SaveAllAdmins();
         }
 
-        public void ApproveTimeTableForEmployeeAndSave(DateTime thisDate, Employee employee)
+        public void ApproveTimeTableForEmployeeAndSave(int day, int month, int year, Employee employee, int firstDay)
         {
-            _company.ApproveTimeTableForEmployee(thisDate, employee);
+            _company.ApproveTimeTableForEmployee(day, month, year, employee, firstDay);
             _company.SaveAllCalendar();
         }
 
