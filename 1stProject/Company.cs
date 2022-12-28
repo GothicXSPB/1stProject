@@ -27,6 +27,7 @@ namespace _1stProject
             _pathAdmins = $@"../{nameCompany}Admins.txt";
             _pathEmployees = $@"../{nameCompany}Employees.txt";
             _pathCalendar = $@"../{nameCompany}Calendar.txt";
+            _storage.AddNewCompany(idCompany, nameCompany);
         }
 
         public void CreateTimetable(int a)
