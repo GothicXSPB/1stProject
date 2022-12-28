@@ -16,8 +16,7 @@ namespace _1stProject
         public string _pathAllWorker { get; set; }
 
         public static Storage _storage;
-        
-        //TelegramBotManager _botManager = new TelegramBotManager();
+        Company _company;
 
         public Storage()
         {
@@ -85,11 +84,10 @@ namespace _1stProject
                 throw new DirectoryNotFoundException();
             }
         }
-
-        public void AddNewCompany(int idCompany, string nameCompany)
-        {
+        public void AddNewCompany(int IdCompany, string NameCompany)
+        {  
             LoadAllCompany();
-            AllCompany.Add(idCompany, nameCompany);
+            AllCompany.Add(IdCompany, NameCompany);
             SaveAllCompany();
         }
 

@@ -1,14 +1,16 @@
-﻿using System.Linq;
-using System.Text.Json;
-
+﻿using System.Text.Json;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 
 namespace _1stProject
 {
     public class Company
     {
-        private Storage _storage;
+        private Storage _storage= new Storage();
         UserNull _userNull = new UserNull();
         public string NameCompany { get; set; }
+        private string _companyName;
+        private int _idCompany;
         public int IdCompany { get; set; }
         public string _pathAdmins;
         public string _pathEmployees;
@@ -17,17 +19,45 @@ namespace _1stProject
         public List<long> IdEmployees { get; set; }
         public Dictionary<int, List<long>> Calendar { get; set; }
 
-        public Company(string nameCompany, int idCompany)
+        public Company(Update update)
         {
-            NameCompany = nameCompany;
-            IdCompany = idCompany;
+            NameCompany = GetCompanyName(update);
+            IdCompany = CreateUniqueCompanyId(update);
             IdAdmins = new List<long>();
             IdEmployees = new List<long>();
             Calendar = new Dictionary<int, List<long>>();
-            _pathAdmins = $@"../{nameCompany}Admins.txt";
-            _pathEmployees = $@"../{nameCompany}Employees.txt";
-            _pathCalendar = $@"../{nameCompany}Calendar.txt";
-            _storage.AddNewCompany(idCompany, nameCompany);
+            _pathAdmins = $@"../{NameCompany}Admins.txt";
+            _pathEmployees = $@"../{NameCompany}Employees.txt";
+            _pathCalendar = $@"../{NameCompany}Calendar.txt";
+            _storage.AddNewCompany(IdCompany, NameCompany);
+        }
+
+        public string GetCompanyName(Update update)
+        {
+            if (update.Type == UpdateType.Message)
+            {
+                _companyName = update.Message.Text;
+            }
+            return _companyName;
+        }
+        private int CreateUniqueCompanyId(Update update)
+        {
+            Random random = new Random();
+            int _idCompany = random.Next();
+            while (CheckThatIdCompanyUnique(_idCompany) == false)
+            {
+                _idCompany = random.Next();
+            }
+            return _idCompany;
+        }
+        private bool CheckThatIdCompanyUnique(int _idCompany)
+        {
+            bool answer = false;
+            if (!_storage.AllCompany.ContainsKey(_idCompany))
+            {
+                answer = true;
+            }
+            return answer;
         }
 
         public void CreateTimetable(int a)
@@ -47,10 +77,10 @@ namespace _1stProject
                 }
             }
         }
-                      
+
         public void ApproveTimeTableForEmployee(DateTime thisDate, Employee employee)
         {
-            int firstDay = thisDate.DayOfYear;            
+            int firstDay = thisDate.DayOfYear;
 
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift2x2)
             {

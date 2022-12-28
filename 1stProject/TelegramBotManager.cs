@@ -13,7 +13,7 @@ namespace _1stProject
         ITelegramBotClient _bot;
         private ActiveUserController _activeUsers;
         public long UserTgId { get; set; }
-        protected string _userText;
+        private string _userText;
         private UserController _userController;
         public string UsersText 
         { 
