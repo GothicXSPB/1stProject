@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _1stProject.States;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace _1stProject.TgButtonsLogic
@@ -35,13 +36,13 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Text = "Новая компания успешно создана, вы являетесь ее админом",
+                    Text = "Напиши название компании и через пробел ее идентификатор",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Меню") { CallbackData = "MenuAdmin" }
+                                new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" }
                             },
                         })
                 };

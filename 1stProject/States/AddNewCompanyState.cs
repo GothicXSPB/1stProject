@@ -24,7 +24,16 @@ namespace _1stProject.States
                             controller.State = new MenuForAdmin();
                             result = MessagesFromTg.ShowMenuForAdmin;
                             break;
+                        case "Start":
+                            controller.State = new Start();
+                            result = MessagesFromTg.ShowStartMenu;
+                            break;
                     }
+                    break;
+                case UpdateType.Message:
+                    string newNameCompany = update.Message.Text;
+                    controller.State = new MenuForAdmin();
+                    result = MessagesFromTg.ShowMenuForAdmin;
                     break;
             }
             return result;
