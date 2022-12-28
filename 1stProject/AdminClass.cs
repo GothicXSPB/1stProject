@@ -48,7 +48,7 @@ namespace _1stProject
                 Console.WriteLine("{0}, {1}",
                                     pair.Key,
                                     pair.Value);
-                Console.WriteLine(_company.Calendar[i].);
+                //Console.WriteLine(_company.Calendar[i].);
             }
 
         }
@@ -112,9 +112,9 @@ namespace _1stProject
             _company.SaveAllAdmins();
         }
 
-        public void ApproveTimeTableForEmployeeAndSave(int day, int month, int year, Employee employee, int firstDay)
+        public void ApproveTimeTableForEmployeeAndSave(DateTime thisDate, Employee employee)
         {
-            _company.ApproveTimeTableForEmployee(day, month, year, employee, firstDay);
+            _company.ApproveTimeTableForEmployee(thisDate, employee);
             _company.SaveAllCalendar();
         }
 

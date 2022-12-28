@@ -19,9 +19,9 @@ namespace _1stProject.Tests
             _base = new Storage();
             _base._pathAllCompany = @"../StorageTests.test";
             _base._pathAllWorker = @"../StorageTests.test";
-            _company._pathAdmins = _pathCompanyTests;
-            _company._pathEmployees = _pathCompanyTests;
-            _company._pathCalendar = _pathCompanyTests;
+            _company.PathAdmins = _pathCompanyTests;
+            _company.PathEmployees = _pathCompanyTests;
+            _company.PathCalendar = _pathCompanyTests;
         }
 
         [TestCaseSource(typeof(IdAdminsCompanyTestsCaseSources))]

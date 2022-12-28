@@ -10,9 +10,9 @@ namespace _1stProject
         UserNull _userNull = new UserNull();
         public string NameCompany { get; set; }
         public int IdCompany { get; set; }
-        public string _pathAdmins;
-        public string _pathEmployees;
-        public string _pathCalendar;
+        public string PathAdmins;
+        public string PathEmployees;
+        public string PathCalendar;
         public List<long> IdAdmins { get; set; }
         public List<long> IdEmployees { get; set; }
         public Dictionary<int, List<long>> Calendar { get; set; }
@@ -24,9 +24,9 @@ namespace _1stProject
             IdAdmins = new List<long>();
             IdEmployees = new List<long>();
             Calendar = new Dictionary<int, List<long>>();
-            _pathAdmins = $@"../{nameCompany}/Admins.txt";
-            _pathEmployees = $@"../{nameCompany}/Employees.txt";
-            _pathCalendar = $@"../{nameCompany}/Calendar.txt";
+            PathAdmins = $@"../{nameCompany}/Admins.txt";
+            PathEmployees = $@"../{nameCompany}/Employees.txt";
+            PathCalendar = $@"../{nameCompany}/Calendar.txt";
         }
 
         public void CreateTimetable(int a)
@@ -46,10 +46,10 @@ namespace _1stProject
                 }
             }
         }
-                      
+
         public void ApproveTimeTableForEmployee(DateTime thisDate, Employee employee)
         {
-            int firstDay = thisDate.DayOfYear;            
+            int firstDay = thisDate.DayOfYear;
 
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift2x2)
             {
@@ -94,10 +94,7 @@ namespace _1stProject
                     Console.WriteLine("Work week must start on Monday");
                 }
             }
-
-
-
-
+        }
 
         public int DateToNumberDay(DateTime thisdate)
         {
@@ -105,21 +102,10 @@ namespace _1stProject
 
             return numberperday;
         }
-
-        //public string IsTheUserExistAsAdminOrRegular() 
-        //{
-        //    SaveAllAdmins.ContainsKey(CurrentCmId);
-        //    SaveAllEmployees.ContainsKey(CurrentCmId);
-        //    return;
-        //}
-        //public int FindAllUsersCompanies( _userNull.  )
-        //{
-        //    return;
-        //}
-
+        
         public void SaveAllAdmins()
         {
-            using (StreamWriter sw = new StreamWriter(_pathAdmins))
+            using (StreamWriter sw = new StreamWriter(PathAdmins))
             {
                 string jsn = JsonSerializer.Serialize(IdAdmins);
                 sw.WriteLine(jsn);
@@ -128,7 +114,7 @@ namespace _1stProject
 
         public void SaveAllEmployees()
         {
-            using (StreamWriter sw = new StreamWriter(_pathEmployees))
+            using (StreamWriter sw = new StreamWriter(PathEmployees))
             {
                 string jsn = JsonSerializer.Serialize(IdEmployees);
                 sw.WriteLine(jsn);
@@ -137,7 +123,7 @@ namespace _1stProject
 
         public void SaveAllCalendar()
         {
-            using (StreamWriter sw = new StreamWriter(_pathCalendar))
+            using (StreamWriter sw = new StreamWriter(PathCalendar))
             {
                 string jsn = JsonSerializer.Serialize(Calendar);
                 sw.WriteLine(jsn);
@@ -146,7 +132,7 @@ namespace _1stProject
 
         public void LoadAllAdmins()
         {
-            using (StreamReader sr = new StreamReader(_pathAdmins))
+            using (StreamReader sr = new StreamReader(PathAdmins))
             {
                 string jsn = sr.ReadLine()!;
                 IdAdmins = JsonSerializer.Deserialize<List<long>>(jsn)!;
@@ -155,7 +141,7 @@ namespace _1stProject
 
         public void LoadAllEmployees()
         {
-            using (StreamReader sr = new StreamReader(_pathEmployees))
+            using (StreamReader sr = new StreamReader(PathEmployees))
             {
                 string jsn = sr.ReadLine()!;
                 IdEmployees = JsonSerializer.Deserialize<List<long>>(jsn)!;
@@ -164,7 +150,7 @@ namespace _1stProject
 
         public void LoadAllCalendar()
         {
-            using (StreamReader sr = new StreamReader(_pathCalendar))
+            using (StreamReader sr = new StreamReader(PathCalendar))
             {
                 string jsn = sr.ReadLine()!;
                 Calendar = JsonSerializer.Deserialize<Dictionary<int, List<long>>>(jsn)!;
@@ -178,9 +164,9 @@ namespace _1stProject
                    _userNull == company._userNull &&
                    NameCompany == company.NameCompany &&
                    IdCompany == company.IdCompany &&
-                   _pathAdmins == company._pathAdmins &&
-                   _pathEmployees == company._pathEmployees &&
-                   _pathCalendar == company._pathCalendar &&
+                   PathAdmins == company.PathAdmins &&
+                   PathEmployees == company.PathEmployees &&
+                   PathCalendar == company.PathCalendar &&
                    IdAdmins.SequenceEqual(company.IdAdmins) &&
                    IdEmployees.SequenceEqual(company.IdEmployees) &&
                    Calendar.SequenceEqual(company.Calendar);
@@ -193,15 +179,26 @@ namespace _1stProject
             hash.Add(_userNull);
             hash.Add(NameCompany);
             hash.Add(IdCompany);
-            hash.Add(_pathAdmins);
-            hash.Add(_pathEmployees);
-            hash.Add(_pathCalendar);
+            hash.Add(PathAdmins);
+            hash.Add(PathEmployees);
+            hash.Add(PathCalendar);
             hash.Add(IdAdmins);
             hash.Add(IdEmployees);
             hash.Add(Calendar);
             return hash.ToHashCode();
         }
+
+        //public string IsTheUserExistAsAdminOrRegular() 
+        //{
+        //    SaveAllAdmins.ContainsKey(CurrentCmId);
+        //    SaveAllEmployees.ContainsKey(CurrentCmId);
+        //    return;
+        //}
+        //public int FindAllUsersCompanies( _userNull.  )
+        //{
+        //    return;
+        //}
     }
 
-    
+
 }
