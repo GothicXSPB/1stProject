@@ -80,13 +80,13 @@ namespace _1stProject
             {
                 if (thisDate.DayOfWeek == DayOfWeek.Monday)
                 {
-                    for (int i = firstDay + 4; i <= Calendar.Count - 1; i += 7)
+                    for (int i = firstDay; i <= Calendar.Count - 1; i += 7)
                     {
                         Calendar[i].Add(employee.Id);
-                        Calendar[i - 1].Add(employee.Id);
-                        Calendar[i - 2].Add(employee.Id);
-                        Calendar[i - 3].Add(employee.Id);
-                        Calendar[i - 4].Add(employee.Id);
+                        Calendar[i + 1].Add(employee.Id);
+                        Calendar[i + 2].Add(employee.Id);
+                        Calendar[i + 3].Add(employee.Id);
+                        Calendar[i + 4].Add(employee.Id);
                     }
                 }
                 else
@@ -157,36 +157,36 @@ namespace _1stProject
             }
         }
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Company company &&
-                   _baseData == company._baseData &&
-                   _userNull == company._userNull &&
-                   NameCompany == company.NameCompany &&
-                   IdCompany == company.IdCompany &&
-                   PathAdmins == company.PathAdmins &&
-                   PathEmployees == company.PathEmployees &&
-                   PathCalendar == company.PathCalendar &&
-                   IdAdmins.SequenceEqual(company.IdAdmins) &&
-                   IdEmployees.SequenceEqual(company.IdEmployees) &&
-                   Calendar.SequenceEqual(company.Calendar);
-        }
+        //public override bool Equals(object? obj)
+        //{
+        //    return obj is Company company &&
+        //           _baseData == company._baseData &&
+        //           _userNull == company._userNull &&
+        //           NameCompany == company.NameCompany &&
+        //           IdCompany == company.IdCompany &&
+        //           PathAdmins == company.PathAdmins &&
+        //           PathEmployees == company.PathEmployees &&
+        //           PathCalendar == company.PathCalendar &&
+        //           IdAdmins.SequenceEqual(company.IdAdmins) &&
+        //           IdEmployees.SequenceEqual(company.IdEmployees) &&
+        //           Calendar.SequenceEqual(company.Calendar);
+        //}
 
-        public override int GetHashCode()
-        {
-            HashCode hash = new HashCode();
-            hash.Add(_baseData);
-            hash.Add(_userNull);
-            hash.Add(NameCompany);
-            hash.Add(IdCompany);
-            hash.Add(PathAdmins);
-            hash.Add(PathEmployees);
-            hash.Add(PathCalendar);
-            hash.Add(IdAdmins);
-            hash.Add(IdEmployees);
-            hash.Add(Calendar);
-            return hash.ToHashCode();
-        }
+        //public override int GetHashCode()
+        //{
+        //    HashCode hash = new HashCode();
+        //    hash.Add(_baseData);
+        //    hash.Add(_userNull);
+        //    hash.Add(NameCompany);
+        //    hash.Add(IdCompany);
+        //    hash.Add(PathAdmins);
+        //    hash.Add(PathEmployees);
+        //    hash.Add(PathCalendar);
+        //    hash.Add(IdAdmins);
+        //    hash.Add(IdEmployees);
+        //    hash.Add(Calendar);
+        //    return hash.ToHashCode();
+        //}
 
         //public string IsTheUserExistAsAdminOrRegular() 
         //{

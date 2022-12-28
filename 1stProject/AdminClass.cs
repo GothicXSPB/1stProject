@@ -24,7 +24,7 @@ namespace _1stProject
             for (int i = a; i <= v; i++)
             {
                 Console.WriteLine(_company.Calendar[i]);
-            }
+            }            
         }
 
         public void ShowFullTimetableForTheDate(DateTime thisdate)
