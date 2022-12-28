@@ -16,14 +16,14 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Text = "Доброго вам дня! Вас привествует система учета рабочего времени!",
+                    Message = "Доброго вам дня! Вас привествует система учета рабочего времени!",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
                             new[]
                             {
                                 new InlineKeyboardButton("Войти в компании") { CallbackData = "UseAvaliableFunction" },
-                                new InlineKeyboardButton("Создать новую компанию") { CallbackData = "NewCompany" }
+                                new InlineKeyboardButton("Создать новую компанию") { CallbackData = "newCompany" }
                             },
                         })
                 };
@@ -36,7 +36,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Text = "Напиши название компании и через пробел ее идентификатор",
+                    Message = "Напиши название компании и через пробел ее идентификатор",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
@@ -59,7 +59,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Text = "Ваши права администратора подтверждены. Информация о компании:" + "\r\n" + "Работкини:" + "\r\n" + "Админы:",
+                    Message = "Ваши права администратора подтверждены. Информация о компании:" + "\r\n" + "Работкини:" + "\r\n" + "Админы:",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
@@ -97,7 +97,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Text = "Прекрасный денек! Что бы вы хотели сделать сегодня? =)",
+                    Message = "Прекрасный денек! Что бы вы хотели сделать сегодня? =)",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
@@ -117,7 +117,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Text = "Напишите компанию в которой вы хотите продолжать работу",
+                    Message = "Напишите компанию в которой вы хотите продолжать работу",
                     Keyboard = null
                 };
             }
@@ -129,7 +129,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Text = "Для создания компании укажите уникальное имя компании. Далее оно будет использоваться для авторизации вас и ваших сотрудников",
+                    Message = "Для создания компании укажите уникальное имя компании. Далее оно будет использоваться для авторизации вас и ваших сотрудников",
                     Keyboard = null
                 };
             }
@@ -140,7 +140,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Text = "Многие люди думают одинаково. Такое имя уже существует. Попробуйте еще раз",
+                    Message = "Многие люди думают одинаково. Такое имя уже существует. Попробуйте еще раз",
                     Keyboard = null
                 };
             }
