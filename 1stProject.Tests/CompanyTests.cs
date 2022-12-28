@@ -9,12 +9,16 @@ namespace _1stProject.Tests
     {
         private string _pathCompanyTests;
         private Company _company;
+        private Storage _base;
 
         [SetUp]
         public void SetUp()
         {
             _pathCompanyTests = @"../AllTests.test";
             _company = new Company("MultiTax", 6);
+            _base = new Storage();
+            _base._pathAllCompany = @"../StorageTests.test";
+            _base._pathAllWorker = @"../StorageTests.test";
             _company._pathAdmins = _pathCompanyTests;
             _company._pathEmployees = _pathCompanyTests;
             _company._pathCalendar = _pathCompanyTests;
@@ -26,7 +30,7 @@ namespace _1stProject.Tests
             _company.IdAdmins = IdAdmins;
             _company.SaveAllAdmins();
 
-            List<long> expecredIdAdmins = _company.IdAdmins;
+            List<long> expectedIdAdmins = _company.IdAdmins;
             List<long> actualIdAdmins;
 
             using (StreamReader sr = new StreamReader(_pathCompanyTests))
@@ -35,7 +39,7 @@ namespace _1stProject.Tests
                 actualIdAdmins = JsonSerializer.Deserialize<List<long>>(jsn)!;
             }
 
-            CollectionAssert.AreEqual(expecredIdAdmins, actualIdAdmins);
+            CollectionAssert.AreEqual(expectedIdAdmins, actualIdAdmins);
         }
 
         [TestCaseSource(typeof(IdAdminsCompanyTestsCaseSources))]
@@ -49,10 +53,10 @@ namespace _1stProject.Tests
 
             _company.LoadAllAdmins();
 
-            List<long> expecredAllAdmins = IdAdmins;
+            List<long> expectedAllAdmins = IdAdmins;
             List<long> actualAllAdmins = _company.IdAdmins;
 
-            CollectionAssert.AreEqual(expecredAllAdmins, actualAllAdmins);
+            CollectionAssert.AreEqual(expectedAllAdmins, actualAllAdmins);
         }
 
         [TestCaseSource(typeof(IdEmployeesCompanyTestsCaseSources))]
@@ -61,7 +65,7 @@ namespace _1stProject.Tests
             _company.IdEmployees = IdEmployees;
             _company.SaveAllEmployees();
 
-            List<long> expecredIdEmployees = _company.IdEmployees;
+            List<long> expectedIdEmployees = _company.IdEmployees;
             List<long> actualIdEmployees;
 
             using (StreamReader sr = new StreamReader(_pathCompanyTests))
@@ -70,7 +74,7 @@ namespace _1stProject.Tests
                 actualIdEmployees = JsonSerializer.Deserialize<List<long>>(jsn)!;
             }
 
-            CollectionAssert.AreEqual(expecredIdEmployees, actualIdEmployees);
+            CollectionAssert.AreEqual(expectedIdEmployees, actualIdEmployees);
         }
 
         [TestCaseSource(typeof(IdEmployeesCompanyTestsCaseSources))]
@@ -84,10 +88,59 @@ namespace _1stProject.Tests
 
             _company.LoadAllEmployees();
 
-            List<long> expecredAllEmployees = IdEmployees;
+            List<long> expectedAllEmployees = IdEmployees;
             List<long> actualAllEmployees = _company.IdEmployees;
 
-            CollectionAssert.AreEqual(expecredAllEmployees, actualAllEmployees);
+            CollectionAssert.AreEqual(expectedAllEmployees, actualAllEmployees);
         }
+
+        [TestCaseSource(typeof(CalendarCompanyTestsCaseSources))]
+        public void SaveAllCalendarTests(Dictionary<int, List<long>> Calendar)
+        {
+            _company.Calendar = Calendar;
+            _company.SaveAllCalendar();
+
+            Dictionary<int, List<long>> expectedIdCalendar = _company.Calendar;
+            Dictionary<int, List<long>> actualIdCalendar;
+
+            using (StreamReader sr = new StreamReader(_pathCompanyTests))
+            {
+                string jsn = sr.ReadLine()!;
+                actualIdCalendar = JsonSerializer.Deserialize<Dictionary<int, List<long>>>(jsn)!;
+            }
+
+            CollectionAssert.AreEqual(expectedIdCalendar, actualIdCalendar);
+        }
+
+        [TestCaseSource(typeof(CalendarCompanyTestsCaseSources))]
+        public void LoadAllCalendarTests(Dictionary<int, List<long>> Calendar)
+        {
+            using (StreamWriter sw = new StreamWriter(_pathCompanyTests))
+            {
+                string jsn = JsonSerializer.Serialize(Calendar);
+                sw.WriteLine(jsn);
+            }
+
+            _company.LoadAllCalendar();
+
+            Dictionary<int, List<long>> expectedAllCalendar = Calendar;
+            Dictionary<int, List<long>> actualAllCalendar = _company.Calendar;
+
+            CollectionAssert.AreEqual(expectedAllCalendar, actualAllCalendar);
+        }
+
+        [TestCaseSource(typeof(DateToNumberDayTestsCaseSources))]
+        public void DateToNumberDayTests(int numberperday, DateTime thisdate)
+        {
+            int expectedNumber = _company.DateToNumberDay(thisdate);
+            int actualNumber = numberperday;
+
+            Assert.That(actualNumber, Is.EqualTo(expectedNumber));
+        }
+
+        //public void CreateTimetableTests()
+        //{
+
+        //}
     }
 }
