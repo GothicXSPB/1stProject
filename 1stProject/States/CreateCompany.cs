@@ -6,7 +6,7 @@ namespace _1stProject.States
 {
     public class CreateCompany : IState
     {
-        //Storage _storage1 = new Storage();
+        //Storage _storage1 = new Stora;
         //проверка существует ли компания
         //сделать первого юзера админом
         public ModelOfMessage HandleUpdate(Update update, UserController controller)

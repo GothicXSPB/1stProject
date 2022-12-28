@@ -22,8 +22,8 @@ namespace _1stProject
         {
             AllCompany = new Dictionary<int, string>();
             AllWorker = new Dictionary<long, List<int>>();
-            _pathAllCompany = @"../InformationAllCompany/AllCompany.txt";
-            _pathAllWorker = @"../InformationAllWorker/AllWorker.txt";
+            _pathAllCompany = "../AllCompany.txt";
+            _pathAllWorker = "../AllWorker.txt";
         }
 
         public static Storage GetInstance()
@@ -43,7 +43,6 @@ namespace _1stProject
                 sw.WriteLine(jsn);
             }
         }
-
         public void SaveAllWorker()
         {
             using (StreamWriter sw = new StreamWriter(_pathAllWorker))
@@ -69,6 +68,19 @@ namespace _1stProject
                 throw new DirectoryNotFoundException();
             }
         }
+        //public void ReadReservationsToFile()
+        //{
+        //    if (File.Exists(Path))
+        //    {
+        //        using (StreamReader reserv = new StreamReader(Path))
+        //        {
+        //            string allTables = reserv.ReadLine()!;
+        //            Tables = JsonSerializer.Deserialize<List<Tables>>(allTables);
+        //            string allBooks = reserv.ReadLine()!;
+        //            Books = JsonSerializer.Deserialize<List<Books>>(allBooks);
+        //        }
+        //    }
+        //}
 
         public void LoadAllWorker()
         {

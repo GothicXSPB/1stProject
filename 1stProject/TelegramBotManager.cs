@@ -12,6 +12,7 @@ namespace _1stProject
     {
         ITelegramBotClient _bot;
         private ActiveUserController _activeUsers;
+        //private Storage storage = new Storage();
         public long UserTgId { get; set; }
         private string _userText;
         private UserController _userController;

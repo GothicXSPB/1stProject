@@ -6,7 +6,7 @@ namespace _1stProject
 {
     public class Company
     {
-        private Storage _storage= new Storage();
+        private Storage _storage;
         //UserNull _userNull = new UserNull();
         public string NameCompany { get; set; }
         private string _companyName;
@@ -29,9 +29,10 @@ namespace _1stProject
             _pathAdmins = $@"../{NameCompany}Admins.txt";
             _pathEmployees = $@"../{NameCompany}Employees.txt";
             _pathCalendar = $@"../{NameCompany}Calendar.txt";
+            _storage = Storage.GetInstance();
+            _storage.SaveAllCompany();
             _storage.AddNewCompany(IdCompany, NameCompany);
         }
-
         public bool IsThisCompanyAlreadyExist(Update update)
         {
             bool answer = _storage.AllCompany.ContainsValue(update.Message.Text);
@@ -52,13 +53,14 @@ namespace _1stProject
             }
             return _idCompany;
         }
+       
         private bool CheckThatIdCompanyUnique(int _idCompany)
         {
             bool answer = false;
-            if (!_storage.AllCompany.ContainsKey(_idCompany))
-            {
-                answer = true;
-            }
+            //if (!_storage.AllCompany.ContainsKey(_idCompany))
+            //{
+            answer = true;
+            //}
             return answer;
         }
 
