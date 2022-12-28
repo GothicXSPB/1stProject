@@ -17,4 +17,18 @@ namespace _1stProject.Tests.TestCaseSources
             };
         }
     }
+
+    public class IdEmployeesCompanyTestsCaseSources : IEnumerable
+    {
+        public IEnumerator GetEnumerator()
+        {
+            List<long> idEmployees = new List<long>() { 72856842, 34626042441, 0000000000, 62371649148, 22282822292, 7737374652222 };
+            yield return new Object[] { idEmployees };
+
+            yield return new Object[]
+            {
+                    new List<long>()
+            };
+        }
+    }
 }

@@ -138,7 +138,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathEmployees))
             {
                 string jsn = sr.ReadLine()!;
-                IdAdmins = JsonSerializer.Deserialize<List<long>>(jsn)!;
+                IdEmployees = JsonSerializer.Deserialize<List<long>>(jsn)!;
             }
         }
 
