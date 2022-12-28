@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Linq;
 using System.Text.Json;
 using _1stProject.Options;
 
@@ -96,11 +97,11 @@ namespace _1stProject
 
         public override bool Equals(object? obj)
         {
-            return obj is Storage storage &&
-                   EqualityComparer<Dictionary<int, string>>.Default.Equals(AllCompany, storage.AllCompany) &&
-                   EqualityComparer<Dictionary<long, List<int>>>.Default.Equals(AllWorker, storage.AllWorker) &&
-                   _pathAllCompany == storage._pathAllCompany &&
-                   _pathAllWorker == storage._pathAllWorker;
+            return obj is Storage storage && 
+                AllCompany.SequenceEqual(storage.AllCompany) && 
+                AllWorker.SequenceEqual(storage.AllWorker) && 
+                _pathAllCompany == storage._pathAllCompany &&
+                _pathAllWorker == storage._pathAllWorker;
         }
     }
 }
