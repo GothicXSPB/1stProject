@@ -10,24 +10,52 @@ namespace _1stProject
         UserNull _userNull = new UserNull();
         public string NameCompany { get; set; }
         public int IdCompany { get; set; }
-        public string _pathAdmins;
-        public string _pathEmployees;
-        public string _pathCalendar;
+        public string PathAdmins;
+        public string PathEmployees;
+        public string PathCalendar;
+        public string PathAdminsDir;
+        public string PathEmployeesDir;
+        public string PathCalendarDir;
+
         public List<long> IdAdmins { get; set; }
         public List<long> IdEmployees { get; set; }
-        public Dictionary<int, List<long>> Calendar { get; set; }
-
-        public Company(string nameCompany, int idCompany)
+        public Dictionary<int, List<long>> Calendar { get; set; }      
+            
+       
+       public Company(string nameCompany, int idCompany)
         {
             NameCompany = nameCompany;
             IdCompany = idCompany;
             IdAdmins = new List<long>();
             IdEmployees = new List<long>();
             Calendar = new Dictionary<int, List<long>>();
-            _pathAdmins = $@"../{nameCompany}Admins.txt";
-            _pathEmployees = $@"../{nameCompany}Employees.txt";
-            _pathCalendar = $@"../{nameCompany}Calendar.txt";
+            PathAdmins = $@"../{NameCompany}/Admins.txt";
+            PathEmployees = $@"../{NameCompany}/Employees.txt";
+            PathCalendar = $@"../{NameCompany}/Calendar.txt";
+            PathAdminsDir = $@"../{NameCompany}";
+            PathEmployeesDir = $@"../{NameCompany}";
+            PathCalendarDir = $@"../{NameCompany}";
         }
+
+        public void CreateDirectory()
+        {
+            DirectoryInfo Admins = new DirectoryInfo(PathAdminsDir);
+            DirectoryInfo Employees = new DirectoryInfo(PathEmployeesDir);
+            DirectoryInfo Calendar = new DirectoryInfo(PathCalendarDir);
+            if (!Admins.Exists)
+            {
+                Admins.Create();
+            }
+            if (!Employees.Exists)
+            {
+                Employees.Create();
+            }
+            if (!Calendar.Exists)
+            {
+                Calendar.Create();
+            }
+        }
+
 
         public void CreateTimetable(int a)
         {
@@ -80,13 +108,13 @@ namespace _1stProject
             {
                 if (thisDate.DayOfWeek == DayOfWeek.Monday)
                 {
-                    for (int i = firstDay + 4; i <= Calendar.Count - 1; i += 7)
+                    for (int i = firstDay; i <= Calendar.Count - 1; i += 7)
                     {
                         Calendar[i].Add(employee.Id);
-                        Calendar[i - 1].Add(employee.Id);
-                        Calendar[i - 2].Add(employee.Id);
-                        Calendar[i - 3].Add(employee.Id);
-                        Calendar[i - 4].Add(employee.Id);
+                        Calendar[i + 1].Add(employee.Id);
+                        Calendar[i + 2].Add(employee.Id);
+                        Calendar[i + 3].Add(employee.Id);
+                        Calendar[i + 4].Add(employee.Id);
                     }
                 }
                 else
@@ -95,25 +123,17 @@ namespace _1stProject
                 }
             }
         }
-            public int DateToNumberDay(DateTime thisdate)
-            {
-                int numberperday = thisdate.DayOfYear;
 
-                return numberperday;
-            }
+        public int DateToNumberDay(DateTime thisdate)
+        {
+            int numberperday = thisdate.DayOfYear;
 
-            //public string IsTheUserExistAsAdminOrRegular() 
-            //{
-            //    SaveAllAdmins.ContainsKey(CurrentCmId);
-            //    SaveAllEmployees.ContainsKey(CurrentCmId);
-            //    return;
-            //}
-            //public int FindAllUsersCompanies( _userNull.  )
-            //{
-            //    return;
-            //}
-
-            public void SaveAllAdmins()
+            return numberperday;
+        }
+        
+        public void SaveAllAdmins()
+        {
+            using (StreamWriter sw = new StreamWriter(PathAdmins))
             {
                 using (StreamWriter sw = new StreamWriter(_pathAdmins))
                 {
@@ -122,7 +142,9 @@ namespace _1stProject
                 }
             }
 
-            public void SaveAllEmployees()
+        public void SaveAllEmployees()
+        {
+            using (StreamWriter sw = new StreamWriter(PathEmployees))
             {
                 using (StreamWriter sw = new StreamWriter(_pathEmployees))
                 {
@@ -131,7 +153,9 @@ namespace _1stProject
                 }
             }
 
-            public void SaveAllCalendar()
+        public void SaveAllCalendar()
+        {
+            using (StreamWriter sw = new StreamWriter(PathCalendar))
             {
                 using (StreamWriter sw = new StreamWriter(_pathCalendar))
                 {
@@ -140,7 +164,9 @@ namespace _1stProject
                 }
             }
 
-            public void LoadAllAdmins()
+        public void LoadAllAdmins()
+        {
+            using (StreamReader sr = new StreamReader(PathAdmins))
             {
                 using (StreamReader sr = new StreamReader(_pathAdmins))
                 {
@@ -149,7 +175,9 @@ namespace _1stProject
                 }
             }
 
-            public void LoadAllEmployees()
+        public void LoadAllEmployees()
+        {
+            using (StreamReader sr = new StreamReader(PathEmployees))
             {
                 using (StreamReader sr = new StreamReader(_pathEmployees))
                 {
@@ -158,7 +186,9 @@ namespace _1stProject
                 }
             }
 
-            public void LoadAllCalendar()
+        public void LoadAllCalendar()
+        {
+            using (StreamReader sr = new StreamReader(PathCalendar))
             {
                 using (StreamReader sr = new StreamReader(_pathCalendar))
                 {
@@ -167,36 +197,47 @@ namespace _1stProject
                 }
             }
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Company company &&
-                   _baseData == company._baseData &&
-                   _userNull == company._userNull &&
-                   NameCompany == company.NameCompany &&
-                   IdCompany == company.IdCompany &&
-                   _pathAdmins == company._pathAdmins &&
-                   _pathEmployees == company._pathEmployees &&
-                   _pathCalendar == company._pathCalendar &&
-                   IdAdmins.SequenceEqual(company.IdAdmins) &&
-                   IdEmployees.SequenceEqual(company.IdEmployees) &&
-                   Calendar.SequenceEqual(company.Calendar);
-        }
+        //public override bool Equals(object? obj)
+        //{
+        //    return obj is Company company &&
+        //           _baseData == company._baseData &&
+        //           _userNull == company._userNull &&
+        //           NameCompany == company.NameCompany &&
+        //           IdCompany == company.IdCompany &&
+        //           PathAdmins == company.PathAdmins &&
+        //           PathEmployees == company.PathEmployees &&
+        //           PathCalendar == company.PathCalendar &&
+        //           IdAdmins.SequenceEqual(company.IdAdmins) &&
+        //           IdEmployees.SequenceEqual(company.IdEmployees) &&
+        //           Calendar.SequenceEqual(company.Calendar);
+        //}
 
-        public override int GetHashCode()
-        {
-            HashCode hash = new HashCode();
-            hash.Add(_baseData);
-            hash.Add(_userNull);
-            hash.Add(NameCompany);
-            hash.Add(IdCompany);
-            hash.Add(_pathAdmins);
-            hash.Add(_pathEmployees);
-            hash.Add(_pathCalendar);
-            hash.Add(IdAdmins);
-            hash.Add(IdEmployees);
-            hash.Add(Calendar);
-            return hash.ToHashCode();
-        }
+        //public override int GetHashCode()
+        //{
+        //    HashCode hash = new HashCode();
+        //    hash.Add(_baseData);
+        //    hash.Add(_userNull);
+        //    hash.Add(NameCompany);
+        //    hash.Add(IdCompany);
+        //    hash.Add(PathAdmins);
+        //    hash.Add(PathEmployees);
+        //    hash.Add(PathCalendar);
+        //    hash.Add(IdAdmins);
+        //    hash.Add(IdEmployees);
+        //    hash.Add(Calendar);
+        //    return hash.ToHashCode();
+        //}
+
+        //public string IsTheUserExistAsAdminOrRegular() 
+        //{
+        //    SaveAllAdmins.ContainsKey(CurrentCmId);
+        //    SaveAllEmployees.ContainsKey(CurrentCmId);
+        //    return;
+        //}
+        //public int FindAllUsersCompanies( _userNull.  )
+        //{
+        //    return;
+        //}
     }
 
 
