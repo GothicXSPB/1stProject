@@ -12,7 +12,7 @@ namespace _1stProject
             Name = name;
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
-            //_company = new Company("1",1);/* - временные данные*/
+            _company = AdminClass._company;
             _storage = Storage.GetInstance();
         }
 
