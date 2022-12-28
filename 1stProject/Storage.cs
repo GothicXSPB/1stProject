@@ -63,10 +63,11 @@ namespace _1stProject
                     AllCompany = JsonSerializer.Deserialize<Dictionary<int, string>>(jsn)!;
                 }
             }
-            else
-            {
-                throw new DirectoryNotFoundException();
-            }
+            //else
+            //{
+            //    Console.WriteLine("NET FILE");
+            //    throw new DirectoryNotFoundException();
+            //}
         }
 
         public void LoadAllWorker()

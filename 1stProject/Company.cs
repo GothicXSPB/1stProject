@@ -7,7 +7,7 @@ namespace _1stProject
     public class Company
     {
         private Storage _storage= new Storage();
-        UserNull _userNull = new UserNull();
+        //UserNull _userNull = new UserNull();
         public string NameCompany { get; set; }
         private string _companyName;
         private int _idCompany;
@@ -32,12 +32,14 @@ namespace _1stProject
             _storage.AddNewCompany(IdCompany, NameCompany);
         }
 
+        public bool IsThisCompanyAlreadyExist(Update update)
+        {
+            bool answer = _storage.AllCompany.ContainsValue(update.Message.Text);
+            return answer;
+        }
         public string GetCompanyName(Update update)
         {
-            if (update.Type == UpdateType.Message)
-            {
-                _companyName = update.Message.Text;
-            }
+            _companyName = update.Message.Text;
             return _companyName;
         }
         private int CreateUniqueCompanyId(Update update)
@@ -215,7 +217,7 @@ namespace _1stProject
         {
             HashCode hash = new HashCode();
             hash.Add(_storage);
-            hash.Add(_userNull);
+            //hash.Add(_userNull);
             hash.Add(NameCompany);
             hash.Add(IdCompany);
             hash.Add(_pathAdmins);
