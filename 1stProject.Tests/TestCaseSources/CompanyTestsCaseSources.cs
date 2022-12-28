@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualBasic;
+using NUnit.Framework;
 using System;
 using System.Collections;
 
@@ -51,4 +52,26 @@ namespace _1stProject.Tests.TestCaseSources
             };
         }
     }
+
+    public class DateToNumberDayTestsCaseSources : IEnumerable
+    {
+        public IEnumerator GetEnumerator()
+        {
+            DateTime thisdate = new DateTime(2021, 5, 12);
+            int numberperday = 132;
+
+            yield return new Object[] { numberperday, thisdate };
+        }
+    }
+
+    //public class CreateTimetableTestsCaseSources : IEnumerable
+    //{
+    //    public IEnumerator GetEnumerator()
+    //    {
+    //        DateTime thisdate = new DateTime(2021, 5, 12);
+    //        int numberperday = 132;
+
+    //        yield return new Object[] { numberperday, thisdate };
+    //    }
+    //}
 }

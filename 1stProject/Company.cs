@@ -27,7 +27,6 @@ namespace _1stProject
             _pathAdmins = $@"../{nameCompany}Admins.txt";
             _pathEmployees = $@"../{nameCompany}Employees.txt";
             _pathCalendar = $@"../{nameCompany}Calendar.txt";
-            _baseData = Storage.GetInstance();
         }
 
         public void CreateTimetable(int a)
@@ -97,9 +96,11 @@ namespace _1stProject
             }
         }
 
-        public void DateToNumberDay(DateTime thisdate)
+        public int DateToNumberDay(DateTime thisdate)
         {
             int numberperday = thisdate.DayOfYear;
+
+            return numberperday;
         }
 
         //public string IsTheUserExistAsAdminOrRegular() 
@@ -170,8 +171,8 @@ namespace _1stProject
         public override bool Equals(object? obj)
         {
             return obj is Company company &&
-                   EqualityComparer<Storage>.Default.Equals(_baseData, company._baseData) &&
-                   EqualityComparer<UserNull>.Default.Equals(_userNull, company._userNull) &&
+                   _baseData == company._baseData &&
+                   _userNull == company._userNull &&
                    NameCompany == company.NameCompany &&
                    IdCompany == company.IdCompany &&
                    _pathAdmins == company._pathAdmins &&
