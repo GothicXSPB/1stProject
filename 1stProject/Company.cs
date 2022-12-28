@@ -6,7 +6,7 @@ namespace _1stProject
 {
     public class Company
     {
-        private Storage _storage;
+        private Storage _baseData;
         UserNull _userNull = new UserNull();
         public string NameCompany { get; set; }
         public int IdCompany { get; set; }
@@ -27,7 +27,7 @@ namespace _1stProject
             _pathAdmins = $@"../{nameCompany}Admins.txt";
             _pathEmployees = $@"../{nameCompany}Employees.txt";
             _pathCalendar = $@"../{nameCompany}Calendar.txt";
-            _storage.AddNewCompany(idCompany, nameCompany);
+            _baseData = Storage.GetInstance();
         }
 
         public void CreateTimetable(int a)
@@ -170,7 +170,8 @@ namespace _1stProject
         public override bool Equals(object? obj)
         {
             return obj is Company company &&
-                   _storage == company._storage &&
+                   EqualityComparer<Storage>.Default.Equals(_baseData, company._baseData) &&
+                   EqualityComparer<UserNull>.Default.Equals(_userNull, company._userNull) &&
                    NameCompany == company.NameCompany &&
                    IdCompany == company.IdCompany &&
                    _pathAdmins == company._pathAdmins &&
@@ -181,4 +182,6 @@ namespace _1stProject
                    Calendar.SequenceEqual(company.Calendar);
         }
     }
+
+    
 }
