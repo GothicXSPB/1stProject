@@ -4,6 +4,7 @@ using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
+using _1stProject.TgButtonsLogic;
 
 namespace _1stProject
 {
@@ -12,10 +13,22 @@ namespace _1stProject
         ITelegramBotClient _bot;
         private ActiveUserController _activeUsers;
         public long UserTgId { get; set; }
+        protected string _userText;
+        private UserController _userController;
+        public string UsersText 
+        { 
+            get
+            {
+                return _userText; 
+            }
+            set
+            {
+                _userText = value;
+            } 
+        }
         public TelegramBotManager()
         {
             _activeUsers = new ActiveUserController();
-
             string token = @"5910759542:AAHMbJh_wprscd-3TGi8T5kUaRwZG1LKB7s";
             _bot = new TelegramBotClient(token);
 
@@ -47,7 +60,7 @@ namespace _1stProject
 
             ModelOfMessage message = _activeUsers[UserTgId].GetReply(update);
 
-            await _bot.SendTextMessageAsync(UserTgId, message.Text, replyMarkup: message.Keyboard);
+            await _bot.SendTextMessageAsync(UserTgId, message.Message, replyMarkup: message.Keyboard);
         }
 
         public async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
@@ -55,6 +68,14 @@ namespace _1stProject
             Console.WriteLine("Error");
         }
 
+        public string GetText (Update update)
+        {
+            if (update.Type == UpdateType.Message)
+            {
+                _userText = update.Message.Text; 
+            }
+            return _userText;
+        }
         public long GetTgUserId(Update update)
         {
             long userId;

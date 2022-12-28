@@ -15,25 +15,23 @@ namespace _1stProject.States
         //функционал
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage result = MessagesFromTg.ShowStartMenu;
-
-            switch (update.Type)
+            ModelOfMessage model = MessagesFromTg.ShowStartMenu;
+            if (update.Type == UpdateType.CallbackQuery)
             {
-                case UpdateType.CallbackQuery:
-                    switch (update.CallbackQuery.Data)
-                    {
-                        case "UseAvaliableFunction":
-                            controller.State = new ChooseYourCompany();
-                            result = MessagesFromTg.ShowMenuForCreatingNewCompany;
-                            break;
-                        case "NewCompany":
-                            controller.State = new AddNewCompanyState();
-                            result = MessagesFromTg.AddNewCompany;
-                            break;
-                    }
-                    break;
+                string answer = update.CallbackQuery.Data;
+                if (answer == "UseAvaliableFunction")
+                {
+                        controller.State = new MemberOfExistingComp();
+                        model = MessagesFromTg.ShowMenuForChoosingCompany;
+                }
+                else if (answer == "newCompany")
+                {
+                    controller.State = new CreateCompany();
+                    model = MessagesFromTg.ShowMenuForCreatingNewCompany;
+                }   
             }
-            return result;
+
+            return model;
         }
     }
 }

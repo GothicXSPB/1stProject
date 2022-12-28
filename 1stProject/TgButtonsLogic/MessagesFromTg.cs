@@ -10,7 +10,7 @@ namespace _1stProject.TgButtonsLogic
 {
     public static class MessagesFromTg
     {
-        public static ModelOfMessage ShowStartMenu 
+        public static ModelOfMessage ShowStartMenu
         {
             get
             {
@@ -43,6 +43,10 @@ namespace _1stProject.TgButtonsLogic
                             new[]
                             {
                                 new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" }
+                            },
+                            new[]
+                            {
+                                new InlineKeyboardButton("Вернуться назад") { CallbackData = "return" },
                             },
                         })
                 };
@@ -77,6 +81,10 @@ namespace _1stProject.TgButtonsLogic
                             new[]
                             {
                                 new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" },
+                            },
+                                 new[]
+                            {
+                                new InlineKeyboardButton("Вернуться назад") { CallbackData = "return" },
                             },
                         })
                 };
