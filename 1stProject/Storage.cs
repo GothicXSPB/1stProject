@@ -1,26 +1,31 @@
 ﻿using System.Globalization;
+using System.Linq;
 using System.Text.Json;
 using _1stProject.Options;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
+using File = System.IO.File;
 
 namespace _1stProject
 {
     public class Storage
     {
         public Dictionary<int, string> AllCompany { get; set; }
-        public Dictionary<int, List<int>> AllWorker {get; set; }
+        public Dictionary<long, List<int>> AllWorker {get; set; }
         public string _pathAllCompany  { get; set; }
         public string _pathAllWorker { get; set; }
 
         public static Storage _storage;
+        
+        //TelegramBotManager _botManager = new TelegramBotManager();
 
         public Storage()
         {
             AllCompany = new Dictionary<int, string>();
-            AllWorker = new Dictionary<int, List<int>>();
+            AllWorker = new Dictionary<long, List<int>>();
             _pathAllCompany = @"../InformationAllCompany/AllCompany.txt";
             _pathAllWorker = @"../InformationAllWorker/AllWorker.txt";
         }
-
 
         public static Storage GetInstance()
         {
@@ -51,19 +56,33 @@ namespace _1stProject
 
         public void LoadAllCompany()
         {
-            using (StreamReader sr = new StreamReader(_pathAllCompany))
+            if (File.Exists(_pathAllCompany))
             {
-                string jsn = sr.ReadLine()!;
-                AllCompany = JsonSerializer.Deserialize<Dictionary<int, string>>(jsn)!;
+                using (StreamReader sr = new StreamReader(_pathAllCompany))
+                {
+                    string jsn = sr.ReadLine()!;
+                    AllCompany = JsonSerializer.Deserialize<Dictionary<int, string>>(jsn)!;
+                }
+            }
+            else
+            {
+                throw new DirectoryNotFoundException();
             }
         }
 
         public void LoadAllWorker()
         {
-            using (StreamReader sr = new StreamReader(_pathAllWorker))
+            if (File.Exists(_pathAllWorker))
             {
-                string jsn = sr.ReadLine()!;
-                AllWorker = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(jsn)!;
+                using (StreamReader sr = new StreamReader(_pathAllWorker))
+                {
+                    string jsn = sr.ReadLine()!;
+                    AllWorker = JsonSerializer.Deserialize<Dictionary<long, List<int>>>(jsn)!;
+                }
+            }
+            else
+            {
+                throw new DirectoryNotFoundException();
             }
         }
 
@@ -74,20 +93,26 @@ namespace _1stProject
             SaveAllCompany();
         }
 
-        public void AddNewWorker(int idWorker, int[] idCompany)
+        public void AddNewWorker(long idWorker, List<int> idCompany)
         {
             LoadAllWorker();
-
-            List<int> whatsCompany = new List<int>();
-
-            for (int i = 0; i < idCompany.Length; i++)
-            {
-                whatsCompany.Add(idCompany[i]);
-            }
-
-            AllWorker.Add(idWorker, whatsCompany);
-
+            AllWorker.Add(idWorker, idCompany);
             SaveAllWorker();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Storage storage && 
+                AllCompany.SequenceEqual(storage.AllCompany) && 
+                AllWorker.SequenceEqual(storage.AllWorker) && 
+                _pathAllCompany == storage._pathAllCompany &&
+                _pathAllWorker == storage._pathAllWorker;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(AllCompany, AllWorker, _pathAllCompany, _pathAllWorker);
         }
     }
 }
+ 

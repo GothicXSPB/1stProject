@@ -1,12 +1,15 @@
-﻿using System.Text.Json;
+﻿using System.Linq;
+using System.Text.Json;
+
 
 namespace _1stProject
 {
     public class Company
     {
         private Storage _storage;
+        UserNull _userNull = new UserNull();
         public string NameCompany { get; set; }
-        public int IDCompany { get; set; }
+        public int IdCompany { get; set; }
         public string _pathAdmins;
         public string _pathEmployees;
         public string _pathCalendar;
@@ -17,13 +20,14 @@ namespace _1stProject
         public Company(string nameCompany, int idCompany)
         {
             NameCompany = nameCompany;
-            IDCompany = idCompany;
+            IdCompany = idCompany;
             IdAdmins = new List<long>();
             IdEmployees = new List<long>();
             Calendar = new Dictionary<int, List<long>>();
-            _pathAdmins = $@"../{nameCompany}/Admins.txt";
-            _pathEmployees = $@"../{nameCompany}/Employees.txt";
-            _pathCalendar = $@"../{nameCompany}/Calendar.txt";
+            _pathAdmins = $@"../{nameCompany}Admins.txt";
+            _pathEmployees = $@"../{nameCompany}Employees.txt";
+            _pathCalendar = $@"../{nameCompany}Calendar.txt";
+            _storage.AddNewCompany(idCompany, nameCompany);
         }
 
         public void CreateTimetable(int a)
@@ -43,10 +47,10 @@ namespace _1stProject
                 }
             }
         }
-
-        public void ApproveTimeTableForEmployee(int day, int month, int year, Employee employee, int firstDay)
+                      
+        public void ApproveTimeTableForEmployee(DateTime thisDate, Employee employee)
         {
-            DateTime dt = new DateTime(year, month, day);
+            int firstDay = thisDate.DayOfYear;            
 
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift2x2)
             {
@@ -64,6 +68,7 @@ namespace _1stProject
 
                 }
             }
+
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift1x3)
             {
                 for (int i = firstDay; i <= Calendar.Count - 1; i += 4)
@@ -71,9 +76,10 @@ namespace _1stProject
                     Calendar[i].Add(employee.Id);
                 }
             }
+
             if (employee.TypeOfTimeTable == Options.TimeTable.Shift5x2)
             {
-                if (dt.DayOfWeek == DayOfWeek.Monday)
+                if (thisDate.DayOfWeek == DayOfWeek.Monday)
                 {
                     for (int i = firstDay + 4; i <= Calendar.Count - 1; i += 7)
                     {
@@ -91,12 +97,24 @@ namespace _1stProject
             }
 
 
-        }
+
+
 
         public void DateToNumberDay(DateTime thisdate)
         {
             int numberperday = thisdate.DayOfYear;
         }
+
+        //public string IsTheUserExistAsAdminOrRegular() 
+        //{
+        //    SaveAllAdmins.ContainsKey(CurrentCmId);
+        //    SaveAllEmployees.ContainsKey(CurrentCmId);
+        //    return;
+        //}
+        //public int FindAllUsersCompanies( _userNull.  )
+        //{
+        //    return;
+        //}
 
         public void SaveAllAdmins()
         {
@@ -139,7 +157,7 @@ namespace _1stProject
             using (StreamReader sr = new StreamReader(_pathEmployees))
             {
                 string jsn = sr.ReadLine()!;
-                IdAdmins = JsonSerializer.Deserialize<List<long>>(jsn)!;
+                IdEmployees = JsonSerializer.Deserialize<List<long>>(jsn)!;
             }
         }
 
@@ -150,6 +168,36 @@ namespace _1stProject
                 string jsn = sr.ReadLine()!;
                 Calendar = JsonSerializer.Deserialize<Dictionary<int, List<long>>>(jsn)!;
             }
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Company company &&
+                   _storage == company._storage &&
+                   NameCompany == company.NameCompany &&
+                   IdCompany == company.IdCompany &&
+                   _pathAdmins == company._pathAdmins &&
+                   _pathEmployees == company._pathEmployees &&
+                   _pathCalendar == company._pathCalendar &&
+                   IdAdmins.SequenceEqual(company.IdAdmins) &&
+                   IdEmployees.SequenceEqual(company.IdEmployees) &&
+                   Calendar.SequenceEqual(company.Calendar);
+        }
+
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(_storage);
+            hash.Add(_userNull);
+            hash.Add(NameCompany);
+            hash.Add(IdCompany);
+            hash.Add(_pathAdmins);
+            hash.Add(_pathEmployees);
+            hash.Add(_pathCalendar);
+            hash.Add(IdAdmins);
+            hash.Add(IdEmployees);
+            hash.Add(Calendar);
+            return hash.ToHashCode();
         }
     }
 }

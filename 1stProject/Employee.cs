@@ -35,7 +35,5 @@ namespace _1stProject
         {
 
         }
-
-
     }
 }
