@@ -135,55 +135,67 @@ namespace _1stProject
         {
             using (StreamWriter sw = new StreamWriter(PathAdmins))
             {
-                string jsn = JsonSerializer.Serialize(IdAdmins);
-                sw.WriteLine(jsn);
+                using (StreamWriter sw = new StreamWriter(_pathAdmins))
+                {
+                    string jsn = JsonSerializer.Serialize(IdAdmins);
+                    sw.WriteLine(jsn);
+                }
             }
-        }
 
         public void SaveAllEmployees()
         {
             using (StreamWriter sw = new StreamWriter(PathEmployees))
             {
-                string jsn = JsonSerializer.Serialize(IdEmployees);
-                sw.WriteLine(jsn);
+                using (StreamWriter sw = new StreamWriter(_pathEmployees))
+                {
+                    string jsn = JsonSerializer.Serialize(IdEmployees);
+                    sw.WriteLine(jsn);
+                }
             }
-        }
 
         public void SaveAllCalendar()
         {
             using (StreamWriter sw = new StreamWriter(PathCalendar))
             {
-                string jsn = JsonSerializer.Serialize(Calendar);
-                sw.WriteLine(jsn);
+                using (StreamWriter sw = new StreamWriter(_pathCalendar))
+                {
+                    string jsn = JsonSerializer.Serialize(Calendar);
+                    sw.WriteLine(jsn);
+                }
             }
-        }
 
         public void LoadAllAdmins()
         {
             using (StreamReader sr = new StreamReader(PathAdmins))
             {
-                string jsn = sr.ReadLine()!;
-                IdAdmins = JsonSerializer.Deserialize<List<long>>(jsn)!;
+                using (StreamReader sr = new StreamReader(_pathAdmins))
+                {
+                    string jsn = sr.ReadLine()!;
+                    IdAdmins = JsonSerializer.Deserialize<List<long>>(jsn)!;
+                }
             }
-        }
 
         public void LoadAllEmployees()
         {
             using (StreamReader sr = new StreamReader(PathEmployees))
             {
-                string jsn = sr.ReadLine()!;
-                IdEmployees = JsonSerializer.Deserialize<List<long>>(jsn)!;
+                using (StreamReader sr = new StreamReader(_pathEmployees))
+                {
+                    string jsn = sr.ReadLine()!;
+                    IdEmployees = JsonSerializer.Deserialize<List<long>>(jsn)!;
+                }
             }
-        }
 
         public void LoadAllCalendar()
         {
             using (StreamReader sr = new StreamReader(PathCalendar))
             {
-                string jsn = sr.ReadLine()!;
-                Calendar = JsonSerializer.Deserialize<Dictionary<int, List<long>>>(jsn)!;
+                using (StreamReader sr = new StreamReader(_pathCalendar))
+                {
+                    string jsn = sr.ReadLine()!;
+                    Calendar = JsonSerializer.Deserialize<Dictionary<int, List<long>>>(jsn)!;
+                }
             }
-        }
 
         //public override bool Equals(object? obj)
         //{
