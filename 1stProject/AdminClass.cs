@@ -12,7 +12,7 @@ namespace _1stProject
             Name = name;
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
-            _company = new Company("1",1);/* - временные данные*/
+            //_company = new Company("1",1);/* - временные данные*/
             _storage = Storage.GetInstance();
         }
 
@@ -93,9 +93,9 @@ namespace _1stProject
 
         public void AddEmployee(Employee employee)
         {
-            _company.LoadAllEmployees();
-            _company.IdEmployees.Add(employee.Id);
             _company.SaveAllEmployees();
+            _company.IdEmployees.Add(employee.Id);
+            _company.LoadAllEmployees();
         }
 
         public void DeleteEmployee(long id)
