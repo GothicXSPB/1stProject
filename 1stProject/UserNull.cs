@@ -14,18 +14,18 @@ namespace _1stProject
             UserTgId = _telegramBotManager.Id;
         }
 
-        public void CheckIsThisUserExistsInAllTgBase ()
-        {
-            bool workerIsExists = storage.allWorker.ContainsKey(UserTgId);
+        //public void CheckIsThisUserExistsInAllTgBase ()
+        //{
+        //    //bool workerIsExists = storage.allWorker.ContainsKey(UserTgId);
 
-            if (workerIsExists is true)
-            {
-                ///по логике, тут кнопки с выбором компании
-            }
-            else
-            {
-                ///а тут кнопка "вы не зарегестрирвоаны ни в одной компании. Хотите создать новую?"
-            }
-        }
+        //    if (workerIsExists is true)
+        //    {
+        //        ///по логике, тут кнопки с выбором компании
+        //    }
+        //    else
+        //    {
+        //        ///а тут кнопка "вы не зарегестрирвоаны ни в одной компании. Хотите создать новую?"
+        //    }
+        //}
     }
 }

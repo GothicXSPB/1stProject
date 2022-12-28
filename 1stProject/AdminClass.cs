@@ -16,6 +16,43 @@ namespace _1stProject
             _storage = Storage.GetInstance();
         }
 
+        public void ShowFullMonthlyTimetablee(DateTime thisdate)
+        {
+            _company.LoadAllCalendar();
+            int a = thisdate.DayOfYear;
+            int v = a + 30;
+            for (int i = a; i <= v; i++)
+            {
+                Console.WriteLine(_company.Calendar[i]);
+            }
+        }
+
+        public void ShowFullTimetableForTheDate(DateTime thisdate)
+        {
+            _company.LoadAllCalendar();
+            int i = thisdate.DayOfYear;
+            Console.WriteLine(_company.Calendar[i]);
+        }
+
+        public void ShowScheduleForThePeriod2(DateTime thisdate1, DateTime thisdate2)
+        {
+            //int a = thisdate1.DayOfYear;
+            //int j = thisdate2.DayOfYear;
+            //for (int i = thisdate1.DayOfYear; i <= j; i++)
+            //{
+            //    Console.WriteLine(_company.Calendar[i]);
+
+            //}
+            foreach (KeyValuePair<int, List<long>> pair in _company.Calendar)
+            {
+                Console.WriteLine("{0}, {1}",
+                                    pair.Key,
+                                    pair.Value);
+                Console.WriteLine(_company.Calendar[i].);
+            }
+
+        }
+
         public override void AddOvertimeHoursForApprove()
         {
 
@@ -78,6 +115,7 @@ namespace _1stProject
         public void ApproveTimeTableForEmployeeAndSave(int day, int month, int year, Employee employee, int firstDay)
         {
             _company.ApproveTimeTableForEmployee(day, month, year, employee, firstDay);
+            _company.SaveAllCalendar();
         }
 
         public void ApproveOvertime ()

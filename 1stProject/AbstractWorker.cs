@@ -16,36 +16,8 @@ namespace _1stProject
 
         public void ShowYourOwnMonthlyTimetable(DateTime thisdate)
         {
-            
-        }
 
-        public void ShowScheduleForThePeriod(DateTime thisdate1, DateTime thisdate2)
-        {
-            int a = thisdate1.DayOfYear;
-            int j = thisdate2.DayOfYear;
-            for (int i = thisdate1.DayOfYear; i <= j; i++)
-            {
-                Console.WriteLine(_company.Calendar[i]);
-            }
-        }
-
-        public void ShowFullMonthlyTimetablee(DateTime thisdate)
-        {
-            _company.LoadAllCalendar();
-            int a = thisdate.DayOfYear;
-            int v = a + 30;
-            for (int i = a; i <= v; i++)
-            {
-                Console.WriteLine(_company.Calendar[i]);
-            }
-        }
-
-        public void ShowFullTimetableForTheDate(DateTime thisdate)
-        {
-            _company.LoadAllCalendar();
-            int i = thisdate.DayOfYear;
-            Console.WriteLine(_company.Calendar[i]);
-        }
+        }        
 
         public void ShowOwnPersonalCard()
         {

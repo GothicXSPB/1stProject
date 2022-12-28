@@ -78,7 +78,7 @@ namespace _1stProject
             if (update.Message.Text != null)
             {
                 Company company1 = new Company(update.Message.Text, 11234); //(long)Convert.ToDouble(update.Message.Text)
-                AdminClass admin = new AdminClass(update.Message.Chat.Id, update.Message.Chat.FirstName, "123", 0);
+                AdminClass admin = new AdminClass(update.Message.Chat.Id, update.Message.Chat.FirstName, "123", 0,"213",3);
                 admin.AddAdmin(admin);
                 Console.WriteLine(update.Message.Chat.FirstName + "Создал компанию " + company1.NameCompany + " " + company1.IDCompany);
 

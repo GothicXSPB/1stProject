@@ -21,9 +21,9 @@ namespace _1stProject
             IdAdmins = new List<long>();
             IdEmployees = new List<long>();
             Calendar = new Dictionary<int, List<long>>();
-            _pathAdmins = $@"../{nameCompany}Admins.txt";
-            _pathEmployees = $@"../{nameCompany}Employees.txt";
-            _pathCalendar = $@"../{nameCompany}Calendar.txt";
+            _pathAdmins = $@"../{nameCompany}/Admins.txt";
+            _pathEmployees = $@"../{nameCompany}/Employees.txt";
+            _pathCalendar = $@"../{nameCompany}/Calendar.txt";
         }
 
         public void CreateTimetable(int a)
@@ -89,11 +89,9 @@ namespace _1stProject
                     Console.WriteLine("Work week must start on Monday");
                 }
             }
+
+
         }
-
-
-
-
 
         public void DateToNumberDay(DateTime thisdate)
         {
