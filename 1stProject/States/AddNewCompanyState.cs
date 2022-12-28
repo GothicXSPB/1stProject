@@ -20,13 +20,9 @@ namespace _1stProject.States
                 case UpdateType.CallbackQuery:
                     switch (update.CallbackQuery.Data)
                     {
-                        case "MenuAdmin":
+                        case "Menu":
                             controller.State = new MenuForAdmin();
                             result = MessagesFromTg.ShowMenuForAdmin;
-                            break;
-                        case "Start":
-                            controller.State = new Start();
-                            result = MessagesFromTg.ShowStartMenu;
                             break;
                     }
                     break;

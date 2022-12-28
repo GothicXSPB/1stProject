@@ -43,23 +43,37 @@ namespace _1stProject.TgButtonsLogic
                             new[]
                             {
                                 new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" }
-                            },
-                            new[]
-                            {
-                                new InlineKeyboardButton("Вернуться назад") { CallbackData = "return" },
-                            },
+                            }
                         })
                 };
             }
         }
 
+        public static ModelOfMessage GreatCompany
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Компания успешно создана",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Меню") { CallbackData = "Menu" }
+                            },
+                        })
+                };
+            }
+        }
         public static ModelOfMessage ShowMenuForAdmin
         {
             get
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Ваши права администратора подтверждены. Информация о компании:" + "\r\n" + "Работкини:" + "\r\n" + "Админы:",
+                    Message = "Ваши права администратора подтверждены. Информация о компании:" + "\r\n" + "Работники:" + "\r\n" + "Админы:",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
