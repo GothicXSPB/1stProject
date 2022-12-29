@@ -31,8 +31,8 @@ namespace _1stProject
         public TelegramBotManager()
         {
             _activeUsers = new ActiveUserController();
-            string token = @"5910759542:AAHMbJh_wprscd-3TGi8T5kUaRwZG1LKB7s";
-            //string token = @"5984887401:AAEza_O9Ath3j54JLo9wZcrtTojvCSnR1Eo"; //TestBot
+            //string token = @"5910759542:AAHMbJh_wprscd-3TGi8T5kUaRwZG1LKB7s";
+            string token = @"5984887401:AAEza_O9Ath3j54JLo9wZcrtTojvCSnR1Eo"; //TestBot
             _bot = new TelegramBotClient(token);
 
             Console.WriteLine("Запущен бот " );

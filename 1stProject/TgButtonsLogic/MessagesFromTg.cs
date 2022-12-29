@@ -248,7 +248,7 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Напишите компанию в которой вы хотите продолжать работу",
+                    Message = "Напишите компанию в которой вы хотите продолжать работу: " ,
                     Keyboard = null
                 };
             }
@@ -273,6 +273,25 @@ namespace _1stProject.TgButtonsLogic
                 {
                     Message = "Многие люди думают одинаково. Такое имя уже существует. Попробуйте еще раз",
                     Keyboard = null
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowThatCompanyIsNotExist
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Такой компании не существует. Попробуйте еще раз",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Вернуться в стартовое меню") { CallbackData = "Start" },
+                            },
+                        })
                 };
             }
         }
