@@ -1,5 +1,7 @@
 ﻿using _1stProject.Options;
 namespace _1stProject;
+
+using Microsoft.VisualBasic;
 using Telegram.Bot.Types;
 
 public class AdminClass : AbstractWorker
@@ -121,26 +123,29 @@ public class AdminClass : AbstractWorker
         _company.CreateTimetable(year);
     }
 
-    public void AddEmployee(Employee employee)
-    {
-        _company.LoadAllEmployees();
-        _company.IdEmployees.Add(employee.Id);
-        _company.SaveAllEmployees();
-    }
+        public void AddEmployee(long id)
+        {
+            _company.LoadAllEmployees();
+            _company.IdEmployees.Add(id);
+            _company.SaveAllEmployees();
+        }
 
-    public void DeleteEmployee(long id)
-    {
-        _company.LoadAllEmployees();
-        _company.IdEmployees.RemoveAll(Id => Id == id);
-        _company.SaveAllEmployees();
-    }
+        public void DeleteEmployee(long id)
+        {
+            _company.LoadAllEmployees();
+            _company.IdEmployees.RemoveAll(id => Id == id);
+            _company.SaveAllEmployees();
+        }
 
-    public void AddAdmin(AdminClass admin)
-    {
-        _company.LoadAllEmployees();
-        _company.IdAdmins.Add(admin.Id);
-        _company.SaveAllAdmins();
-    }
+        public void AddAdmin(long idEmployee)
+        {
+            _company.LoadAllEmployees();
+            _company.LoadAllAdmins();
+            _company.IdAdmins.Add(idEmployee);
+            DeleteEmployee(idEmployee);
+            _company.SaveAllEmployees();
+            _company.SaveAllAdmins();
+        }
 
     public void ApproveTimeTableForEmployeeAndSave(DateTime thisdata, Employee employee)
     {
