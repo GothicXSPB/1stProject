@@ -19,7 +19,9 @@ namespace _1stProject.States
             {
                 _company = new Company(update);
                 _company.CreateDirectory();
+                _company.CreateFiles();
                 _storage1.AddNewCompany(_company.IdCompany, _company.NameCompany);
+                //_company.IdAdmins.Add(update.Message.Text);
                 controller.State = new AddNewCompanyState();
                 message = MessagesFromTg.GreatCompany;
             }
