@@ -8,7 +8,6 @@ namespace _1stProject.States
     {
         Storage _storage1 = new Storage();
         Company _company;
-        AdminClass _adminClass;
         //проверка существует ли компания
         //сделать первого юзера админом
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
@@ -22,8 +21,7 @@ namespace _1stProject.States
                 _company.CreateDirectory();
                 _company.CreateFiles();
                 _storage1.AddNewCompany(_company.IdCompany, _company.NameCompany);
-                _adminClass = new AdminClass(update);
-                //_company.IdAdmins.Add(update.Message.Text);
+                //_company.IdAdmins.Add(update.Message.Text.);
                 controller.State = new AddNewCompanyState();
                 message = MessagesFromTg.GreatCompany;
             }
