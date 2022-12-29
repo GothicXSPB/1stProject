@@ -21,6 +21,10 @@ Employee employee5 = new Employee(5, "Artem Titov", "89024569432", TimeTable.Shi
 //admin.ApproveTimeTableForEmployeeAndSave(DateTime.Parse("12.03.2023"), employee4);
 //admin.ShowScheduleForThePeriod2(DateTime.Parse("12.03.2023"), DateTime.Parse("12.04.2023"));
 
+admin.ShowFullTimetableForTheDate(DateTime.Parse("5.04.2023"));
+
+//admin.ShowScheduleForThePeriod(DateTime.Parse("12.03.2023"), DateTime.Parse("12.04.2023"));
+
 //admin.AddEmployee(employee1);
 
 //company.SaveAllEmployees();

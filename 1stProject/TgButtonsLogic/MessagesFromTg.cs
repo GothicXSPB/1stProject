@@ -36,13 +36,13 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Напиши название компании и через пробел ее идентификатор",
+                    Message = "Напиши название компании",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" }
+                                new InlineKeyboardButton("Вернуться в стартовое меню") { CallbackData = "Start" }
                             }
                         })
                 };
@@ -94,11 +94,121 @@ namespace _1stProject.TgButtonsLogic
                             },
                             new[]
                             {
-                                new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" },
-                            },
-                                 new[]
+                                new InlineKeyboardButton("Вернуться в стартовое меню") { CallbackData = "Start" },
+                            }
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowAddEmployee
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника, которого хотите добавить",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
                             {
-                                new InlineKeyboardButton("Вернуться назад") { CallbackData = "return" },
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowAddEmployeeToCalendar
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника, которого хотите добавить в календарь",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowDeleteEmployee
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника, которого хотите удалить",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowAddAdmin
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника, которого хотите сделать админом",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowDeleteEmployeeToCalendar
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника и дату с которой его нужно убрать",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowAddEmployeeToDays
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника и дату на которую его нужно поставить",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
                             },
                         })
                 };
@@ -117,8 +227,15 @@ namespace _1stProject.TgButtonsLogic
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Я хочу") { CallbackData = "хххх" },
-                                new InlineKeyboardButton("Я хочу") { CallbackData = "хх" }
+                                new InlineKeyboardButton("Посмотреть график за период") { CallbackData = "x" }
+                            },
+                            new[]
+                            {
+                                new InlineKeyboardButton("Поменяться сменами") { CallbackData = "x" },
+                            },
+                            new[]
+                            {
+                                new InlineKeyboardButton("Вернуться в стартовое меню") { CallbackData = "Start" },
                             },
                         })
                 };

@@ -1,27 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Telegram.Bot.Types;
+﻿using _1stProject.TgButtonsLogic;
 using Telegram.Bot.Types.Enums;
-using _1stProject.TgButtonsLogic;
+using Telegram.Bot.Types;
 
 namespace _1stProject.States
 {
-    internal class MemberOfExistingComp : IState
+    public class AddEmployeeToCalendarState : IState
     {
-        //ВЫВЕСТИ КОМПАНИИ В КОТОРЫХ УЧАСТВУЕТ ЮЗЕР
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage result = MessagesFromTg.AddNewCompany;
+            ModelOfMessage result = MessagesFromTg.ShowAddEmployeeToCalendar;
 
             switch (update.Type)
             {
                 case UpdateType.CallbackQuery:
                     switch (update.CallbackQuery.Data)
                     {
-                        case "Menu":
+                        case "Back":
                             controller.State = new MenuForAdmin();
                             result = MessagesFromTg.ShowMenuForAdmin;
                             break;
@@ -29,8 +23,8 @@ namespace _1stProject.States
                     break;
                 case UpdateType.Message:
                     string newNameCompany = update.Message.Text;
-                    controller.State = new MenuOfRegularUser();
-                    result = MessagesFromTg.ShowMenuForRegularUser;
+                    controller.State = new MenuForAdmin();
+                    result = MessagesFromTg.ShowMenuForAdmin;
                     break;
             }
             return result;
