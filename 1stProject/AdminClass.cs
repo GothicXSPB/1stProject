@@ -7,12 +7,12 @@ namespace _1stProject
         private Company _company;
         private Storage _storage;
 
-        public AdminClass(long id, string name, string telephoneNumber, TimeTable typeOfTimeTable, string nameCompany, int idCompany)
+        public AdminClass(long id, string name, string telephoneNumber, string nameCompany, int idCompany)
         {
             Id = id;
             Name = name;
             TelephoneNumber = telephoneNumber;
-            TypeOfTimeTable = typeOfTimeTable;
+            TypeOfTimeTable = TimeTable.Shift5x2;
             _company = new Company(nameCompany, idCompany);
             _storage = Storage.GetInstance();
         }        
