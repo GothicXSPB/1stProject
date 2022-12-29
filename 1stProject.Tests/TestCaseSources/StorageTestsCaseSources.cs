@@ -49,6 +49,7 @@ namespace _1stProject.Tests.TestCaseSources
         {
             int a = 7;
             string b = "Umbrella";
+
             Dictionary<int, string> allCompany = new Dictionary<int, string>()
             {
                 {1, "Lapa" },
@@ -56,6 +57,7 @@ namespace _1stProject.Tests.TestCaseSources
                 {3, "coFFeeGang" },
                 {4, "smokeWeeD_everyDAY" }
             };
+
             Dictionary<int, string> newAllCompany = new Dictionary<int, string>()
             {
                 {1, "Lapa" },

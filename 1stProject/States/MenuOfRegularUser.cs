@@ -36,6 +36,7 @@ namespace _1stProject.States
                     }
                     break;
             }
+
             return result;
         }
     }

@@ -11,6 +11,7 @@ namespace _1stProject
         public bool CheckIsThisUserExistsInAllTgBase ()
         {
             bool workerIsExists = storage.AllWorker.ContainsKey(CurrentCmId);
+
             return workerIsExists;
         }
     }

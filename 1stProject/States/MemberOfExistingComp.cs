@@ -44,8 +44,8 @@ namespace _1stProject.States
                         message = MessagesFromTg.ShowThatCompanyIsNotExist;
                     }
                     break;
-
             }
+
             return message;
         }
 

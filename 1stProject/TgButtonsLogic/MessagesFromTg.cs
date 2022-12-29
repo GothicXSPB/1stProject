@@ -67,6 +67,7 @@ namespace _1stProject.TgButtonsLogic
                 };
             }
         }
+
         public static ModelOfMessage ShowMenuForAdmin
         {
             get
@@ -263,6 +264,7 @@ namespace _1stProject.TgButtonsLogic
             }
 
         }
+
         public static ModelOfMessage ShowMenuForCreatingNewCompany
         {
             get
@@ -274,6 +276,7 @@ namespace _1stProject.TgButtonsLogic
                 };
             }
         }
+
         public static ModelOfMessage ShowThatCompanyIsNotUnique
         {
             get

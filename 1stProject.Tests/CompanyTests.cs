@@ -15,7 +15,6 @@ namespace _1stProject.Tests
         public void SetUp()
         {
             _pathCompanyTests = @"../AllTests.test";
-            _company = new Company("MultiTax", 6);
             _base = new Storage();
             _base._pathAllCompany = @"../StorageTests.test";
             _base._pathAllWorker = @"../StorageTests.test";
@@ -137,10 +136,5 @@ namespace _1stProject.Tests
 
             Assert.That(actualNumber, Is.EqualTo(expectedNumber));
         }
-
-        //public void CreateTimetableTests()
-        //{
-
-        //}
     }
 }

@@ -16,6 +16,7 @@ namespace _1stProject.States
             ModelOfMessage message = MessagesFromTg.ShowMenuForCreatingNewCompany;
             
             bool exists = IsThisCompanyAlreadyExist(update);
+
             if (exists == false)
             {
                 _company = new Company(update);
@@ -31,6 +32,7 @@ namespace _1stProject.States
             {
             message = MessagesFromTg.ShowThatCompanyIsNotUnique;
             }
+
               return message;
         }
 
@@ -38,6 +40,7 @@ namespace _1stProject.States
         {
             _storage1.LoadAllCompany();
             bool answer =_storage1.AllCompany.ContainsValue(update.Message.Text);
+
             return answer;
         }
     }

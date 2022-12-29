@@ -17,11 +17,6 @@ namespace _1stProject
             TypeOfTimeTable = typeOfTimeTable;
         }
 
-        public override void AddOvertimeHoursForApprove()
-        {
-
-        }
-
         public string GetEmployeeName(Update update)
         {
             _name = update.Message.Chat.Username;
@@ -50,6 +45,11 @@ namespace _1stProject
         }
 
         public override void SwapShifts(Employee employee, Employee employee1, DateTime a, DateTime b)
+        {
+
+        }
+
+        public override void AddOvertimeHoursForApprove()
         {
 
         }
