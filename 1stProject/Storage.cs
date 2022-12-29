@@ -23,8 +23,8 @@ namespace _1stProject
         {
             AllCompany = new Dictionary<int, string>();
             AllWorker = new Dictionary<long, List<int>>();
-            _pathAllCompany = @"../InformationAllCompany/AllCompany.txt";
-            _pathAllWorker = @"../InformationAllWorker/AllWorker.txt";
+            _pathAllCompany = @"../AllCompany.txt";
+            _pathAllWorker = @"../AllWorker.txt";
         }
 
         public static Storage GetInstance()

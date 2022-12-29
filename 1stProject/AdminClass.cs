@@ -1,19 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using _1stProject.Options;
-namespace _1stProject
-{
+namespace _1stProject;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
+
     public class AdminClass: AbstractWorker
     {
         private Company _company;
         private Storage _storage;
 
-        public AdminClass(long id, string name, string telephoneNumber, string nameCompany, int idCompany)
+        public AdminClass(Update update, long id, string name, string telephoneNumber, TimeTable typeOfTimeTable, string nameCompany, int idCompany)
         {
             Id = id;
             Name = name;
             TelephoneNumber = telephoneNumber;
-            TypeOfTimeTable = TimeTable.Shift5x2;
-            _company = new Company(nameCompany, idCompany);
+            TypeOfTimeTable = typeOfTimeTable;
+            _company = new Company( update);
             _storage = Storage.GetInstance();
         }        
 
@@ -197,4 +199,4 @@ namespace _1stProject
             return HashCode.Combine(Id, Name, TypeOfTimeTable, TelephoneNumber, _company);
         }
     }
-}
+
