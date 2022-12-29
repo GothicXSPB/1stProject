@@ -1,12 +1,18 @@
 ﻿using _1stProject.Options;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
+
 namespace _1stProject
 {
     public class Employee: AbstractWorker
     {
-        public Employee (long id, string name, string telephoneNumber, TimeTable typeOfTimeTable)
+        private string _name;
+        private long _id;
+
+        public Employee (Update update, string telephoneNumber, TimeTable typeOfTimeTable)
         {
-            Id = id;
-            Name = name;
+            Id = GetEmployeeId(update);
+            Name = GetEmployeeName(update);
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
         }
@@ -14,6 +20,18 @@ namespace _1stProject
         public override void AddOvertimeHoursForApprove()
         {
 
+        }
+
+        public string GetEmployeeName(Update update)
+        {
+            _name = update.Message.Chat.Username;
+            return _name;
+        }     
+
+        private long GetEmployeeId(Update update)
+        {
+            _id = update.Message.Chat.Id;
+            return _id;
         }
 
         public override bool Equals(object? obj)
