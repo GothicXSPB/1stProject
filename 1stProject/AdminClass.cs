@@ -73,7 +73,7 @@ namespace _1stProject
 
         public void RemoveAnEmployeeFromThisDate(Employee employee, DateTime a)
         {
-            int RemoveDay = a.DayOfYear;
+            int RemoveDay = _company.DateToNumberDay(a);
 
             _company.Calendar[RemoveDay].Remove(employee.Id);
         }
