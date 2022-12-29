@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using File = System.IO.File;
 
 namespace _1stProject
 {
@@ -39,7 +40,21 @@ namespace _1stProject
             PathEmployees = $@"../{NameCompany}/Employees.txt";
             PathCalendar = $@"../{NameCompany}/Calendar.txt";
         }
-
+        public void CreateFiles ()
+        {
+            if (!File.Exists (PathAdmins))
+            {
+                SaveAllAdmins();
+            }
+            if (!File.Exists(PathEmployees))
+            {
+                SaveAllEmployees();
+            }
+            if (!File.Exists(PathCalendar))
+            {
+                SaveAllCalendar();
+            }
+        }
         public void CreateDirectory()
         {
             DirectoryInfo Admins = new DirectoryInfo(PathAdminsDir);

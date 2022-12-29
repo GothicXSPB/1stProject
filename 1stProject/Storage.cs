@@ -17,8 +17,6 @@ namespace _1stProject
 
         public static Storage _storage;
         
-        //TelegramBotManager _botManager = new TelegramBotManager();
-
         public Storage()
         {
             AllCompany = new Dictionary<int, string>();
