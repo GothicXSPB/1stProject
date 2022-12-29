@@ -13,13 +13,16 @@ AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shi
 
 company.CreateDirectory();
 
-//company.SaveAllAdmins();
-//company.SaveAllCalendar();
-//company.SaveAllAdmins();
-admin.AddEmployee(employee5);
+company.SaveAllAdmins();
+company.SaveAllCalendar();
+company.SaveAllEmployees();
+admin.AddEmployee(employee4);
 admin.CreateNullTimeTable(2023);
 admin.ApproveTimeTableForEmployeeAndSave(DateTime.Parse("12.03.2023"), employee4);
-admin.ShowScheduleForThePeriod2(DateTime.Parse("12.03.2023"), DateTime.Parse("12.04.2023"));
+
+admin.ShowFullTimetableForTheDate(DateTime.Parse("5.04.2023"));
+
+//admin.ShowScheduleForThePeriod(DateTime.Parse("12.03.2023"), DateTime.Parse("12.04.2023"));
 
 //admin.AddEmployee(employee1);
 

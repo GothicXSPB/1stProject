@@ -15,43 +15,48 @@ namespace _1stProject
             TypeOfTimeTable = typeOfTimeTable;
             _company = new Company(nameCompany, idCompany);
             _storage = Storage.GetInstance();
-        }
-
-        public void ShowFullMonthlyTimetablee(DateTime thisdate)
-        {
-            _company.LoadAllCalendar();
-            int a = thisdate.DayOfYear;
-            int v = a + 30;
-            for (int i = a; i <= v; i++)
-            {
-                Console.WriteLine(_company.Calendar[i]);
-            }
-        }
+        }        
 
         public void ShowFullTimetableForTheDate(DateTime thisdate)
         {
             _company.LoadAllCalendar();
-            int i = thisdate.DayOfYear;
-            Console.WriteLine(_company.Calendar[i]);
+            int dayOfInterest = _company.DateToNumberDay(thisdate);
+            List<long> value = null;
+            _company.Calendar.TryGetValue(dayOfInterest, out value);
+            PrintCalendar(value);
+
+            void PrintCalendar(List<long> value)
+            {
+                foreach (int item in value)
+                {
+                    Console.Write($"Сотрудник(и):{item}");
+                }
+            }
         }
 
-        public void ShowScheduleForThePeriod2(DateTime thisdate1, DateTime thisdate2)
+        public void ShowScheduleForThePeriod(DateTime thisdate1, DateTime thisdate2)
         {
-            //int a = thisdate1.DayOfYear;
-            //int j = thisdate2.DayOfYear;
-            //for (int i = thisdate1.DayOfYear; i <= j; i++)
-            //{
-            //    Console.WriteLine(_company.Calendar[i]);
+            _company.LoadAllCalendar();
 
-            //}
-            foreach (KeyValuePair<int, List<long>> pair in _company.Calendar)
+            int firstDay = _company.DateToNumberDay(thisdate1);
+            int lastDay = _company.DateToNumberDay(thisdate2);
+            List<long> value = null;                     
+
+            for (int j = firstDay; j <= lastDay; j++)
             {
-                Console.WriteLine("{0}, {1}",
-                                    pair.Key,
-                                    pair.Value);
-                
-            }
+                _company.Calendar.TryGetValue(j, out value);
+                DateTime D = new DateTime(2023, 1, 1);
+                Console.WriteLine(D.AddDays(j).ToString("D"));
+                PrintCalendar(value);
+            }            
 
+            void PrintCalendar(List<long> value)
+            {
+                foreach (int item in value)
+                {
+                    Console.Write($"Сотрудник(и):{item};  ");
+                }
+            }
         }
 
         public override void AddOvertimeHoursForApprove()
@@ -61,7 +66,7 @@ namespace _1stProject
 
         public void AddEmployeeForThisDate(Employee employee, DateTime a)
         {
-            int AddEmployeeDay = a.DayOfYear;
+            int AddEmployeeDay = _company.DateToNumberDay(a);
 
             _company.Calendar[AddEmployeeDay].Add(employee.Id);
         }
@@ -75,9 +80,10 @@ namespace _1stProject
 
         public override void SwapShifts(Employee employee1, Employee employee2, DateTime a, DateTime b)
         {
-            int firstDay = a.DayOfYear;
-            int secondDay = b.DayOfYear;
-            
+            int firstDay = _company.DateToNumberDay(a);
+            int secondDay = _company.DateToNumberDay(b);
+
+
             if (_company.Calendar[firstDay].Contains(employee1.Id)&& _company.Calendar[secondDay].Contains(employee2.Id))
             {
             _company.Calendar[firstDay].Add(employee2.Id);
@@ -117,7 +123,7 @@ namespace _1stProject
         {
             _company.ApproveTimeTableForEmployee(thisdata, employee);
             _company.SaveAllCalendar();
-        }
+        }        
 
         public void ApproveOvertime ()
         {
