@@ -70,6 +70,7 @@ namespace _1stProject
             int AddEmployeeDay = _company.DateToNumberDay(a);
 
             _company.Calendar[AddEmployeeDay].Add(employee.Id);
+            _company.SaveAllCalendar();
         }
 
         public void RemoveAnEmployeeFromThisDate(Employee employee, DateTime a)
@@ -84,13 +85,14 @@ namespace _1stProject
             {
                 Console.WriteLine("В этот день данный сотрудник не работает");
             }
+            _company.SaveAllCalendar();
         }
 
         public override void SwapShifts(Employee employee1, Employee employee2, DateTime a, DateTime b)
         {
+            _company.LoadAllCalendar();
             int firstDay = _company.DateToNumberDay(a);
             int secondDay = _company.DateToNumberDay(b);
-
 
             if (_company.Calendar[firstDay].Contains(employee1.Id)&& _company.Calendar[secondDay].Contains(employee2.Id))
             {
@@ -99,6 +101,7 @@ namespace _1stProject
             _company.Calendar[firstDay].Remove(employee1.Id);
             _company.Calendar[secondDay].Remove(employee2.Id);
             }
+            _company.SaveAllCalendar();
         }
 
         public void CreateNullTimeTable(int year)
@@ -117,7 +120,7 @@ namespace _1stProject
         {
             _company.LoadAllEmployees();
             _company.IdEmployees.RemoveAll(Id=> Id == id);
-            _company.SaveAllAdmins();
+            _company.SaveAllEmployees();
         }
 
         public void AddAdmin(AdminClass admin)
