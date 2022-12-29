@@ -1,4 +1,5 @@
-﻿using _1stProject.Options;
+﻿using System.ComponentModel.DataAnnotations;
+using _1stProject.Options;
 namespace _1stProject
 {
     public class AdminClass: AbstractWorker
@@ -12,7 +13,7 @@ namespace _1stProject
             Name = name;
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
-            _company = new Company("1",1);/* - временные данные*/
+            _company = new Company(nameCompany, idCompany);
             _storage = Storage.GetInstance();
         }
 
@@ -48,7 +49,7 @@ namespace _1stProject
                 Console.WriteLine("{0}, {1}",
                                     pair.Key,
                                     pair.Value);
-                Console.WriteLine(_company.Calendar[i].);
+                
             }
 
         }
@@ -112,9 +113,9 @@ namespace _1stProject
             _company.SaveAllAdmins();
         }
 
-        public void ApproveTimeTableForEmployeeAndSave(int day, int month, int year, Employee employee, int firstDay)
+        public void ApproveTimeTableForEmployeeAndSave(DateTime thisdata, Employee employee)
         {
-            _company.ApproveTimeTableForEmployee(day, month, year, employee, firstDay);
+            _company.ApproveTimeTableForEmployee(thisdata, employee);
             _company.SaveAllCalendar();
         }
 
