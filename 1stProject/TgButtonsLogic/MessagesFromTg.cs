@@ -101,6 +101,120 @@ namespace _1stProject.TgButtonsLogic
             }
         }
 
+        public static ModelOfMessage ShowAddEmployee
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника, которого хотите добавить",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowAddEmployeeToCalendar
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника, которого хотите добавить в календарь",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowDeleteEmployee
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника, которого хотите удалить",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowAddAdmin
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника, которого хотите сделать админом",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowDeleteEmployeeToCalendar
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника и дату с которой его нужно убрать",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
+        public static ModelOfMessage ShowAddEmployeeToDays
+        {
+            get
+            {
+                return new ModelOfMessage()
+                {
+                    Message = "Введите Id сотрудника и дату на которую его нужно поставить",
+                    Keyboard = new InlineKeyboardMarkup(
+                        new[]
+                        {
+                            new[]
+                            {
+                                new InlineKeyboardButton("Назад") { CallbackData = "Back" },
+                            },
+                        })
+                };
+            }
+        }
+
         public static ModelOfMessage ShowMenuForRegularUser
         {
             get

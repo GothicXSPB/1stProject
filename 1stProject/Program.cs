@@ -11,15 +11,15 @@ Company company = new Company("Shot", 4);
 
 AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shift5x2, "Shot", 4);
 
-company.CreateDirectory();
+//company.CreateDirectory();
 
 //company.SaveAllAdmins();
 //company.SaveAllCalendar();
 //company.SaveAllAdmins();
-admin.AddEmployee(employee5);
-admin.CreateNullTimeTable(2023);
-admin.ApproveTimeTableForEmployeeAndSave(DateTime.Parse("12.03.2023"), employee4);
-admin.ShowScheduleForThePeriod2(DateTime.Parse("12.03.2023"), DateTime.Parse("12.04.2023"));
+//admin.AddEmployee(employee5);
+//admin.CreateNullTimeTable(2023);
+//admin.ApproveTimeTableForEmployeeAndSave(DateTime.Parse("12.03.2023"), employee4);
+//admin.ShowScheduleForThePeriod2(DateTime.Parse("12.03.2023"), DateTime.Parse("12.04.2023"));
 
 //admin.AddEmployee(employee1);
 
@@ -31,6 +31,6 @@ admin.ShowScheduleForThePeriod2(DateTime.Parse("12.03.2023"), DateTime.Parse("12
 
 //admin.DeleteEmployee(2);
 
-//TelegramBotManager telegramBot = new TelegramBotManager();
+TelegramBotManager telegramBot = new TelegramBotManager();
 
-//Console.ReadLine();
+Console.ReadLine();
