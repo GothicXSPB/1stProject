@@ -16,6 +16,7 @@ namespace _1stProject
         public long UserTgId { get; set; }
         protected string _userText;
         Storage _storage = new Storage();
+
         private UserController _userController;
         public string UsersText 
         { 
@@ -41,6 +42,10 @@ namespace _1stProject
             _storage.SaveAllCompany();
             }
 
+            if (!File.Exists(_storage._pathAllWorker))
+            {
+
+            }
             var cts = new CancellationTokenSource();
             var cancellationToken = cts.Token;
 
@@ -92,6 +97,7 @@ namespace _1stProject
             if (update.Type == UpdateType.Message)
             {
                 userId = update.Message.Chat.Id;
+
                 if (update.Message.Text == "/start")
                 {
                     _bot.SendTextMessageAsync(update.Message.Chat.Id, $"Твой Id: " + userId);

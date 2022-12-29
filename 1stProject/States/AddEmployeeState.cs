@@ -11,8 +11,11 @@ namespace _1stProject.States
 {
     public class AddEmployeeState : IState
     {
+
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
+            AdminClass admin = new AdminClass(update);
+            Company _company = new Company(update);
             ModelOfMessage result = MessagesFromTg.ShowAddEmployee;
 
             switch (update.Type)
@@ -27,7 +30,7 @@ namespace _1stProject.States
                     }
                     break;
                 case UpdateType.Message:
-                    string newNameCompany = update.Message.Text;
+                    admin.AddEmployee(Convert.ToInt64(update.Message.Text));
                     controller.State = new MenuForAdmin();
                     result = MessagesFromTg.ShowMenuForAdmin;
                     break;
