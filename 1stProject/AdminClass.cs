@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using _1stProject.Options;
 namespace _1stProject;
+
+using Microsoft.VisualBasic;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
@@ -15,7 +17,7 @@ using Telegram.Bot.Types.Enums;
             Name = name;
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
-            _company = new Company( update);
+            _company = new Company(update);
             _storage = Storage.GetInstance();
         }        
 
@@ -111,24 +113,27 @@ using Telegram.Bot.Types.Enums;
             _company.CreateTimetable(year);
         }
 
-        public void AddEmployee(Employee employee)
+        public void AddEmployee(long id)
         {
             _company.LoadAllEmployees();
-            _company.IdEmployees.Add(employee.Id);
+            _company.IdEmployees.Add(id);
             _company.SaveAllEmployees();
         }
 
         public void DeleteEmployee(long id)
         {
             _company.LoadAllEmployees();
-            _company.IdEmployees.RemoveAll(Id=> Id == id);
+            _company.IdEmployees.RemoveAll(id => Id == id);
             _company.SaveAllEmployees();
         }
 
-        public void AddAdmin(AdminClass admin)
+        public void AddAdmin(long idEmployee)
         {
             _company.LoadAllEmployees();
-            _company.IdAdmins.Add(admin.Id);
+            _company.LoadAllAdmins();
+            _company.IdAdmins.Add(idEmployee);
+            DeleteEmployee(idEmployee);
+            _company.SaveAllEmployees();
             _company.SaveAllAdmins();
         }
 
