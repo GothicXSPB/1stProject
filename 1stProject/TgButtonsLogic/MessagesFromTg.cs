@@ -80,16 +80,25 @@ namespace _1stProject.TgButtonsLogic
                             new[]
                             {
                                 new InlineKeyboardButton("Добавить сотрудника") { CallbackData = "AddEmployee" },
+                            },
+                            new[]
+                            {
                                 new InlineKeyboardButton("Добавить сотрудника в календарь") { CallbackData = "AddEmployeeToCalendar" },
                             },
                             new[]
                             {
                                 new InlineKeyboardButton("Удалить сотрудника") { CallbackData = "DeleteEmployee" },
+                            },
+                            new[]
+                            {
                                 new InlineKeyboardButton("Добавить админа") { CallbackData = "AddAdmin" }
                             },
                             new[]
                             {
                                 new InlineKeyboardButton("Удалить сотрудник с даты") { CallbackData = "DeleteEmployeeToCalendar" },
+                            },
+                            new[]
+                            {
                                 new InlineKeyboardButton("Поставить сотрудник на даты") { CallbackData = "AddEmployeeToDays" },
                             },
                             new[]
