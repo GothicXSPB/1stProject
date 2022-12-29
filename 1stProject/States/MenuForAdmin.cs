@@ -22,22 +22,28 @@ namespace _1stProject.States
                     switch (update.CallbackQuery.Data)
                     {
                         case "AddEmployee":
-
+                            controller.State = new AddEmployeeState();
+                            result = MessagesFromTg.ShowAddEmployee;
                             break;
                         case "AddEmployeeToCalendar":
-
+                            controller.State = new AddEmployeeToCalendarState();
+                            result = MessagesFromTg.ShowAddEmployeeToCalendar;
                             break;
                         case "DeleteEmployee":
-
+                            controller.State = new DeleteEmployeeState();
+                            result = MessagesFromTg.ShowDeleteEmployee;
                             break;
                         case "AddAdmin":
-
+                            controller.State = new AddAdminState();
+                            result = MessagesFromTg.ShowAddAdmin;
                             break; 
                         case "DeleteEmployeeToCalendar":
-
+                            controller.State = new DeleteEmployeeToCalendarState();
+                            result = MessagesFromTg.ShowDeleteEmployeeToCalendar;
                             break;
                         case "AddEmployeeToDays":
-
+                            controller.State = new AddEmployeeToDaysState();
+                            result = MessagesFromTg.ShowAddEmployeeToDays;
                             break;
                         case "Start":
                             controller.State = new Start();
