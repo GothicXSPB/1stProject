@@ -5,6 +5,7 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 using _1stProject.TgButtonsLogic;
+using File = System.IO.File;
 
 namespace _1stProject
 {
@@ -35,7 +36,11 @@ namespace _1stProject
             _bot = new TelegramBotClient(token);
 
             Console.WriteLine("Запущен бот " );
+            if (!File.Exists(_storage._pathAllCompany))
+            {
             _storage.SaveAllCompany();
+            }
+
             var cts = new CancellationTokenSource();
             var cancellationToken = cts.Token;
 

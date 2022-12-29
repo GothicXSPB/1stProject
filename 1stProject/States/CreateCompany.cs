@@ -18,6 +18,7 @@ namespace _1stProject.States
             if (exists == false)
             {
                 _company = new Company(update);
+                _company.CreateDirectory();
                 _storage1.AddNewCompany(_company.IdCompany, _company.NameCompany);
                 controller.State = new AddNewCompanyState();
                 message = MessagesFromTg.GreatCompany;
@@ -31,6 +32,7 @@ namespace _1stProject.States
 
         public bool IsThisCompanyAlreadyExist(Update update)
         {
+            
             _storage1.LoadAllCompany();
             bool answer =_storage1.AllCompany.ContainsValue(update.Message.Text);
             return answer;
