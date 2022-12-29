@@ -12,11 +12,13 @@ namespace _1stProject.TgButtonsLogic
     {
         public long UserId { get; set; }
         public IState State { get; set; }
+
         public UserController(long userId)
         {
             UserId = userId;
             State = new Start();
         }
+
         public ModelOfMessage GetReply (Update update) 
         {
             return State.HandleUpdate(update, this);

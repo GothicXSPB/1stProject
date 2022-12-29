@@ -8,23 +8,21 @@ namespace _1stProject
     public class Company
     {
         private Storage _baseData;
-        //UserNull _userNull = new UserNull();
+        UserNull _userNull = new UserNull();
+
         public string NameCompany { get; set; }
         private string _companyName;
         private int _idCompany;
         public int IdCompany { get; set; }
-
         public string PathAdmins;
         public string PathEmployees;
         public string PathCalendar;
         public string PathAdminsDir;
         public string PathEmployeesDir;
         public string PathCalendarDir;
-
         public List<long> IdAdmins { get; set; }
         public List<long> IdEmployees { get; set; }
         public Dictionary<int, List<long>> Calendar { get; set; }
-
 
         public Company(Update update)
         {
@@ -40,6 +38,7 @@ namespace _1stProject
             PathEmployees = $@"../{NameCompany}/Employees.txt";
             PathCalendar = $@"../{NameCompany}/Calendar.txt";
         }
+
         public void CreateFiles ()
         {
             if (!File.Exists (PathAdmins))
@@ -55,6 +54,7 @@ namespace _1stProject
                 SaveAllCalendar();
             }
         }
+
         public void CreateDirectory()
         {
             DirectoryInfo Admins = new DirectoryInfo(PathAdminsDir);
@@ -79,6 +79,7 @@ namespace _1stProject
             _companyName = update.Message.Text;
             return _companyName;
         }
+
         private int CreateUniqueCompanyId(Update update)
         {
             Random random = new Random();
@@ -236,49 +237,35 @@ namespace _1stProject
             }
         }
 
+        public override bool Equals(object? obj)
+        {
+            return obj is Company company &&
+                   _baseData == company._baseData &&
+                   _userNull == company._userNull &&
+                   NameCompany == company.NameCompany &&
+                   IdCompany == company.IdCompany &&
+                   PathAdmins == company.PathAdmins &&
+                   PathEmployees == company.PathEmployees &&
+                   PathCalendar == company.PathCalendar &&
+                   IdAdmins.SequenceEqual(company.IdAdmins) &&
+                   IdEmployees.SequenceEqual(company.IdEmployees) &&
+                   Calendar.SequenceEqual(company.Calendar);
+        }
 
-        //public override bool Equals(object? obj)
-        //{
-        //    return obj is Company company &&
-        //           _baseData == company._baseData &&
-        //           _userNull == company._userNull &&
-        //           NameCompany == company.NameCompany &&
-        //           IdCompany == company.IdCompany &&
-        //           PathAdmins == company.PathAdmins &&
-        //           PathEmployees == company.PathEmployees &&
-        //           PathCalendar == company.PathCalendar &&
-        //           IdAdmins.SequenceEqual(company.IdAdmins) &&
-        //           IdEmployees.SequenceEqual(company.IdEmployees) &&
-        //           Calendar.SequenceEqual(company.Calendar);
-        //}
-
-        //public override int GetHashCode()
-        //{
-        //    HashCode hash = new HashCode();
-        //    hash.Add(_baseData);
-        //    hash.Add(_userNull);
-        //    hash.Add(NameCompany);
-        //    hash.Add(IdCompany);
-        //    hash.Add(PathAdmins);
-        //    hash.Add(PathEmployees);
-        //    hash.Add(PathCalendar);
-        //    hash.Add(IdAdmins);
-        //    hash.Add(IdEmployees);
-        //    hash.Add(Calendar);
-        //    return hash.ToHashCode();
-        //}
-
-        //public string IsTheUserExistAsAdminOrRegular() 
-        //{
-        //    SaveAllAdmins.ContainsKey(CurrentCmId);
-        //    SaveAllEmployees.ContainsKey(CurrentCmId);
-        //    return;
-        //}
-        //public int FindAllUsersCompanies( _userNull.  )
-        //{
-        //    return;
-        //}
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(_baseData);
+            hash.Add(_userNull);
+            hash.Add(NameCompany);
+            hash.Add(IdCompany);
+            hash.Add(PathAdmins);
+            hash.Add(PathEmployees);
+            hash.Add(PathCalendar);
+            hash.Add(IdAdmins);
+            hash.Add(IdEmployees);
+            hash.Add(Calendar);
+            return hash.ToHashCode();
+        }
     }
-
-
 }
