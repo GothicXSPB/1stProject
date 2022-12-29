@@ -15,7 +15,7 @@ using Telegram.Bot.Types.Enums;
             Name = name;
             TelephoneNumber = telephoneNumber;
             TypeOfTimeTable = typeOfTimeTable;
-            _company = new Company( update);
+            _company = new Company(update);
             _storage = Storage.GetInstance();
         }        
 
