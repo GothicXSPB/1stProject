@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
 using Telegram.Bot.Types;
-
 using Telegram.Bot.Types.Enums;
 
 namespace _1stProject
@@ -33,12 +32,12 @@ namespace _1stProject
             IdAdmins = new List<long>();
             IdEmployees = new List<long>();
             Calendar = new Dictionary<int, List<long>>();
-            PathAdmins = $@"../{NameCompany}/Admins.txt";
-            PathEmployees = $@"../{NameCompany}/Employees.txt";
-            PathCalendar = $@"../{NameCompany}/Calendar.txt";
             PathAdminsDir = $@"../{NameCompany}";
             PathEmployeesDir = $@"../{NameCompany}";
             PathCalendarDir = $@"../{NameCompany}";
+            PathAdmins = $@"../{NameCompany}/Admins.txt";
+            PathEmployees = $@"../{NameCompany}/Employees.txt";
+            PathCalendar = $@"../{NameCompany}/Calendar.txt";
         }
 
         public void CreateDirectory()

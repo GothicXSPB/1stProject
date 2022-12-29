@@ -14,6 +14,7 @@ namespace _1stProject
         private ActiveUserController _activeUsers;
         public long UserTgId { get; set; }
         protected string _userText;
+        Storage _storage = new Storage();
         private UserController _userController;
         public string UsersText 
         { 
@@ -33,6 +34,7 @@ namespace _1stProject
             _bot = new TelegramBotClient(token);
 
             Console.WriteLine("Запущен бот " );
+            _storage.SaveAllCompany();
             var cts = new CancellationTokenSource();
             var cancellationToken = cts.Token;
 

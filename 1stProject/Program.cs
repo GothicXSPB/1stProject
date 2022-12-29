@@ -9,15 +9,15 @@ Employee employee4 = new Employee(4, "Katerina Apo", "84959238456", TimeTable.Sh
 Employee employee5 = new Employee(5, "Artem Titov", "89024569432", TimeTable.Shift1x3);
 //Company company = new Company("Shot", 4);
 
-AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shift5x2, "Shot", 4);
+//AdminClass admin = new AdminClass(6, "Ivan Bobrov", "89301654545", TimeTable.Shift5x2, "Shot", 4);
 
-company.CreateDirectory();
+//company.CreateDirectory();
 
-company.SaveAllAdmins();
-company.SaveAllCalendar();
-company.SaveAllEmployees();
-admin.AddEmployee(employee5);
-admin.CreateNullTimeTable(2023);
+//company.SaveAllAdmins();
+//company.SaveAllCalendar();
+////company.SaveAllEmployees();
+//admin.AddEmployee(employee5);
+//admin.CreateNullTimeTable(2023);
 //admin.ApproveTimeTableForEmployeeAndSave(DateTime.Parse("12.03.2023"), employee4);
 //admin.ShowScheduleForThePeriod2(DateTime.Parse("12.03.2023"), DateTime.Parse("12.04.2023"));
 
