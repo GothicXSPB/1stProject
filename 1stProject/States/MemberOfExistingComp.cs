@@ -11,29 +11,49 @@ namespace _1stProject.States
 {
     internal class MemberOfExistingComp : IState
     {
+        Storage _storage1 = new Storage();
+        Company _company;
+
         //ВЫВЕСТИ КОМПАНИИ В КОТОРЫХ УЧАСТВУЕТ ЮЗЕР
         public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage result = MessagesFromTg.AddNewCompany;
+            ModelOfMessage message = MessagesFromTg.AddNewCompany;
 
             switch (update.Type)
             {
                 case UpdateType.CallbackQuery:
                     switch (update.CallbackQuery.Data)
                     {
-                        case "Menu":
-                            controller.State = new MenuForAdmin();
-                            result = MessagesFromTg.ShowMenuForAdmin;
+                        case "Start":
+                            controller.State = new Start();
+                            message = MessagesFromTg.ShowStartMenu;
                             break;
                     }
                     break;
                 case UpdateType.Message:
-                    string newNameCompany = update.Message.Text;
-                    controller.State = new MenuOfRegularUser();
-                    result = MessagesFromTg.ShowMenuForRegularUser;
+                    
+                    bool exists = IsThisCompanyAlreadyExist(update);
+                    if (exists)
+                    {
+                        _company = new Company(update);
+                        controller.State = new MenuOfRegularUser();
+                        message = MessagesFromTg.ShowMenuForRegularUser;
+                    }
+                    else
+                    {
+                        message = MessagesFromTg.ShowThatCompanyIsNotExist;
+                    }
                     break;
+
             }
-            return result;
+            return message;
+        }
+
+        public bool IsThisCompanyAlreadyExist(Update update)
+        {
+            _storage1.LoadAllCompany();
+            bool answer = _storage1.AllCompany.ContainsValue(update.Message.Text);
+            return answer;
         }
     }
 }
