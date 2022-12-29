@@ -12,10 +12,28 @@ namespace _1stProject.States
     internal class MemberOfExistingComp : IState
     {
         //ВЫВЕСТИ КОМПАНИИ В КОТОРЫХ УЧАСТВУЕТ ЮЗЕР
-        public ModelOfMessage HandleUpdate(Update update, UserController controller) /*- требует редактирования*/
+        public ModelOfMessage HandleUpdate(Update update, UserController controller)
         {
-            ModelOfMessage message = MessagesFromTg.ShowMenuForAdmin; /*- требует редактирования*/
-            return message;
+            ModelOfMessage result = MessagesFromTg.AddNewCompany;
+
+            switch (update.Type)
+            {
+                case UpdateType.CallbackQuery:
+                    switch (update.CallbackQuery.Data)
+                    {
+                        case "Menu":
+                            controller.State = new MenuForAdmin();
+                            result = MessagesFromTg.ShowMenuForAdmin;
+                            break;
+                    }
+                    break;
+                case UpdateType.Message:
+                    string newNameCompany = update.Message.Text;
+                    controller.State = new MenuOfRegularUser();
+                    result = MessagesFromTg.ShowMenuForRegularUser;
+                    break;
+            }
+            return result;
         }
     }
 }

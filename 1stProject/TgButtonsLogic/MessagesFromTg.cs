@@ -36,13 +36,13 @@ namespace _1stProject.TgButtonsLogic
             {
                 return new ModelOfMessage()
                 {
-                    Message = "Напиши название компании и через пробел ее идентификатор",
+                    Message = "Напиши название компании",
                     Keyboard = new InlineKeyboardMarkup(
                         new[]
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" }
+                                new InlineKeyboardButton("Вернуться в стартовое меню") { CallbackData = "Start" }
                             }
                         })
                 };
@@ -94,12 +94,8 @@ namespace _1stProject.TgButtonsLogic
                             },
                             new[]
                             {
-                                new InlineKeyboardButton("Вернуться в стартовое") { CallbackData = "Start" },
-                            },
-                                 new[]
-                            {
-                                new InlineKeyboardButton("Вернуться назад") { CallbackData = "return" },
-                            },
+                                new InlineKeyboardButton("Вернуться в стартовое меню") { CallbackData = "Start" },
+                            }
                         })
                 };
             }
@@ -117,8 +113,15 @@ namespace _1stProject.TgButtonsLogic
                         {
                             new[]
                             {
-                                new InlineKeyboardButton("Я хочу") { CallbackData = "хххх" },
-                                new InlineKeyboardButton("Я хочу") { CallbackData = "хх" }
+                                new InlineKeyboardButton("Посмотреть график за период") { CallbackData = "x" }
+                            },
+                            new[]
+                            {
+                                new InlineKeyboardButton("Поменяться сменами") { CallbackData = "x" },
+                            },
+                            new[]
+                            {
+                                new InlineKeyboardButton("Вернуться в стартовое меню") { CallbackData = "Start" },
                             },
                         })
                 };
