@@ -31,8 +31,8 @@ namespace _1stProject
         public TelegramBotManager()
         {
             _activeUsers = new ActiveUserController();
-            string token = @"5910759542:AAHMbJh_wprscd-3TGi8T5kUaRwZG1LKB7s";
-            //string token = @"5984887401:AAEza_O9Ath3j54JLo9wZcrtTojvCSnR1Eo"; //TestBot
+            //string token = @"5910759542:AAHMbJh_wprscd-3TGi8T5kUaRwZG1LKB7s";
+            string token = @"5984887401:AAEza_O9Ath3j54JLo9wZcrtTojvCSnR1Eo"; //TestBot
             _bot = new TelegramBotClient(token);
 
             Console.WriteLine("Запущен бот " );
@@ -59,12 +59,14 @@ namespace _1stProject
 
         public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
+
             long UserTgId = GetTgUserId(update);
 
             if (!_activeUsers.IsContais(UserTgId))
             {
                 _activeUsers.AddActiveMember(UserTgId);
             }
+
 
             ModelOfMessage message = _activeUsers[UserTgId].GetReply(update);
 
@@ -90,6 +92,11 @@ namespace _1stProject
             if (update.Type == UpdateType.Message)
             {
                 userId = update.Message.Chat.Id;
+                if (update.Message.Text == "/start")
+                {
+                    _bot.SendTextMessageAsync(update.Message.Chat.Id, $"Твой Id: " + userId);
+                }
+
             }
             else if (update.Type == UpdateType.CallbackQuery)
             {
