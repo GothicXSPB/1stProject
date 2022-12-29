@@ -22,6 +22,7 @@ namespace _1stProject
             _company.LoadAllCalendar();
             int dayOfInterest = _company.DateToNumberDay(thisdate);
             List<long> value = null;
+
             _company.Calendar.TryGetValue(dayOfInterest, out value);
             PrintCalendar(value);
 
@@ -37,7 +38,6 @@ namespace _1stProject
         public void ShowScheduleForThePeriod(DateTime thisdate1, DateTime thisdate2)
         {
             _company.LoadAllCalendar();
-
             int firstDay = _company.DateToNumberDay(thisdate1);
             int lastDay = _company.DateToNumberDay(thisdate2);
             List<long> value = null;                     
@@ -66,6 +66,7 @@ namespace _1stProject
 
         public void AddEmployeeForThisDate(Employee employee, DateTime a)
         {
+            _company.LoadAllCalendar();
             int AddEmployeeDay = _company.DateToNumberDay(a);
 
             _company.Calendar[AddEmployeeDay].Add(employee.Id);
@@ -73,9 +74,16 @@ namespace _1stProject
 
         public void RemoveAnEmployeeFromThisDate(Employee employee, DateTime a)
         {
+            _company.LoadAllCalendar();
             int RemoveDay = _company.DateToNumberDay(a);
-
-            _company.Calendar[RemoveDay].Remove(employee.Id);
+            if (_company.Calendar[RemoveDay].Contains(employee.Id))
+            {
+                _company.Calendar[RemoveDay].Remove(employee.Id);
+            }
+            else
+            {
+                Console.WriteLine("В этот день данный сотрудник не работает");
+            }
         }
 
         public override void SwapShifts(Employee employee1, Employee employee2, DateTime a, DateTime b)
