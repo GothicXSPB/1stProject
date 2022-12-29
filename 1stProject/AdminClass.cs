@@ -10,6 +10,7 @@ public class AdminClass : AbstractWorker
     private Storage _storage;
     private string _name;
     private long _id;
+
     public AdminClass(Update update)
     {
         Id = GetAdminId(update);
